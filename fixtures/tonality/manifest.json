@@ -1,0 +1,90 @@
+{
+ "data_assets": {
+  "chord_qualities.json": {
+   "versions": null
+  },
+  "intervals.json": {
+   "versions": null
+  },
+  "key_inertia.json": {
+   "versions": [
+    "key-inertia.1"
+   ]
+  },
+  "key_profiles.json": {
+   "versions": [
+    "tkp-cbms.1",
+    "kk-1982.1"
+   ]
+  },
+  "key_smoothing.json": {
+   "versions": [
+    "key-smoothing.1"
+   ]
+  },
+  "meter_profiles.json": {
+   "versions": [
+    "meter-grid.1"
+   ]
+  },
+  "naming_weights.json": {
+   "versions": [
+    "naming-rules.1"
+   ]
+  },
+  "relative_key_weights.json": {
+   "versions": [
+    "rel-key.1"
+   ]
+  },
+  "scales.json": {
+   "versions": null
+  },
+  "scoring_priors.json": {
+   "versions": [
+    "induction.fisher-bh.1"
+   ]
+  },
+  "structural_key.json": {
+   "versions": [
+    "structural-key.2"
+   ]
+  },
+  "succession_weights.json": {
+   "versions": [
+    "succession.1"
+   ]
+  },
+  "swing_feel.json": {
+   "versions": [
+    "swing-feel.1"
+   ]
+  }
+ },
+ "description": "Versioned-data export for native-port consumers (Decision-10 consumer-port corollary). The golden conformance harness is the parity oracle; this names the versioned data a port must pin + cite.",
+ "policies": [
+  {
+   "description": "Unequal-cardinality pairing for minimal voice leading: every pitch class of both sets must participate, so pcs of the smaller set may carry several voices (a triad moving to a seventh chord with one tone splitting). Cited in voice-leading results so downstream numbers stay reproducible across engine upgrades.",
+   "id": "doubling.1",
+   "kind": "voice_leading_cardinality"
+  }
+ ],
+ "schema_version": "export.1",
+ "set_class_table": {
+  "entries": 4096,
+  "fields": [
+   "mask",
+   "cardinality",
+   "normal_order",
+   "prime_form",
+   "prime_form_mask",
+   "interval_vector",
+   "dft_magnitudes",
+   "z_partner_prime_form",
+   "complement_prime_form",
+   "rotational_period"
+  ],
+  "index": "list position == pc-set mask (0..4095)",
+  "note": "per-mask combinatorics precomputed; each row mirrors the set_class_info MCP tool output for that mask."
+ }
+}

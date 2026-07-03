@@ -1,0 +1,12 @@
+{
+  "tonality_commit": "0567e3b95e3c470d4d013fd3ca2af28623db85dc",
+  "generated_at": "2026-07-03",
+  "export_schema_version": "export.1",
+  "note": "Fixtures generated from the Tonality engine (the spec's source of truth) via scripts/export_versioned_data.py + tests/golden/conformance.json. Every parity claim in this repo is parity WITH this engine commit. Refresh via tools/refresh_fixtures.sh.",
+  "files": {
+    "set_class_table.json": "40b800d4f5b5ef30c6c5438cdff56f3ad8d8fff5a5a28e224e00b5ddc6d4c931",
+    "manifest.json": "89e2c9612a578ad2b029d00c42c1d34a1122ee7c3d15bce98da4c69cb80412f5",
+    "bundle.json": "f51f3cddd0a16c683d58c71038b3db9d8f3e6d6c610948f3212f8b2d40f4f660",
+    "conformance.json": "787c78558992ad9931a3d9d6dc8cb4f1a5b94f179bedb765a1fcc9afda1e2ebf"
+  }
+}

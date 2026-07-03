@@ -1,0 +1,1610 @@
+{
+ "bundle_note": "Self-contained: each data_assets entry embeds parsed 'content' and a 'sha256' over the raw file bytes. set_class_table is emitted separately.",
+ "data_assets": {
+  "chord_qualities.json": {
+   "content": [
+    {
+     "aliases": [
+      "major",
+      "M"
+     ],
+     "intervals": [
+      0,
+      4,
+      7
+     ],
+     "name": "maj",
+     "tensions": [
+      2,
+      5,
+      9
+     ]
+    },
+    {
+     "aliases": [
+      "minor",
+      "m",
+      "-"
+     ],
+     "intervals": [
+      0,
+      3,
+      7
+     ],
+     "name": "min",
+     "tensions": [
+      2,
+      5,
+      9
+     ]
+    },
+    {
+     "aliases": [
+      "diminished",
+      "o"
+     ],
+     "intervals": [
+      0,
+      3,
+      6
+     ],
+     "name": "dim",
+     "tensions": [
+      2,
+      5,
+      8,
+      9
+     ]
+    },
+    {
+     "aliases": [
+      "augmented",
+      "+"
+     ],
+     "intervals": [
+      0,
+      4,
+      8
+     ],
+     "name": "aug",
+     "tensions": [
+      2,
+      6,
+      10
+     ]
+    },
+    {
+     "intervals": [
+      0,
+      2,
+      7
+     ],
+     "name": "sus2",
+     "tensions": [
+      5,
+      9
+     ]
+    },
+    {
+     "aliases": [
+      "sus"
+     ],
+     "intervals": [
+      0,
+      5,
+      7
+     ],
+     "name": "sus4",
+     "tensions": [
+      2,
+      9
+     ]
+    },
+    {
+     "aliases": [
+      "5",
+      "no3"
+     ],
+     "intervals": [
+      0,
+      7
+     ],
+     "name": "power",
+     "tensions": [
+      4,
+      9
+     ]
+    },
+    {
+     "intervals": [
+      0,
+      4,
+      7,
+      9
+     ],
+     "name": "maj6",
+     "tensions": [
+      2,
+      5
+     ]
+    },
+    {
+     "intervals": [
+      0,
+      3,
+      7,
+      9
+     ],
+     "name": "min6",
+     "tensions": [
+      2,
+      5,
+      8
+     ]
+    },
+    {
+     "intervals": [
+      0,
+      2,
+      4,
+      7,
+      9
+     ],
+     "name": "maj6add9",
+     "tensions": [
+      5
+     ]
+    },
+    {
+     "aliases": [
+      "major7",
+      "M7"
+     ],
+     "intervals": [
+      0,
+      4,
+      7,
+      11
+     ],
+     "name": "maj7",
+     "tensions": [
+      2,
+      6,
+      9
+     ]
+    },
+    {
+     "intervals": [
+      0,
+      4,
+      6,
+      11
+     ],
+     "name": "maj7b5",
+     "tensions": [
+      2,
+      9
+     ]
+    },
+    {
+     "intervals": [
+      0,
+      4,
+      8,
+      11
+     ],
+     "name": "maj7#5",
+     "tensions": [
+      2,
+      6,
+      9
+     ]
+    },
+    {
+     "intervals": [
+      0,
+      4,
+      6,
+      7,
+      11
+     ],
+     "name": "maj7#11",
+     "tensions": [
+      2,
+      9
+     ]
+    },
+    {
+     "intervals": [
+      0,
+      2,
+      4,
+      7,
+      11
+     ],
+     "name": "maj9",
+     "tensions": [
+      5,
+      9
+     ]
+    },
+    {
+     "intervals": [
+      0,
+      2,
+      4,
+      6,
+      7,
+      11
+     ],
+     "name": "maj9#11",
+     "tensions": [
+      9
+     ]
+    },
+    {
+     "intervals": [
+      0,
+      2,
+      4,
+      7,
+      9,
+      11
+     ],
+     "name": "maj13",
+     "tensions": [
+      5,
+      9
+     ]
+    },
+    {
+     "intervals": [
+      0,
+      2,
+      4,
+      7
+     ],
+     "name": "majadd9",
+     "tensions": [
+      5,
+      9
+     ]
+    },
+    {
+     "aliases": [
+      "minor7",
+      "m7",
+      "-7"
+     ],
+     "intervals": [
+      0,
+      3,
+      7,
+      10
+     ],
+     "name": "min7",
+     "tensions": [
+      2,
+      5,
+      9
+     ]
+    },
+    {
+     "aliases": [
+      "mM7",
+      "minMaj7"
+     ],
+     "intervals": [
+      0,
+      3,
+      7,
+      11
+     ],
+     "name": "minmaj7",
+     "tensions": [
+      2,
+      5,
+      9
+     ]
+    },
+    {
+     "aliases": [
+      "halfdim7",
+      "m7b5"
+     ],
+     "intervals": [
+      0,
+      3,
+      6,
+      10
+     ],
+     "name": "min7b5",
+     "tensions": [
+      2,
+      5,
+      8,
+      9
+     ]
+    },
+    {
+     "intervals": [
+      0,
+      2,
+      3,
+      7,
+      10
+     ],
+     "name": "min9",
+     "tensions": [
+      5,
+      8,
+      9
+     ]
+    },
+    {
+     "intervals": [
+      0,
+      2,
+      3,
+      5,
+      7,
+      10
+     ],
+     "name": "min11",
+     "tensions": [
+      8,
+      9
+     ]
+    },
+    {
+     "intervals": [
+      0,
+      2,
+      3,
+      7,
+      9,
+      10
+     ],
+     "name": "min13",
+     "tensions": [
+      5,
+      8,
+      9
+     ]
+    },
+    {
+     "intervals": [
+      0,
+      2,
+      3,
+      7,
+      9
+     ],
+     "name": "min6add9",
+     "tensions": [
+      5,
+      8
+     ]
+    },
+    {
+     "intervals": [
+      0,
+      2,
+      3,
+      7
+     ],
+     "name": "minadd9",
+     "tensions": [
+      5,
+      9
+     ]
+    },
+    {
+     "aliases": [
+      "diminished7",
+      "o7"
+     ],
+     "intervals": [
+      0,
+      3,
+      6,
+      9
+     ],
+     "name": "dim7",
+     "tensions": [
+      1,
+      4,
+      7,
+      10
+     ]
+    },
+    {
+     "aliases": [
+      "dom7",
+      "dominant7"
+     ],
+     "intervals": [
+      0,
+      4,
+      7,
+      10
+     ],
+     "name": "7",
+     "tensions": [
+      2,
+      6,
+      9
+     ]
+    },
+    {
+     "intervals": [
+      0,
+      5,
+      7,
+      10
+     ],
+     "name": "7sus4",
+     "tensions": [
+      2,
+      9
+     ]
+    },
+    {
+     "intervals": [
+      0,
+      4,
+      6,
+      10
+     ],
+     "name": "7b5",
+     "tensions": [
+      2,
+      6,
+      8,
+      9
+     ]
+    },
+    {
+     "intervals": [
+      0,
+      4,
+      8,
+      10
+     ],
+     "name": "7#5",
+     "tensions": [
+      2,
+      6,
+      9,
+      10
+     ]
+    },
+    {
+     "intervals": [
+      0,
+      1,
+      4,
+      7,
+      10
+     ],
+     "name": "7b9",
+     "tensions": [
+      6,
+      8,
+      9
+     ]
+    },
+    {
+     "intervals": [
+      0,
+      3,
+      4,
+      7,
+      10
+     ],
+     "name": "7#9",
+     "tensions": [
+      2,
+      6,
+      8,
+      11
+     ]
+    },
+    {
+     "intervals": [
+      0,
+      4,
+      6,
+      7,
+      10
+     ],
+     "name": "7#11",
+     "tensions": [
+      2,
+      3,
+      8,
+      9
+     ]
+    },
+    {
+     "intervals": [
+      0,
+      4,
+      10
+     ],
+     "name": "7alt",
+     "tensions": [
+      1,
+      3,
+      6,
+      8,
+      9,
+      11
+     ]
+    },
+    {
+     "intervals": [
+      0,
+      2,
+      4,
+      7,
+      10
+     ],
+     "name": "9",
+     "tensions": [
+      1,
+      3,
+      8,
+      9
+     ]
+    },
+    {
+     "intervals": [
+      0,
+      2,
+      4,
+      6,
+      10
+     ],
+     "name": "9b5",
+     "tensions": [
+      3,
+      8,
+      9
+     ]
+    },
+    {
+     "intervals": [
+      0,
+      2,
+      4,
+      8,
+      10
+     ],
+     "name": "9#5",
+     "tensions": [
+      3,
+      6,
+      9
+     ]
+    },
+    {
+     "intervals": [
+      0,
+      2,
+      4,
+      5,
+      7,
+      10
+     ],
+     "name": "11",
+     "tensions": [
+      1,
+      3,
+      8,
+      9
+     ]
+    },
+    {
+     "intervals": [
+      0,
+      2,
+      4,
+      7,
+      9,
+      10
+     ],
+     "name": "13",
+     "tensions": [
+      1,
+      3,
+      5,
+      8,
+      9
+     ]
+    }
+   ],
+   "sha256": "4a9e0a584fe5565ecc3c10fcc43cda98850efab0854aa7c88ce1cc125c6cff48",
+   "versions": null
+  },
+  "intervals.json": {
+   "content": [
+    {
+     "category": "consonant",
+     "cents": 0.0,
+     "diatonic_class": "1",
+     "inversion": 0,
+     "name": "P1",
+     "quality": "perfect",
+     "ratio": "1:1",
+     "semitones": 0,
+     "verbal": "perfect unison"
+    },
+    {
+     "category": "dissonant",
+     "cents": 100.0,
+     "diatonic_class": "2",
+     "inversion": 11,
+     "name": "m2",
+     "quality": "minor",
+     "ratio": null,
+     "semitones": 1,
+     "verbal": "minor second"
+    },
+    {
+     "category": "dissonant",
+     "cents": 200.0,
+     "diatonic_class": "2",
+     "inversion": 10,
+     "name": "M2",
+     "quality": "major",
+     "ratio": null,
+     "semitones": 2,
+     "verbal": "major second"
+    },
+    {
+     "category": "imperfect consonant",
+     "cents": 300.0,
+     "diatonic_class": "3",
+     "inversion": 9,
+     "name": "m3",
+     "quality": "minor",
+     "ratio": "6:5",
+     "semitones": 3,
+     "verbal": "minor third"
+    },
+    {
+     "category": "imperfect consonant",
+     "cents": 400.0,
+     "diatonic_class": "3",
+     "inversion": 8,
+     "name": "M3",
+     "quality": "major",
+     "ratio": "5:4",
+     "semitones": 4,
+     "verbal": "major third"
+    },
+    {
+     "category": "consonant",
+     "cents": 500.0,
+     "diatonic_class": "4",
+     "inversion": 7,
+     "name": "P4",
+     "quality": "perfect",
+     "ratio": "4:3",
+     "semitones": 5,
+     "verbal": "perfect fourth"
+    },
+    {
+     "category": "dissonant",
+     "cents": 600.0,
+     "diatonic_class": "4/5",
+     "inversion": 6,
+     "name": "TT",
+     "quality": "tritone",
+     "ratio": null,
+     "semitones": 6,
+     "verbal": "tritone (augmented fourth / diminished fifth)"
+    },
+    {
+     "category": "consonant",
+     "cents": 700.0,
+     "diatonic_class": "5",
+     "inversion": 5,
+     "name": "P5",
+     "quality": "perfect",
+     "ratio": "3:2",
+     "semitones": 7,
+     "verbal": "perfect fifth"
+    },
+    {
+     "category": "imperfect consonant",
+     "cents": 800.0,
+     "diatonic_class": "6",
+     "inversion": 4,
+     "name": "m6",
+     "quality": "minor",
+     "ratio": "8:5",
+     "semitones": 8,
+     "verbal": "minor sixth"
+    },
+    {
+     "category": "imperfect consonant",
+     "cents": 900.0,
+     "diatonic_class": "6",
+     "inversion": 3,
+     "name": "M6",
+     "quality": "major",
+     "ratio": "5:3",
+     "semitones": 9,
+     "verbal": "major sixth"
+    },
+    {
+     "category": "dissonant",
+     "cents": 1000.0,
+     "diatonic_class": "7",
+     "inversion": 2,
+     "name": "m7",
+     "quality": "minor",
+     "ratio": "16:9",
+     "semitones": 10,
+     "verbal": "minor seventh"
+    },
+    {
+     "category": "dissonant",
+     "cents": 1100.0,
+     "diatonic_class": "7",
+     "inversion": 1,
+     "name": "M7",
+     "quality": "major",
+     "ratio": "15:8",
+     "semitones": 11,
+     "verbal": "major seventh"
+    }
+   ],
+   "sha256": "8ade0de2ebe52ebf288fe8dbd508c09b250e0e03548ddd9663892c56415e025b",
+   "versions": null
+  },
+  "key_inertia.json": {
+   "content": [
+    {
+     "source": "Continuity / parsimony prior for local key tracking (A6 brief-13; the deterministic form of Temperley's key-inertia, Music and Probability 2007). switch_penalty is a flat, one-time score cost subtracted when the Viterbi path changes the (tonic, mode) state between consecutive informative windows; staying is free. It penalizes SWITCHING, not distance \u2014 a parallel major/minor flip costs the same as any other change, which is the point (parallel flips on mode-ambiguous content are the failure mode). Because the cost is paid ONCE per change while a genuine modulation accrues an emission (correlation) advantage over MANY windows, a sustained, well-supported new key still wins \u2014 the soft-prior property, automatic. Value is THEORY-SET, not corpus-fit (the BY-NC-SA/methodological fence): 0.1 sits in the gap between the near-tie noise floor (~0.05 correlation, where spurious window flips live) and a confident modulation (~0.3, e.g. an established-context read), calibrated to the profile-correlation margin scale (a property of the profile geometry), NOT tuned to maximize SWD region accuracy. Opt-in (key_inertia) on track_keys, pending A6 --ab regression scoring before any default flip; leaves infer_key (single-vector global) untouched, so the A5/A7 stability contract is not reopened.",
+     "switch_penalty": 0.1,
+     "version": "key-inertia.1"
+    }
+   ],
+   "sha256": "48d7aa5c3f75d6918a05d49fa486291b5d28bf29a99778bf6ea9b3e39e295cbe",
+   "versions": [
+    "key-inertia.1"
+   ]
+  },
+  "key_profiles.json": {
+   "content": [
+    {
+     "profiles": {
+      "major": [
+       0.748,
+       0.06,
+       0.488,
+       0.082,
+       0.67,
+       0.46,
+       0.096,
+       0.715,
+       0.104,
+       0.366,
+       0.057,
+       0.4
+      ],
+      "minor": [
+       0.712,
+       0.084,
+       0.474,
+       0.618,
+       0.049,
+       0.46,
+       0.105,
+       0.747,
+       0.404,
+       0.067,
+       0.133,
+       0.33
+      ]
+     },
+     "source": "Temperley-Kostka-Payne (CBMS) key profiles: Temperley, Music and Probability (MIT Press, 2007), derived from the Kostka-Payne theory-textbook corpus. Vectors verified digit-for-digit against music21 analysis/discrete.py (TemperleyKostkaPayneKeyWeights) and Sapp's Humdrum keycor. Documented biases (validate any profile change on the target corpus): well-balanced for MAJOR keys (corrects the Krumhansl-Kessler dominant bias); but a known tendency to read the RELATIVE MAJOR as tonic in minor keys. Added A6 brief-9/research-9: on the SWD residual it recovers the dominant-substitution (e.g. A maj read as E maj) and parallel near-tie cases under the engine's Pearson scoring, trading kk-1982.1's dominant bias for a relative-major bias. THIS IS THE DEFAULT as of 2026-06-17 (A6 brief-10): validated full-corpus on SWD-24 across all three key surfaces (global +12.5pp, windowed +15.5pp, structural +13pp; brief-11/12), a coordinated change to the A5/A7 stability contract \u2014 those consumers pin profile_version='kk-1982.1' to retain the old margins, because CBMS is mode-asymmetric on the MARGIN scale (major margins inflate, minor compress) and so suits ranking-accuracy consumers (A6/A1) over margin-as-control-signal consumers (A5/A7). The relative-major-in-minor bias above is the residual: D911-03/08/07/16 are its acceptance set for the deferred mode-aware/closure induction lever.",
+     "version": "tkp-cbms.1"
+    },
+    {
+     "profiles": {
+      "major": [
+       6.35,
+       2.23,
+       3.48,
+       2.33,
+       4.38,
+       4.09,
+       2.52,
+       5.19,
+       2.39,
+       3.66,
+       2.29,
+       2.88
+      ],
+      "minor": [
+       6.33,
+       2.68,
+       3.52,
+       5.38,
+       2.6,
+       3.53,
+       2.54,
+       4.75,
+       3.98,
+       2.69,
+       3.34,
+       3.17
+      ]
+     },
+     "source": "Krumhansl & Kessler (1982) probe-tone profiles, as tabulated in Krumhansl, Cognitive Foundations of Musical Pitch (1990)",
+     "version": "kk-1982.1"
+    }
+   ],
+   "sha256": "e068a31e62803d76a20384a371801511200b1fb82dc3f1ff222133ee89964fb8",
+   "versions": [
+    "tkp-cbms.1",
+    "kk-1982.1"
+   ]
+  },
+  "key_smoothing.json": {
+   "content": [
+    {
+     "min_region_margin": 0.1,
+     "min_region_windows": 2,
+     "source": "Engineering defaults pending corpus calibration. Opt-in hysteresis for local key tracking: a region shorter than min_region_windows whose mean_margin is below min_region_margin is a low-confidence blip and is absorbed into its stronger neighbour; a short region with a strong margin is a confident brief modulation and is kept (the margin override). Audiology brief-3 reported surviving spurious bands with margins ~0.06-0.17, so 0.1 absorbs the weak ones while keeping the confident ones.",
+     "version": "key-smoothing.1"
+    }
+   ],
+   "sha256": "029c4b8f02ed6d6c4981d258c12b35989f691c676b3e65917957e1e8043b278e",
+   "versions": [
+    "key-smoothing.1"
+   ]
+  },
+  "meter_profiles.json": {
+   "content": [
+    {
+     "grid_beats": 0.25,
+     "profiles": {
+      "12/8": [
+       4,
+       1,
+       2,
+       1,
+       2,
+       1,
+       3,
+       1,
+       2,
+       1,
+       2,
+       1,
+       3,
+       1,
+       2,
+       1,
+       2,
+       1,
+       3,
+       1,
+       2,
+       1,
+       2,
+       1
+      ],
+      "2/4": [
+       4,
+       1,
+       2,
+       1,
+       3,
+       1,
+       2,
+       1
+      ],
+      "3/4": [
+       5,
+       1,
+       2,
+       1,
+       3,
+       1,
+       3,
+       1,
+       3,
+       1,
+       2,
+       1
+      ],
+      "4/4": [
+       5,
+       1,
+       2,
+       1,
+       3,
+       1,
+       2,
+       1,
+       4,
+       1,
+       2,
+       1,
+       3,
+       1,
+       2,
+       1
+      ],
+      "5/4": [
+       6,
+       1,
+       2,
+       1,
+       3,
+       2,
+       2,
+       1,
+       3,
+       1,
+       4,
+       1,
+       3,
+       1,
+       2,
+       2,
+       3,
+       1,
+       2,
+       1
+      ],
+      "6/8": [
+       4,
+       1,
+       2,
+       1,
+       2,
+       1,
+       3,
+       1,
+       2,
+       1,
+       2,
+       1
+      ],
+      "7/8": [
+       5,
+       1,
+       2,
+       1,
+       2,
+       1,
+       2,
+       3,
+       2,
+       1,
+       2,
+       1,
+       2,
+       1
+      ],
+      "9/8": [
+       4,
+       1,
+       2,
+       1,
+       2,
+       1,
+       3,
+       1,
+       2,
+       1,
+       2,
+       1,
+       3,
+       1,
+       2,
+       1,
+       2,
+       1
+      ]
+     },
+     "source": "GTTM-style metric-grid weight templates (engineering defaults; a position's weight = how many metric levels it lies on, from the bar down to the 16th grid; duplicate levels removed). Empirical profiles (Palmer & Krumhansl 1990) welcome as a future version. grid_beats is the 16th-note grid in quarter-note beats.",
+     "version": "meter-grid.1"
+    }
+   ],
+   "sha256": "d60bbd2706fa984dcf843e7f85e2df535171003a765cbc13a16f9df88ea7ab39",
+   "versions": [
+    "meter-grid.1"
+   ]
+  },
+  "naming_weights.json": {
+   "content": [
+    {
+     "ambiguity_margin": 0.5,
+     "marginalization": {
+      "scheme": "relu-normalized",
+      "top_n": 3,
+      "version": "key-marginalization.1"
+     },
+     "source": "Slice 5 rule-based signal weights (hand-set; corpus calibration is Phase 4.5)",
+     "version": "naming-rules.1",
+     "weights": {
+      "all_tones_diatonic": 1.0,
+      "bass_is_root": 1.5,
+      "functional_fit": 2.0,
+      "quality_canonicality": 0.25,
+      "root_diatonic": 1.0,
+      "special_function": 2.0
+     }
+    }
+   ],
+   "sha256": "3c7964526bdf0e5a0ea14130af2b07de4a711738eca80b600d0efff91ae742c3",
+   "versions": [
+    "naming-rules.1"
+   ]
+  },
+  "relative_key_weights.json": {
+   "content": [
+    {
+     "decision_margin": 0.02,
+     "near_tie_margin": 0.2,
+     "source": "Engineering defaults pending corpus calibration. Tonal-hierarchy tie-breaker for relative major/minor (which share a diatonic collection, so correlation alone is weak): leading_tone is near-dispositive (the minor's raised 7th lies outside the shared collection) and weighted highest; tonic_triad and tonic salience follow tonal-hierarchy theory (Krumhansl). Signals are normalized by total weight; positive score favors the minor reading. near_tie_margin is the correlation gap below which the top candidate and its relative partner count as a tie worth breaking; decision_margin is the tie-break-score band that stays honestly ambiguous.",
+     "version": "rel-key.1",
+     "weights": {
+      "leading_tone": 3.0,
+      "tonic_salience": 1.0,
+      "tonic_triad_salience": 2.0
+     }
+    }
+   ],
+   "sha256": "583b2959887d9625623e03f62ac47d8cd412ab294294d80e2df5a53897b5e060",
+   "versions": [
+    "rel-key.1"
+   ]
+  },
+  "scales.json": {
+   "content": [
+    {
+     "aliases": [
+      "Major"
+     ],
+     "degrees": [
+      0,
+      2,
+      4,
+      5,
+      7,
+      9,
+      11
+     ],
+     "name": "Ionian"
+    },
+    {
+     "aliases": [
+      "Natural Minor"
+     ],
+     "degrees": [
+      0,
+      2,
+      3,
+      5,
+      7,
+      8,
+      10
+     ],
+     "name": "Aeolian"
+    },
+    {
+     "degrees": [
+      0,
+      2,
+      3,
+      5,
+      7,
+      9,
+      10
+     ],
+     "name": "Dorian"
+    },
+    {
+     "degrees": [
+      0,
+      2,
+      4,
+      5,
+      7,
+      9,
+      10
+     ],
+     "name": "Mixolydian"
+    },
+    {
+     "degrees": [
+      0,
+      2,
+      4,
+      6,
+      7,
+      9,
+      11
+     ],
+     "name": "Lydian"
+    },
+    {
+     "degrees": [
+      0,
+      1,
+      3,
+      5,
+      7,
+      8,
+      10
+     ],
+     "name": "Phrygian"
+    },
+    {
+     "degrees": [
+      0,
+      1,
+      3,
+      5,
+      6,
+      8,
+      10
+     ],
+     "name": "Locrian"
+    },
+    {
+     "degrees": [
+      0,
+      2,
+      4,
+      6,
+      8,
+      10
+     ],
+     "name": "Whole Tone"
+    },
+    {
+     "degrees": [
+      0,
+      1,
+      3,
+      4,
+      6,
+      7,
+      9,
+      10
+     ],
+     "name": "Half-Whole Diminished"
+    },
+    {
+     "degrees": [
+      0,
+      2,
+      3,
+      5,
+      6,
+      8,
+      9,
+      11
+     ],
+     "name": "Whole-Half Diminished"
+    },
+    {
+     "degrees": [
+      0,
+      3,
+      5,
+      6,
+      7,
+      10
+     ],
+     "name": "Minor Blues"
+    },
+    {
+     "degrees": [
+      0,
+      3,
+      5,
+      7,
+      10
+     ],
+     "name": "Minor Pentatonic"
+    },
+    {
+     "degrees": [
+      0,
+      2,
+      4,
+      7,
+      9
+     ],
+     "name": "Major Pentatonic"
+    },
+    {
+     "degrees": [
+      0,
+      2,
+      3,
+      5,
+      7,
+      8,
+      11
+     ],
+     "name": "Harmonic Minor"
+    },
+    {
+     "degrees": [
+      0,
+      2,
+      3,
+      6,
+      7,
+      9,
+      10
+     ],
+     "name": "Dorian #4"
+    },
+    {
+     "degrees": [
+      0,
+      1,
+      4,
+      5,
+      7,
+      8,
+      10
+     ],
+     "name": "Phrygian Dominant"
+    },
+    {
+     "degrees": [
+      0,
+      2,
+      3,
+      5,
+      7,
+      9,
+      11
+     ],
+     "name": "Melodic Minor (asc.)"
+    },
+    {
+     "degrees": [
+      0,
+      2,
+      4,
+      6,
+      8,
+      9,
+      11
+     ],
+     "name": "Lydian Augmented"
+    },
+    {
+     "degrees": [
+      0,
+      2,
+      4,
+      6,
+      7,
+      9,
+      10
+     ],
+     "name": "Lydian Dominant"
+    },
+    {
+     "degrees": [
+      0,
+      1,
+      3,
+      4,
+      6,
+      8,
+      10
+     ],
+     "name": "Super Locrian (Altered)"
+    },
+    {
+     "degrees": [
+      0,
+      1,
+      3,
+      4,
+      5,
+      6,
+      8,
+      10
+     ],
+     "name": "8-Tone Spanish"
+    },
+    {
+     "degrees": [
+      0,
+      1,
+      4,
+      5,
+      7,
+      8,
+      11
+     ],
+     "name": "Bhairav"
+    },
+    {
+     "degrees": [
+      0,
+      2,
+      3,
+      6,
+      7,
+      8,
+      11
+     ],
+     "name": "Hungarian Minor"
+    },
+    {
+     "degrees": [
+      0,
+      2,
+      3,
+      7,
+      8
+     ],
+     "name": "Hirajoshi"
+    },
+    {
+     "degrees": [
+      0,
+      1,
+      5,
+      7,
+      10
+     ],
+     "name": "In-Sen"
+    },
+    {
+     "degrees": [
+      0,
+      1,
+      5,
+      6,
+      10
+     ],
+     "name": "Iwato"
+    },
+    {
+     "degrees": [
+      0,
+      2,
+      3,
+      7,
+      9
+     ],
+     "name": "Kumoi"
+    },
+    {
+     "degrees": [
+      0,
+      2,
+      4,
+      7,
+      9
+     ],
+     "name": "Pelog Selisir"
+    },
+    {
+     "degrees": [
+      0,
+      1,
+      4,
+      6,
+      8
+     ],
+     "name": "Pelog Tembung"
+    },
+    {
+     "degrees": [
+      0,
+      2,
+      3,
+      4,
+      6,
+      7,
+      8,
+      10,
+      11
+     ],
+     "name": "Messiaen Mode 3"
+    },
+    {
+     "degrees": [
+      0,
+      1,
+      2,
+      5,
+      6,
+      7,
+      8,
+      11
+     ],
+     "name": "Messiaen Mode 4"
+    },
+    {
+     "degrees": [
+      0,
+      1,
+      5,
+      6,
+      7,
+      11
+     ],
+     "name": "Messiaen Mode 5"
+    },
+    {
+     "degrees": [
+      0,
+      2,
+      4,
+      5,
+      6,
+      8,
+      10,
+      11
+     ],
+     "name": "Messiaen Mode 6"
+    },
+    {
+     "degrees": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      6,
+      7,
+      8,
+      9,
+      10
+     ],
+     "name": "Messiaen Mode 7"
+    },
+    {
+     "degrees": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11
+     ],
+     "name": "Chromatic"
+    }
+   ],
+   "sha256": "626d62ec2e4ac2a7cdb3fa35ba8ff52f4bec86c923c0ba4d82cb43f6e86de4a9",
+   "versions": null
+  },
+  "scoring_priors.json": {
+   "content": [
+    {
+     "arity_cap": 3,
+     "exploratory_floor_pieces": 30,
+     "fdr_q": 0.05,
+     "measure": "fishers_exact_one_sided",
+     "min_support_pieces": 5,
+     "null_model": "independence_given_marginals",
+     "source": "Phase 4.6 induction slice 1 (engineering defaults; corpus calibration deferred). Apriori frequent-pattern mining over the where-lattice with closed-itemset condensation; interestingness = Fisher's exact test (one-sided, in the leverage direction) vs an independence-given-marginals null, BH-FDR corrected, behind a piece-presence min-support floor, with leverage as the effect-size tie-break. Below exploratory_floor_pieces the result is flagged exploratory (Fisher has little power on a handful of pieces).",
+     "version": "induction.fisher-bh.1",
+     "weight_scale": 4.0
+    }
+   ],
+   "sha256": "89ce89fd2d5fb3fb7e876f006bd3eb62d89a9a82c8aa44837bff70327135a170",
+   "versions": [
+    "induction.fisher-bh.1"
+   ]
+  },
+  "structural_key.json": {
+   "content": [
+    {
+     "frame_anchor_bonus": 1.0,
+     "min_area_beats": 8.0,
+     "min_modulation_beats": 8.0,
+     "require_return": false,
+     "source": "Engineering defaults set by theory, NOT fit to any validation corpus (When-in-Rome is CC BY-NC-SA; SWD is CC BY 3.0 and may be scored against, but a threshold fit to its accuracy is still the methodological over-fit the response-6/-7 caveat fences \u2014 one composer/one cycle). min_modulation_beats is the phrase-length floor below which a diatonically-related foreign-key span is heard as a tonicization within the parent key rather than a structural modulation: 8 beats = 2 bars in 4/4 sits in the gap between the longest typical tonicization (~1 bar, a single applied-dominant gesture) and the shortest genuine key establishment (a phrase, ~4 bars), and is >= the window/hop boundary grid so the comparison is meaningful at the engine's resolution. min_area_beats floors a structural modulation area (reserved for a future merge-back pass; dormant in slice 1). require_return gates whether a sustained related span must resolve home to count as prolongational (reserved; false selects the conservative brief-or-returns rule). frame_anchor_bonus weights the opening + closing regions when anchor_method='frame_weighted' is selected: the structural frame is the place least likely to be a tonicization, so it is the most tonicization-robust signal for the home key precisely when the interior is full of tonicizations (the A6 brief-7 failure mode, where a repeatedly-tonicized dominant out-totals the tonic by duration). 1.0 = 'frames count double their own duration' \u2014 a theory-set assertion weight, not corpus-tuned; on the diagnosed case it recovers the home key without overturning any genuine duration majority (robust across 1..3). anchor_method defaults to 'most_prevalent_region' (the slice-1 behaviour, unchanged); 'frame_weighted' is opt-in pending full-corpus validation.",
+     "version": "structural-key.2"
+    }
+   ],
+   "sha256": "857abe9a6bf9cbe69a3fa0adce36bad78dfa594b28d85ee22367a62c4fd626ab",
+   "versions": [
+    "structural-key.2"
+   ]
+  },
+  "succession_weights.json": {
+   "content": [
+    {
+     "source": "Engineering defaults pending corpus calibration. Functional weights follow root-motion strength (Mee\u00f9s/Schoenberg: descending-fifth strongest) and the cadential hierarchy; voice-leading weights reward parsimony (Cohn/Tymoczko). color_shift is reported but unweighted (a neutral tension axis, not a preference). Per-style corpus transition priors are the planned follow-on (ROADMAP gap 14).",
+     "version": "succession.1",
+     "weights": {
+      "applied_dominant": 1.0,
+      "ascending_fifth": 0.5,
+      "authentic": 2.5,
+      "borrowed": 0.0,
+      "chromatic_mediant": 0.5,
+      "color_shift": 0.0,
+      "common_tone": 0.3,
+      "deceptive": 1.0,
+      "descending_fifth": 2.0,
+      "dominant_resolution": 3.0,
+      "half": 0.5,
+      "modal_mix": 0.0,
+      "parsimonious": 1.0,
+      "plagal": 1.5,
+      "prolongation": 0.5,
+      "retrogression": -1.0,
+      "smooth": 1.0,
+      "step": 0.5,
+      "vl_distance": -0.2
+     }
+    }
+   ],
+   "sha256": "e9666111a5623cad3a913643fda4975462deffe8200afb406a17a4b50d66cdf9",
+   "versions": [
+    "succession.1"
+   ]
+  },
+  "swing_feel.json": {
+   "content": [
+    {
+     "consistency_tolerance": 0.08,
+     "min_divisions": 3,
+     "source": "Engineering defaults pending corpus calibration: straight window +/-0.05 around the even split (50%), consistency ceiling 0.08 stddev over division fractions, minimum 3 two-way divisions to claim a feel.",
+     "straight_tolerance": 0.05,
+     "version": "swing-feel.1"
+    }
+   ],
+   "sha256": "c2e28923988cbd7c3ba6b4ba87767c1dd950a83da1f123290c0334beccba9436",
+   "versions": [
+    "swing-feel.1"
+   ]
+  }
+ },
+ "description": "Versioned-data export for native-port consumers (Decision-10 consumer-port corollary). The golden conformance harness is the parity oracle; this names the versioned data a port must pin + cite.",
+ "policies": [
+  {
+   "description": "Unequal-cardinality pairing for minimal voice leading: every pitch class of both sets must participate, so pcs of the smaller set may carry several voices (a triad moving to a seventh chord with one tone splitting). Cited in voice-leading results so downstream numbers stay reproducible across engine upgrades.",
+   "id": "doubling.1",
+   "kind": "voice_leading_cardinality"
+  }
+ ],
+ "schema_version": "export.1",
+ "set_class_table": {
+  "entries": 4096,
+  "fields": [
+   "mask",
+   "cardinality",
+   "normal_order",
+   "prime_form",
+   "prime_form_mask",
+   "interval_vector",
+   "dft_magnitudes",
+   "z_partner_prime_form",
+   "complement_prime_form",
+   "rotational_period"
+  ],
+  "index": "list position == pc-set mask (0..4095)",
+  "note": "per-mask combinatorics precomputed; each row mirrors the set_class_info MCP tool output for that mask."
+ }
+}
