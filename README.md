@@ -34,6 +34,9 @@ the conformance runner reports them as deferred, not failed.
 ```
 include/tonality/   header-only core: bitmask.hpp, dft.hpp, setclass.hpp,
                     table.hpp (row compute + Python-json-identical emit)
+bindings/           optional pybind11 fast path (module `tonality_core`) —
+                    an addition for Python consumers, never a replacement
+                    for the pure-Python engine (Decision 10)
 tools/              emit_table.cpp (regenerate the table from this core),
                     refresh_fixtures.sh (pull-side fixture refresh — run at
                     the start of every port work session)
@@ -53,6 +56,17 @@ ctest --test-dir ~/Documents/tonality-core/build-release --output-on-failure
 Always pass **absolute** build paths (agent shells reset cwd between calls; a
 relative build silently builds nothing). Unix Makefiles is single-config — use
 separate `build-debug`/`build-release` dirs. All perf claims from Release only.
+
+To build the Python fast path too, add (pointing at an interpreter with
+`pybind11` installed — e.g. the Tonality venv):
+
+```bash
+-DTONALITY_BUILD_PYTHON=ON \
+-DPython_EXECUTABLE=~/Documents/Tonality/.venv/bin/python3.13
+```
+
+This adds a third ctest (`parity_bindings`): byte-identical `emit_table_json()`
+plus dict-equality of all 4096 `set_class_row()` results against the fixture.
 
 ## Fences (mirror of port/PORT.md)
 
