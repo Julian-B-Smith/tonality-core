@@ -6,6 +6,7 @@
 #include <pybind11/stl.h>
 
 #include "tonality/bitmask.hpp"
+#include "tonality/chirality.hpp"
 #include "tonality/dft.hpp"
 #include "tonality/setclass.hpp"
 #include "tonality/table.hpp"
@@ -60,6 +61,16 @@ py::dict set_class_row(int mask_in) {
                                  : py::object(py::none());
     out["complement_prime_form"] = to_list(row.complement_prime_form);
     out["rotational_period"] = row.rotational_period;
+    py::list phases;
+    for (double p : row.dft_phases) phases.append(p);
+    out["dft_phases"] = phases;
+    out["trichord_chirality"] = row.trichord_chirality
+                                    ? py::object(py::int_(*row.trichord_chirality))
+                                    : py::object(py::none());
+    out["general_chirality"] = row.general_chirality;
+    out["chirality_sign"] = row.chirality_sign;
+    out["chirality"] = row.chirality;
+    out["reflection_residual"] = row.reflection_residual;
     return out;
 }
 
@@ -131,9 +142,35 @@ PYBIND11_MODULE(tonality_core, m) {
               return out;
           },
           py::arg("mask"), "|f_1|..|f_6| of the pc-set characteristic function.");
+    m.def("dft_phases",
+          [](int mask) {
+              py::list out;
+              for (double v : tonality::dft_phases(checked_mask(mask))) out.append(v);
+              return out;
+          },
+          py::arg("mask"), "arg(f_1)..arg(f_6) in radians (not a set-class invariant).");
+    m.def("trichord_chirality",
+          [](int mask) -> py::object {
+              const auto value = tonality::trichord_chirality(checked_mask(mask));
+              if (!value) return py::none();
+              return py::int_(*value);
+          },
+          py::arg("mask"), "Step-gap chirality of a trichord; None otherwise.");
+    m.def("general_chirality",
+          [](int mask) { return tonality::general_chirality(checked_mask(mask)); },
+          py::arg("mask"), "Im(f_1·f_2·conj(f_3)) — smooth handedness scalar.");
+    m.def("chirality_sign",
+          [](int mask) { return tonality::chirality_sign(checked_mask(mask)); },
+          py::arg("mask"), "Complete handedness: -1/0/+1, 0 iff achiral.");
+    m.def("chirality",
+          [](int mask) { return tonality::chirality(checked_mask(mask)); },
+          py::arg("mask"), "Complete signed continuous chirality: sign · sqrt(R).");
+    m.def("reflection_residual",
+          [](int mask) { return tonality::reflection_residual(checked_mask(mask)); },
+          py::arg("mask"), "Best-fit reflection-axis asymmetry R; 0 iff achiral.");
     m.def("set_class_row", &set_class_row, py::arg("mask"),
-          "Full slice-1 row for a mask — identical to the engine's exported "
-          "set_class_table() entry.");
+          "Full row for a mask — identical to the engine's exported "
+          "set_class_table() entry (export.2: slices 1 + 1b).");
     m.def("emit_table_json", &tonality::emit_table_json,
           "The complete set_class_table.json document, byte-identical to the "
           "engine's export.");

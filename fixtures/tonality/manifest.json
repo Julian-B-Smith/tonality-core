@@ -69,7 +69,7 @@
    "kind": "voice_leading_cardinality"
   }
  ],
- "schema_version": "export.1",
+ "schema_version": "export.2",
  "set_class_table": {
   "entries": 4096,
   "fields": [
@@ -82,7 +82,13 @@
    "dft_magnitudes",
    "z_partner_prime_form",
    "complement_prime_form",
-   "rotational_period"
+   "rotational_period",
+   "dft_phases",
+   "trichord_chirality",
+   "general_chirality",
+   "chirality_sign",
+   "chirality",
+   "reflection_residual"
   ],
   "index": "list position == pc-set mask (0..4095)",
   "note": "per-mask combinatorics precomputed; each row mirrors the set_class_info MCP tool output for that mask."

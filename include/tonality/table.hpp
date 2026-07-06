@@ -12,6 +12,7 @@
 #include <string>
 
 #include "bitmask.hpp"
+#include "chirality.hpp"
 #include "dft.hpp"
 #include "json_format.hpp"
 #include "setclass.hpp"
@@ -29,6 +30,13 @@ struct SetClassRow {
     std::optional<PcList> z_partner_prime_form;
     PcList complement_prime_form;
     int rotational_period = 12;
+    // slice-1b family (export.2)
+    std::array<double, 6> dft_phases{};
+    std::optional<int> trichord_chirality;
+    double general_chirality = 0.0;
+    int chirality_sign = 0;
+    double chirality = 0.0;
+    double reflection_residual = 0.0;
 };
 
 inline SetClassRow compute_row(Mask mask) {
@@ -45,6 +53,18 @@ inline SetClassRow compute_row(Mask mask) {
     }
     row.complement_prime_form = prime_form(complement_mask(mask));
     row.rotational_period = rotational_period(mask);
+    row.dft_phases = tonality::dft_phases(mask);
+    row.trichord_chirality = tonality::trichord_chirality(mask);
+    row.general_chirality = tonality::general_chirality(mask);
+    row.chirality_sign = tonality::chirality_sign(mask);
+    row.reflection_residual = tonality::reflection_residual(mask);
+    // chirality = sign·√R over the same (rounded) residual — reuse it rather
+    // than re-running the minimizer; identical to the engine's cached calls.
+    row.chirality = row.chirality_sign == 0
+                        ? 0.0
+                        : py_round_10(row.chirality_sign *
+                                      std::sqrt(row.reflection_residual)) +
+                              0.0;
     return row;
 }
 
@@ -98,6 +118,25 @@ inline void append_row_json(std::string& out, const SetClassRow& row) {
     detail::append_pc_array(out, row.complement_prime_form);
     out += ",\"rotational_period\":";
     out += std::to_string(row.rotational_period);
+    out += ",\"dft_phases\":[";
+    for (int i = 0; i < 6; ++i) {
+        if (i) out += ',';
+        append_python_float_repr(out, row.dft_phases[static_cast<std::size_t>(i)]);
+    }
+    out += "],\"trichord_chirality\":";
+    if (row.trichord_chirality) {
+        out += std::to_string(*row.trichord_chirality);
+    } else {
+        out += "null";
+    }
+    out += ",\"general_chirality\":";
+    append_python_float_repr(out, row.general_chirality);
+    out += ",\"chirality_sign\":";
+    out += std::to_string(row.chirality_sign);
+    out += ",\"chirality\":";
+    append_python_float_repr(out, row.chirality);
+    out += ",\"reflection_residual\":";
+    append_python_float_repr(out, row.reflection_residual);
     out += '}';
 }
 
