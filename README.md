@@ -19,15 +19,20 @@ Contract documents (in the Tonality repo — read them first):
 `conformance.json`), pinned to an engine commit in `fixtures/PIN.json`.
 A build of this core is **correct iff it reproduces them**:
 
-- **Slice 1 (identity layer):** regenerate `set_class_table.json` from this
-  core and diff **byte-for-byte** against the vendored export (4096 rows);
-  reproduce the slice-1 fields of the `set_class_info` conformance case
-  within the golden tolerances (rel 1e-9 / abs 1e-12).
+- **Slices 1 + 1b (identity layer + chirality/DFT-phase family, export.2):**
+  regenerate `set_class_table.json` from this core and diff **byte-for-byte**
+  against the vendored export (4096 rows × 16 fields); reproduce **every**
+  field of the `set_class_info` conformance case within the golden tolerances
+  (rel 1e-9 / abs 1e-12) — nothing deferred, and an unrecognized case field
+  fails the harness so engine surface growth is loud.
 
-Slice-1b fields (`dft_phases`, `chirality`, `chirality_sign`,
-`general_chirality`, `trichord_chirality`) are **deliberately not ported yet**
-(held until they join the engine's export table — PORT.md adopted default 4);
-the conformance runner reports them as deferred, not failed.
+Byte parity is exact-arithmetic parity: this repo compiles with
+`-ffp-contract=off` (interpreter-level Python never fuses), while CPython's
+*C-compiled* complex primitives DO fuse on this platform — so `cmul`/`cpowu`
+encode that fusion explicitly with `std::fma`, float reductions replicate
+CPython's Neumaier-compensated `sum()`, and `pow` is forced through libm
+(LLVM's folded `pow(x,2)→x*x` is 1 ulp *better* than Apple's libm in places —
+parity means matching libm, not the mathematically nicer answer).
 
 ## Layout
 

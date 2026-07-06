@@ -56,11 +56,13 @@ for f in "${FILES[@]}"; do
   cp "$TMP/$f" "$FIXTURES/$f"
 done
 
+schema="$(sed -n 's/.*"schema_version": "\([^"]*\)".*/\1/p' "$FIXTURES/manifest.json" | head -1)"
+
 {
   echo '{'
   echo "  \"tonality_commit\": \"$commit\","
   echo "  \"generated_at\": \"$(date -u +%Y-%m-%d)\","
-  echo '  "export_schema_version": "export.1",'
+  echo "  \"export_schema_version\": \"$schema\","
   echo '  "note": "Fixtures generated from the Tonality engine (the spec'"'"'s source of truth) via scripts/export_versioned_data.py + tests/golden/conformance.json. Every parity claim in this repo is parity WITH this engine commit. Refresh via tools/refresh_fixtures.sh.",'
   echo '  "files": {'
   sep=','

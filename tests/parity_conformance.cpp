@@ -1,10 +1,8 @@
-// Slice-1 acceptance gate, part 2 (CPP_PORT.md): reproduce the engine's
-// `set_class_info` conformance case within the golden tolerances (read from
-// the fixture itself, currently rel 1e-9 / abs 1e-12).
-//
-// The case also carries slice-1b fields (dft_phases, chirality family) that
-// are deliberately NOT ported yet (PORT.md adopted default 4: held until they
-// join the export table). Those are reported as DEFERRED, never compared.
+// Acceptance gate, part 2: reproduce the engine's `set_class_info`
+// conformance case within the golden tolerances (read from the fixture,
+// currently rel 1e-9 / abs 1e-12). Since slice 1b, EVERY field in the case is
+// compared — nothing deferred — and an unrecognized field is a FAILURE, so an
+// engine-side surface addition trips this harness instead of slipping by.
 #include <cmath>
 #include <cstdio>
 #include <fstream>
@@ -13,6 +11,7 @@
 #include <string>
 
 #include "mini_json.hpp"
+#include "tonality/chirality.hpp"
 #include "tonality/dft.hpp"
 #include "tonality/table.hpp"
 
@@ -40,6 +39,14 @@ void check_int(const std::string& field, long long expected, long long actual) {
     }
 }
 
+void check_float(const std::string& field, double expected, double actual, double rel,
+                 double abs_tol) {
+    if (!close(expected, actual, rel, abs_tol)) {
+        fail(field + ": expected " + std::to_string(expected) + ", got " +
+             std::to_string(actual));
+    }
+}
+
 void check_pc_list(const std::string& field, const mini_json::Value& expected,
                    const tonality::PcList& actual) {
     if (expected.array.size() != static_cast<std::size_t>(actual.count)) {
@@ -52,6 +59,18 @@ void check_pc_list(const std::string& field, const mini_json::Value& expected,
                  std::to_string(expected.array[i]->integer) + ", got " +
                  std::to_string(actual.pcs[i]));
         }
+    }
+}
+
+void check_float_array6(const std::string& field, const mini_json::Value& expected,
+                        const std::array<double, 6>& actual, double rel, double abs_tol) {
+    if (expected.array.size() != 6) {
+        fail(field + ": expected 6 entries");
+        return;
+    }
+    for (std::size_t k = 0; k < 6; ++k) {
+        check_float(field + "[" + std::to_string(k) + "]", expected.array[k]->number,
+                    actual[k], rel, abs_tol);
     }
 }
 
@@ -83,7 +102,6 @@ int main() {
         return 2;
     }
 
-    // Build the mask from the case input.
     tonality::Mask mask = 0;
     for (const auto& pc : found->at("kwargs").at("pcs").array) {
         mask |= static_cast<tonality::Mask>(1u << pc->integer);
@@ -92,7 +110,6 @@ int main() {
     const tonality::SetClassRow row = tonality::compute_row(mask);
     const mini_json::Value& result = found->at("result");
 
-    // Slice-1 fields — compared.
     check_int("mask", result.at("mask").integer, row.mask);
     check_pc_list("normal_order", result.at("normal_order"), row.normal_order);
     check_pc_list("prime_form", result.at("prime_form"), row.prime_form);
@@ -111,32 +128,43 @@ int main() {
         check_pc_list("z_partner_prime_form", partner, *row.z_partner_prime_form);
     }
 
-    const mini_json::Value& magnitudes = result.at("dft_magnitudes");
-    for (std::size_t k = 0; k < 6; ++k) {
-        const double expected = magnitudes.array[k]->number;
-        const double actual = row.dft_magnitudes[k];
-        if (!close(expected, actual, rel, abs_tol)) {
-            fail("dft_magnitudes[" + std::to_string(k) + "]: expected " +
-                 std::to_string(expected) + ", got " + std::to_string(actual));
-        }
+    check_float_array6("dft_magnitudes", result.at("dft_magnitudes"), row.dft_magnitudes,
+                       rel, abs_tol);
+    check_float_array6("dft_phases", result.at("dft_phases"), row.dft_phases, rel, abs_tol);
+
+    const mini_json::Value& trichord = result.at("trichord_chirality");
+    if (trichord.is_null()) {
+        if (row.trichord_chirality) fail("trichord_chirality: expected null");
+    } else if (!row.trichord_chirality) {
+        fail("trichord_chirality: expected a value, got null");
+    } else {
+        check_int("trichord_chirality", trichord.integer, *row.trichord_chirality);
     }
 
-    // Slice-1b fields — present in the case, deliberately deferred.
-    const std::set<std::string> slice1 = {
-        "mask", "normal_order", "prime_form", "prime_form_mask", "interval_vector",
-        "dft_magnitudes", "z_partner_prime_form", "complement_prime_form",
-        "rotational_period", "cardinality"};
+    check_float("general_chirality", result.at("general_chirality").number,
+                row.general_chirality, rel, abs_tol);
+    check_int("chirality_sign", result.at("chirality_sign").integer, row.chirality_sign);
+    check_float("chirality", result.at("chirality").number, row.chirality, rel, abs_tol);
+    check_float("reflection_residual", result.at("reflection_residual").number,
+                row.reflection_residual, rel, abs_tol);
+
+    // Completeness: every field of the case must have been compared above.
+    const std::set<std::string> compared = {
+        "mask", "normal_order", "prime_form", "prime_form_mask", "rotational_period",
+        "complement_prime_form", "z_partner_prime_form", "dft_magnitudes", "dft_phases",
+        "trichord_chirality", "general_chirality", "chirality_sign", "chirality",
+        "reflection_residual"};
     for (const auto& [field, value] : result.object) {
-        if (!slice1.count(field)) {
-            std::printf("DEFERRED (slice 1b, not compared): %s\n", field.c_str());
+        if (!compared.count(field)) {
+            fail("unrecognized field in conformance case (engine surface grew?): " + field);
         }
     }
 
     if (failures == 0) {
         std::printf(
-            "PARITY OK: set_class_info conformance case reproduced "
-            "(mask %d, tolerances rel %g / abs %g)\n",
-            static_cast<int>(mask), rel, abs_tol);
+            "PARITY OK: set_class_info conformance case reproduced on ALL %zu "
+            "fields (mask %d, tolerances rel %g / abs %g)\n",
+            result.object.size(), static_cast<int>(mask), rel, abs_tol);
         return 0;
     }
     std::fprintf(stderr, "%d field(s) failed\n", failures);

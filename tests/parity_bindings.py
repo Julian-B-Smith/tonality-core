@@ -25,10 +25,14 @@ sys.path.insert(0, sys.argv[2])
 
 import tonality_core as tc  # noqa: E402
 
-SLICE1_CASE_FIELDS = {
+CASE_FIELDS = {
     "mask", "normal_order", "prime_form", "prime_form_mask", "dft_magnitudes",
     "z_partner_prime_form", "complement_prime_form", "rotational_period",
+    "dft_phases", "trichord_chirality", "general_chirality", "chirality_sign",
+    "chirality", "reflection_residual",
 }
+FLOAT_LIST_FIELDS = {"dft_magnitudes", "dft_phases"}
+FLOAT_FIELDS = {"general_chirality", "chirality", "reflection_residual"}
 
 failures = 0
 
@@ -55,18 +59,23 @@ mismatches = [mask for mask, expected in enumerate(rows)
 elapsed = time.perf_counter() - start
 check(not mismatches, f"row mismatch at masks {mismatches[:10]}")
 
-# 3. the golden set_class_info case (slice-1 fields)
+# 3. the golden set_class_info case — every field, none deferred
 golden = json.loads((FIXTURES / "conformance.json").read_text(encoding="utf-8"))
 case = next(c for c in golden["cases"] if c["tool"] == "set_class_info")
 mask = tc.mask_from_pcs(case["kwargs"]["pcs"])
 row = tc.set_class_row(mask)
 rel, abs_tol = golden["float_rel_tol"], golden["float_abs_tol"]
-for field in sorted(SLICE1_CASE_FIELDS):
+check(set(case["result"]) == CASE_FIELDS,
+      f"conformance case fields drifted: {sorted(set(case['result']) ^ CASE_FIELDS)}")
+for field in sorted(CASE_FIELDS & set(case["result"])):
     expected = case["result"][field]
     actual = row[field]
-    if field == "dft_magnitudes":
+    if field in FLOAT_LIST_FIELDS:
         check(all(math.isclose(e, a, rel_tol=rel, abs_tol=abs_tol)
                   for e, a in zip(expected, actual)),
+              f"golden {field}: {expected} vs {actual}")
+    elif field in FLOAT_FIELDS:
+        check(math.isclose(expected, actual, rel_tol=rel, abs_tol=abs_tol),
               f"golden {field}: {expected} vs {actual}")
     else:
         check(actual == expected, f"golden {field}: {expected} vs {actual}")

@@ -7,6 +7,13 @@ set(CMAKE_CXX_EXTENSIONS OFF)
 
 add_library(tonality INTERFACE)
 target_include_directories(tonality INTERFACE ${CMAKE_CURRENT_SOURCE_DIR}/include)
+# Byte-for-byte parity with the CPython engine requires Python-identical
+# floating-point arithmetic: FMA contraction (clang's default) fuses a*b±c
+# into one rounding and diverges the reflection_residual minimizer by an ulp
+# — enough to flip an achiral set's ±0.0. Contraction is forbidden for every
+# consumer of these headers.
+target_compile_options(tonality INTERFACE
+    $<$<OR:$<CXX_COMPILER_ID:Clang>,$<CXX_COMPILER_ID:AppleClang>,$<CXX_COMPILER_ID:GNU>>:-ffp-contract=off>)
 
 add_executable(emit_table tools/emit_table.cpp)
 target_link_libraries(emit_table PRIVATE tonality)
