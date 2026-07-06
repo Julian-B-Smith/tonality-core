@@ -42,8 +42,13 @@ fi
 
 echo "DRIFT in: ${drift[*]} (engine at $commit)"
 if [ "$CHECK_ONLY" -eq 1 ]; then
-  echo "--check: not refreshing. Look for the notice in the Tonality repo's"
-  echo "integrations/tonality-core/ explaining the change, then rerun without --check."
+  echo "--check: not refreshing. A notice in the Tonality repo's"
+  echo "integrations/tonality-core/ is guaranteed only when the PORTED surface"
+  echo "changed; goldens for non-ported tools churn routinely without one."
+  echo "Either way: rerun without --check, then re-run the parity harness —"
+  echo "green => routine churn outside the ported slices (cite any notice in"
+  echo "the refresh PR); red => STOP and file a brief on the integrations"
+  echo "channel (the pin failed to guard the surface — a protocol bug)."
   exit 1
 fi
 

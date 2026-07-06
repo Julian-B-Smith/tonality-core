@@ -1431,12 +1431,6 @@
       "root_pc": 11
      }
     ],
-    "inverted_interval_class_histogram": {
-     "1": 2,
-     "3": 2,
-     "4": 4,
-     "5": 4
-    },
     "inverted_interval_matrix": [
      [
       0,
@@ -1519,9 +1513,7 @@
       }
      ],
      "rotational_period": 12,
-     "rotational_steps": [
-      12
-     ]
+     "rotational_steps": []
     },
     "tonic_context": {
      "relative_pcs": [
@@ -1894,9 +1886,7 @@
       }
      ],
      "rotational_period": 12,
-     "rotational_steps": [
-      12
-     ]
+     "rotational_steps": []
     },
     "tonic_pc": 2
    },
@@ -6582,7 +6572,7 @@
      {
       "end_beats": 3.3,
       "end_seconds": 1.65,
-      "mean_margin": 0.03663565867239127,
+      "mean_margin": -0.03663565867239127,
       "mean_score": 0.7478735227799502,
       "mode": "minor",
       "start_beats": 0.0,
@@ -6894,8 +6884,8 @@
      {
       "end_beats": 36.0,
       "end_seconds": 18.0,
-      "mean_margin": 0.2398100950322979,
-      "mean_score": 0.7458597829005817,
+      "mean_margin": 0.22844243875437048,
+      "mean_score": 0.7361455815937794,
       "mode": "major",
       "start_beats": 0.0,
       "start_seconds": 0.0,
@@ -10183,8 +10173,10 @@
     "transitions": [
      {
       "a_from_midi": 64,
+      "a_rested_between": false,
       "a_to_midi": 62,
       "b_from_midi": 48,
+      "b_rested_between": false,
       "b_to_midi": 50,
       "from_beat": 0.0,
       "interval_class_from": 8,
@@ -10198,8 +10190,10 @@
      },
      {
       "a_from_midi": 64,
+      "a_rested_between": false,
       "a_to_midi": 62,
       "b_from_midi": 72,
+      "b_rested_between": false,
       "b_to_midi": 69,
       "from_beat": 0.0,
       "interval_class_from": 8,
@@ -10213,8 +10207,10 @@
      },
      {
       "a_from_midi": 64,
+      "a_rested_between": false,
       "a_to_midi": 62,
       "b_from_midi": 55,
+      "b_rested_between": false,
       "b_to_midi": 57,
       "from_beat": 0.0,
       "interval_class_from": 3,
@@ -10228,8 +10224,10 @@
      },
      {
       "a_from_midi": 48,
+      "a_rested_between": false,
       "a_to_midi": 50,
       "b_from_midi": 72,
+      "b_rested_between": false,
       "b_to_midi": 69,
       "from_beat": 0.0,
       "interval_class_from": 0,
@@ -10243,8 +10241,10 @@
      },
      {
       "a_from_midi": 48,
+      "a_rested_between": false,
       "a_to_midi": 50,
       "b_from_midi": 55,
+      "b_rested_between": false,
       "b_to_midi": 57,
       "from_beat": 0.0,
       "interval_class_from": 7,
@@ -10258,8 +10258,10 @@
      },
      {
       "a_from_midi": 72,
+      "a_rested_between": false,
       "a_to_midi": 69,
       "b_from_midi": 55,
+      "b_rested_between": false,
       "b_to_midi": 57,
       "from_beat": 0.0,
       "interval_class_from": 7,
@@ -10905,7 +10907,8 @@
     "random": 0.0,
     "seed": null,
     "timing": 1.0,
-    "velocity": 1.0
+    "velocity": 1.0,
+    "voice": null
    },
    "tool": "apply_groove"
   },
