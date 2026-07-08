@@ -22,6 +22,11 @@
     "key-smoothing.1"
    ]
   },
+  "melodic_tendency.json": {
+   "versions": [
+    "melodic-tendency.1"
+   ]
+  },
   "meter_profiles.json": {
    "versions": [
     "meter-grid.1"
