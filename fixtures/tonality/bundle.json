@@ -869,6 +869,55 @@
     "key-smoothing.1"
    ]
   },
+  "melodic_tendency.json": {
+   "content": [
+    {
+     "chord_anchor_boost": 1.5,
+     "distance_exponent": 2,
+     "max_step_semitones": 2,
+     "source": "Anchoring attraction a(p->q) = (s_q/s_p) * 1/d^n (Lerdahl, Tonal Pitch Space, OUP 2001, ch. 4; Bharucha 1984 anchoring). Stability tables FROZEN from the kk-1982.1 key profiles (Krumhansl & Kessler 1982) \u2014 copied, not read live, so a key-profile default flip can never silently move tendency scales (the versioned-priors discipline; margin-scale precedent). chord_anchor_boost is Lerdahl's basic-space triad/diatonic level ratio (3/2), applied to the stability of chord tones in both source and target roles when a chord context is given. Fork record (2026-07-07, Julian): stability source = KK-derived; target policy is a caller parameter (rulesets/styles may select it), default diatonic_steps; chord anchoring ships in slice 1.",
+     "stability": {
+      "major": [
+       6.35,
+       2.23,
+       3.48,
+       2.33,
+       4.38,
+       4.09,
+       2.52,
+       5.19,
+       2.39,
+       3.66,
+       2.29,
+       2.88
+      ],
+      "minor": [
+       6.33,
+       2.68,
+       3.52,
+       5.38,
+       2.6,
+       3.53,
+       2.54,
+       4.75,
+       3.98,
+       2.69,
+       3.34,
+       3.17
+      ]
+     },
+     "target_policies": [
+      "diatonic_steps",
+      "chromatic_steps"
+     ],
+     "version": "melodic-tendency.1"
+    }
+   ],
+   "sha256": "721665e832ff1b009fec8411af2fbe1d15f782a5549e13a5b5d4a6aeac6f20f4",
+   "versions": [
+    "melodic-tendency.1"
+   ]
+  },
   "meter_profiles.json": {
    "content": [
     {
