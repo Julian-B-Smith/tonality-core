@@ -12,6 +12,28 @@ Contract documents (in the Tonality repo — read them first):
 - `port/PORT.md` — the two-thread accountability protocol this repo lives under.
 - `ROADMAP.md` Phase 8 — direction of record.
 
+## Scope — deliberately the frozen kernel, not the whole engine
+
+This repo ports **only the identity substrate**: the 4096-row set-class table
+(`SET_CLASS_TABLE_FIELDS` — prime form, normal order, interval vector, DFT
+magnitude/phase, Z-partner, complement, rotational period, chirality) and its
+`set_class_info` conformance case. That is a small fraction of the engine's
+surface **by design, not by lag.** Under *port-by-stability* (`port/PORT.md`),
+only the frozen core is ever dual-implemented, and nothing is ported past the
+**Phase 6 fence** — Phase 6 renegotiates "the mask is the key," so porting the
+layers above the identity substrate now would mean porting them twice. The
+analysis, temporal, rules, search, and pattern layers of the engine stay
+Python-only until they freeze.
+
+So "tonality-core reproduces N of the engine's M tools" is the *intended* state of
+a stability-gated port, not a backlog. **The measure of whether this repo is
+current is the pin being green — that the ported surface still matches the
+engine byte-for-byte — not the tool count.** When the engine grows a tool above
+the identity substrate, that is *expected* to leave this repo unchanged; only a
+change to the exported set-class table (a new export field, an arithmetic change)
+is a port-relevant event, and it arrives as a brief on the
+`integrations/tonality-core/` channel.
+
 ## The parity contract
 
 `fixtures/tonality/` vendors the engine's exported artifacts
