@@ -73,6 +73,29 @@ To build the Python fast path too, add (pointing at an interpreter with
 This adds a third ctest (`parity_bindings`): byte-identical `emit_table_json()`
 plus dict-equality of all 4096 `set_class_row()` results against the fixture.
 
+## Continuous integration
+
+`.github/workflows/parity.yml` runs the parity harness on every push to `main`
+and every pull request, across a **`ubuntu-latest` + `macos-latest` matrix**. It
+rebuilds the core from source (Release, pybind11 fast path on) and reruns the
+three ctests — `parity_table`, `parity_conformance`, `parity_bindings` — that the
+watcher PRs previously ran by hand. No new tests; the CI just automates the
+definition of done.
+
+Cross-platform is the point, not decoration: the pin-determinism incident proved
+a single-machine parity claim hides ULP / libm / platform drift until someone
+else builds it. Byte-for-byte float parity is reproduced against fixtures the
+engine exported on macOS, so the `ubuntu-latest` leg is a real probe of that
+claim (`fail-fast` is off so each OS reports independently). This closes the loop
+`port/PORT.md` already promised — engine drift fails Tonality's build, port drift
+fails this build. See `integrations/tonality-core/notice-ci-required.md` (in the
+Tonality repo) for the ask this satisfies.
+
+The watcher's refresh PRs land only on green CI; each PR's acceptance block cites
+the CI run rather than a single local build. **Branch protection on `main`**
+(require the parity checks green before merge) is a repo setting the maintainer
+enables in GitHub — the workflow provides the checks; the gate is set once there.
+
 ## Fences (mirror of port/PORT.md)
 
 - Python is the spec. A disagreement between implementations is a bug **here**

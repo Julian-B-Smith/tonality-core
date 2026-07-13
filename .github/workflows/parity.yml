@@ -1,0 +1,63 @@
+name: parity
+
+# The port's half of the parity loop
+# (integrations/tonality-core/notice-ci-required.md, Tonality dev loop, 2026-07-09).
+# Every push to main and every pull request rebuilds the core FROM SOURCE and
+# reruns the exact parity harness the watcher PRs previously ran by hand — no new
+# tests, just automation of the definition of done.
+#
+# The matrix is the point. The pin-determinism incident proved a single-machine
+# parity claim hides ULP / libm / platform drift until someone else builds it:
+# byte-for-byte float parity (DFT magnitudes/phases, reflection_residual) is
+# reproduced against fixtures the engine exported on macOS, so ubuntu-latest is a
+# genuine cross-platform probe, not a formality. fail-fast is off precisely so a
+# divergence on one OS is reported rather than masking the other leg.
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+# One in-flight run per ref is enough; cancel superseded pushes.
+concurrency:
+  group: parity-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  parity:
+    name: parity (${{ matrix.os }})
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, macos-latest]
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        id: python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+
+      # parity_bindings builds the pybind11 fast path and runs it against the
+      # vendored fixtures (no live engine import — it reads fixtures/tonality/).
+      - name: Install pybind11
+        run: python -m pip install --upgrade pip pybind11
+
+      # -ffp-contract=off is applied by CMakeLists for GCC (ubuntu) and AppleClang
+      # (macOS) alike — required for Python-identical FMA behaviour.
+      - name: Configure (Release, pybind11 fast path on)
+        run: >
+          cmake -S . -B build-release
+          -DCMAKE_BUILD_TYPE=Release
+          -DTONALITY_BUILD_PYTHON=ON
+          -DPython_EXECUTABLE='${{ steps.python.outputs.python-path }}'
+
+      - name: Build
+        run: cmake --build build-release --config Release -j
+
+      # parity_table (4096 rows byte-for-byte), parity_conformance (set_class_info
+      # case, all fields), parity_bindings (byte-identical emit + 4096 dict-equal).
+      - name: Parity harness (ctest)
+        run: ctest --test-dir build-release --build-config Release --output-on-failure
