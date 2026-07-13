@@ -121,10 +121,24 @@ JSON turns that ulp into different bytes. So the matrix splits:
 
 `fail-fast` is off so each OS reports independently. This closes the loop
 `port/PORT.md` promised — engine drift fails Tonality's build, port drift fails
-this build. See `integrations/tonality-core/notice-ci-required.md` (in the
-Tonality repo) for the ask this satisfies, and the on-channel `response.md` for
-the finding and the proposed strengthening (a portable all-rows tolerance mode so
-Linux checks all 4096 rows, not just the golden case).
+this build.
+
+The cross-platform split above is the **ratified** parity contract: the engine's
+dev loop accepted it in `integrations/tonality-core/ratify-ci-required.md` (in the
+Tonality repo), answering the `notice-ci-required.md` ask and this repo's
+`response-ci-required.md` finding — *byte-exact on the fixture-generating platform
+(macOS), values-within-tolerance everywhere.* Two refinements were **agreed in
+that ratification and are tracked for this repo to apply** (the workflow above is
+the pre-refinement version until they land):
+
+- **Pin the macOS runner** to a fixed image + arch — `macos-14` (arm64, matching
+  the Apple-Silicon origin of the fixtures) rather than `macos-latest` — so a
+  rolling GitHub image can't turn the *canonical* byte-exact leg red on a non-bug
+  (the very failure the split exists to prevent, reintroduced through the runner
+  label).
+- **All-rows Linux tolerance mode:** check all 4096 table rows within tolerance on
+  Linux, not just the single `set_class_info` conformance case — strengthening the
+  portability probe at no cost to the macOS byte-exact guarantee.
 
 The watcher's refresh PRs land only on green CI; each PR's acceptance block cites
 the CI run rather than a single local build. **Branch protection on `main`**
