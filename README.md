@@ -82,14 +82,27 @@ three ctests — `parity_table`, `parity_conformance`, `parity_bindings` — tha
 watcher PRs previously ran by hand. No new tests; the CI just automates the
 definition of done.
 
-Cross-platform is the point, not decoration: the pin-determinism incident proved
-a single-machine parity claim hides ULP / libm / platform drift until someone
-else builds it. Byte-for-byte float parity is reproduced against fixtures the
-engine exported on macOS, so the `ubuntu-latest` leg is a real probe of that
-claim (`fail-fast` is off so each OS reports independently). This closes the loop
-`port/PORT.md` already promised — engine drift fails Tonality's build, port drift
-fails this build. See `integrations/tonality-core/notice-ci-required.md` (in the
-Tonality repo) for the ask this satisfies.
+Cross-platform is the point, not decoration — but with a boundary the first CI
+run made concrete. **Byte-for-byte float parity is platform-specific.** The
+fixtures were exported by the CPython engine on macOS, and glibc vs Apple libm
+disagree by ~1 ulp on the transcendental DFT terms (the first run saw a
+`dft_magnitude` of `1.0` on macOS vs `0.9999999999999999` on Linux); shortest-repr
+JSON turns that ulp into different bytes. So the matrix splits:
+
+- **`macos-latest` — canonical:** the full harness, including the byte-exact
+  `parity_table` and `parity_bindings`. macOS is the platform the fixtures encode.
+- **`ubuntu-latest` — portability probe:** builds from source (proves the headers
+  compile under GCC and the algorithm ports) and runs the tolerance-based
+  `parity_conformance` (rel 1e-9 / abs 1e-12) — the same float tolerancing the
+  engine's own `test_port_pin.py` applies. A real numeric regression (> tolerance)
+  fails here on either OS; a sub-ulp libm difference correctly does not.
+
+`fail-fast` is off so each OS reports independently. This closes the loop
+`port/PORT.md` promised — engine drift fails Tonality's build, port drift fails
+this build. See `integrations/tonality-core/notice-ci-required.md` (in the
+Tonality repo) for the ask this satisfies, and the on-channel `response.md` for
+the finding and the proposed strengthening (a portable all-rows tolerance mode so
+Linux checks all 4096 rows, not just the golden case).
 
 The watcher's refresh PRs land only on green CI; each PR's acceptance block cites
 the CI run rather than a single local build. **Branch protection on `main`**
