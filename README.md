@@ -73,6 +73,42 @@ To build the Python fast path too, add (pointing at an interpreter with
 This adds a third ctest (`parity_bindings`): byte-identical `emit_table_json()`
 plus dict-equality of all 4096 `set_class_row()` results against the fixture.
 
+## Continuous integration
+
+`.github/workflows/parity.yml` runs the parity harness on every push to `main`
+and every pull request, across a **`ubuntu-latest` + `macos-latest` matrix**. It
+rebuilds the core from source (Release, pybind11 fast path on) and reruns the
+three ctests — `parity_table`, `parity_conformance`, `parity_bindings` — that the
+watcher PRs previously ran by hand. No new tests; the CI just automates the
+definition of done.
+
+Cross-platform is the point, not decoration — but with a boundary the first CI
+run made concrete. **Byte-for-byte float parity is platform-specific.** The
+fixtures were exported by the CPython engine on macOS, and glibc vs Apple libm
+disagree by ~1 ulp on the transcendental DFT terms (the first run saw a
+`dft_magnitude` of `1.0` on macOS vs `0.9999999999999999` on Linux); shortest-repr
+JSON turns that ulp into different bytes. So the matrix splits:
+
+- **`macos-latest` — canonical:** the full harness, including the byte-exact
+  `parity_table` and `parity_bindings`. macOS is the platform the fixtures encode.
+- **`ubuntu-latest` — portability probe:** builds from source (proves the headers
+  compile under GCC and the algorithm ports) and runs the tolerance-based
+  `parity_conformance` (rel 1e-9 / abs 1e-12) — the same float tolerancing the
+  engine's own `test_port_pin.py` applies. A real numeric regression (> tolerance)
+  fails here on either OS; a sub-ulp libm difference correctly does not.
+
+`fail-fast` is off so each OS reports independently. This closes the loop
+`port/PORT.md` promised — engine drift fails Tonality's build, port drift fails
+this build. See `integrations/tonality-core/notice-ci-required.md` (in the
+Tonality repo) for the ask this satisfies, and the on-channel `response.md` for
+the finding and the proposed strengthening (a portable all-rows tolerance mode so
+Linux checks all 4096 rows, not just the golden case).
+
+The watcher's refresh PRs land only on green CI; each PR's acceptance block cites
+the CI run rather than a single local build. **Branch protection on `main`**
+(require the parity checks green before merge) is a repo setting the maintainer
+enables in GitHub — the workflow provides the checks; the gate is set once there.
+
 ## Fences (mirror of port/PORT.md)
 
 - Python is the spec. A disagreement between implementations is a bug **here**

@@ -1,0 +1,81 @@
+name: parity
+
+# The port's half of the parity loop
+# (integrations/tonality-core/notice-ci-required.md, Tonality dev loop, 2026-07-09).
+# Every push to main and every pull request rebuilds the core FROM SOURCE and
+# reruns the parity harness the watcher PRs previously ran by hand — no new
+# tests, just automation of the definition of done.
+#
+# CROSS-PLATFORM SPLIT (empirical, PR #6 first run):
+#   - macOS is the canonical platform: fixtures/tonality/*.json were exported by
+#     the CPython engine on macOS, so byte-for-byte float parity (DFT magnitudes/
+#     phases, reflection_residual) is reproducible there. macos-latest runs the
+#     FULL harness including the byte-exact parity_table + parity_bindings.
+#   - ubuntu-latest is the portability probe. Byte-exactness is NOT a cross-
+#     platform invariant: glibc vs Apple libm differ by ~1 ulp on transcendental
+#     DFT terms (PR #6 saw dft_magnitude 1.0 vs 0.9999999999999999), and shortest-
+#     repr JSON turns that ulp into different bytes. So Linux BUILDS from source
+#     (proves the headers compile under GCC + the algorithm ports) and runs the
+#     tolerance-based parity_conformance (rel 1e-9 / abs 1e-12 — passes on Linux),
+#     which is the same tolerancing the engine's own test_port_pin.py uses for
+#     float fields. A portable all-rows tolerance mode (strengthening Linux to all
+#     4096 rows) is proposed on-channel as a ratifiable follow-up.
+# fail-fast is off so each OS reports independently.
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+concurrency:
+  group: parity-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  parity:
+    name: parity (${{ matrix.os }})
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          # Canonical platform: full byte-exact harness.
+          - os: macos-latest
+            ctest_filter: ""
+          # Portability probe: build + tolerance-based conformance (byte-exact
+          # float parity is platform-specific — see header note).
+          - os: ubuntu-latest
+            ctest_filter: "-R parity_conformance"
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        id: python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+
+      # parity_bindings builds the pybind11 fast path and runs it against the
+      # vendored fixtures (no live engine import — it reads fixtures/tonality/).
+      - name: Install pybind11
+        run: python -m pip install --upgrade pip pybind11
+
+      # -ffp-contract=off is applied by CMakeLists for GCC (ubuntu) and AppleClang
+      # (macOS) alike — required for Python-identical FMA behaviour.
+      - name: Configure (Release, pybind11 fast path on)
+        run: >
+          cmake -S . -B build-release
+          -DCMAKE_BUILD_TYPE=Release
+          -DTONALITY_BUILD_PYTHON=ON
+          -DPython_EXECUTABLE='${{ steps.python.outputs.python-path }}'
+
+      - name: Build
+        run: cmake --build build-release --config Release -j
+
+      # macOS: parity_table (4096 rows byte-for-byte) + parity_conformance
+      # (set_class_info, all fields) + parity_bindings (byte-identical emit +
+      # 4096 dict-equal). ubuntu: parity_conformance only (tolerance, portable).
+      - name: Parity harness (ctest)
+        run: >
+          ctest --test-dir build-release --build-config Release --output-on-failure
+          ${{ matrix.ctest_filter }}
