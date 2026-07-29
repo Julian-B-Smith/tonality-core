@@ -101,7 +101,7 @@ exact; see [Continuous integration](#continuous-integration)).
 ## Continuous integration
 
 `.github/workflows/parity.yml` runs the parity harness on every push to `main`
-and every pull request, across a **`ubuntu-latest` + `macos-14` matrix**. It
+and every pull request, across a **`ubuntu-latest` + `macos-15` matrix**. It
 rebuilds the core from source (Release, pybind11 fast path on) and reruns the
 ctests — `parity_table`, `parity_conformance`, `parity_bindings`, and
 `parity_bindings_tolerance` — that the watcher PRs previously ran by hand. No new
@@ -115,11 +115,16 @@ disagree by ~1 ulp on the transcendental DFT terms (the first run saw a
 `dft_magnitude` of `1.0` on macOS vs `0.9999999999999999` on Linux); shortest-repr
 JSON turns that ulp into different bytes. So the matrix splits:
 
-- **`macos-14` — canonical:** the full harness, including the byte-exact
+- **`macos-15` — canonical:** the full harness, including the byte-exact
   `parity_table` and `parity_bindings`. macOS is the platform the fixtures encode.
-  The image is **pinned** (arm64, matching the Apple-Silicon origin of the
-  fixtures) rather than `macos-latest`, so a rolling image can't red the canonical
-  leg on a libm change that is not a bug.
+  The image is **pinned** rather than `macos-latest`, so a rolling image can't red
+  the canonical leg on a libm change that is not a bug — and it is pinned to
+  **macOS 15 arm64 specifically, because that is where the fixtures are
+  generated**. The version, not just the arch, is the binding constraint:
+  pinning to `macos-14` (also arm64) turned this leg red, its libm giving
+  `reflection_residual` `+0.0` where the fixture has `-0.0` — one signed zero,
+  which shortest-repr JSON renders as different bytes. Regenerate the fixtures on
+  a different macOS and this pin moves with them.
 - **`ubuntu-latest` — portability probe:** builds from source (proves the headers
   compile under GCC and the algorithm ports) and checks values within tolerance
   (rel 1e-9 / abs 1e-12) rather than bytes — the same float tolerancing the
@@ -132,6 +137,17 @@ JSON turns that ulp into different bytes. So the matrix splits:
   sub-ulp libm difference correctly does not. The runner stays rolling on purpose
   — a portability probe wants toolchain drift.
 
+  One field is compared indirectly: **`dft_phases` via the complex coefficient**
+  it and `dft_magnitudes` describe together. A phase is a polar coordinate, and
+  where a component's magnitude vanishes its phase is the `atan2` of two
+  rounding-noise terms — information-free. Linux and macOS disagree by up to
+  **0.53 rad** on such phases, every one of them at a magnitude of ~1e-16, so
+  comparing phases directly would assert an invariant that does not hold. The
+  coefficient comparison keeps full sensitivity where a component is significant
+  (a 1e-6 rad error on a unit-magnitude component still fails), is automatically
+  correct at the ±π branch cut, and treats a vanishing component as the zero it
+  is.
+
 `fail-fast` is off so each OS reports independently. This closes the loop
 `port/PORT.md` promised — engine drift fails Tonality's build, port drift fails
 this build.
@@ -143,18 +159,25 @@ Tonality repo), answering the `notice-ci-required.md` ask and this repo's
 (macOS), values-within-tolerance everywhere.* Both refinements agreed in that
 ratification are now **applied** (they are the workflow described above):
 
-- **Pinned macOS runner** — `macos-14` (arm64, matching the Apple-Silicon origin
-  of the fixtures) rather than `macos-latest`, so a rolling GitHub image can't
-  turn the *canonical* byte-exact leg red on a non-bug (the very failure the split
-  exists to prevent, reintroduced through the runner label).
+- **Pinned macOS runner** — rather than `macos-latest`, so a rolling GitHub image
+  can't turn the *canonical* byte-exact leg red on a non-bug (the very failure the
+  split exists to prevent, reintroduced through the runner label). Applied as
+  `macos-15`, not the `macos-14` the ratification suggested: CI measured that
+  macos-14's libm flips a signed zero against the fixtures, which confirms the
+  ratification's hazard rather than contradicting it — the image version is
+  load-bearing, so the pin has to track the *generating* platform (macOS 15
+  arm64), not merely a fixed label.
 - **All-rows Linux tolerance mode** — `parity_bindings_tolerance` checks all 4096
   table rows within tolerance on Linux, not just the single `set_class_info`
   conformance case, strengthening the portability probe at no cost to the macOS
-  byte-exact guarantee.
+  byte-exact guarantee. With one refinement the ratification could not have
+  foreseen: phases are compared as coefficients (above), because the naive
+  all-rows phase comparison asserts a false invariant wherever a magnitude
+  vanishes.
 
 The watcher's refresh PRs land only on green CI; each PR's acceptance block cites
 the CI run rather than a single local build. **Branch protection on `main`**
-(require `parity (macos-14)` and `parity (ubuntu-latest)` green before merge) is a
+(require `parity (macos-15)` and `parity (ubuntu-latest)` green before merge) is a
 repo setting the maintainer enables in GitHub — the workflow provides the checks;
 the gate is set once there. Until it is on, CI reports but does not gate.
 

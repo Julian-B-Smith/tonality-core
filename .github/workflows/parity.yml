@@ -23,12 +23,22 @@ name: parity
 #     parity_bindings_tolerance. Integer fields stay exact on both legs.
 # fail-fast is off so each OS reports independently.
 #
-# The macOS runner is pinned to macos-14 (arm64) ON PURPOSE. The contract makes
+# The macOS runner is pinned to macos-15 (arm64) ON PURPOSE. The contract makes
 # macOS canonical, so the byte-exact leg is hostage to the image's libm: a
 # rolling macos-latest could roll to a new Xcode/libm, flip a ulp, and red the
-# canonical leg on a non-bug — exactly what the split exists to prevent. arm64
-# also matches the Apple-Silicon arch the fixtures were generated on. ubuntu
-# stays rolling: a portability probe wants toolchain drift.
+# canonical leg on a non-bug — exactly what the split exists to prevent.
+#
+# It must be macos-15 specifically, and that is measured, not assumed. The
+# ratification recommended macos-14 (arm64); pinning there turned the canonical
+# leg RED (CI run 30413344944): macos-14's libm gives reflection_residual +0.0
+# where the fixture has -0.0, one signed zero that shortest-repr JSON turns into
+# a byte difference. The fixtures are generated on macOS 15.3 arm64, and the
+# binding constraint is the libm VERSION, not just the arch — so the canonical
+# leg must pin to the image matching the generating platform. (This is the
+# ratification's own hazard, confirmed harder than stated: an image roll really
+# does flip a ulp — it just bites when rolling backwards too.)
+#
+# ubuntu stays rolling: a portability probe wants toolchain drift.
 
 on:
   push:
@@ -47,9 +57,9 @@ jobs:
       fail-fast: false
       matrix:
         include:
-          # Canonical platform: full byte-exact harness. Pinned image, not
-          # macos-latest — see header note.
-          - os: macos-14
+          # Canonical platform: full byte-exact harness. Pinned image (the one
+          # the fixtures were generated on), not macos-latest — see header note.
+          - os: macos-15
             ctest_filter: ""
           # Portability probe: build + all 4096 rows within tolerance (byte-exact
           # float parity is platform-specific — see header note).

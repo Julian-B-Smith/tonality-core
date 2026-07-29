@@ -25,6 +25,10 @@ rule the engine's own test_port_pin.py applies. Ratified as the cross-platform
 parity contract in the Tonality repo's
 integrations/tonality-core/ratify-ci-required.md (2026-07-13).
 
+dft_phases is the one field compared indirectly, via the complex coefficient it
+and dft_magnitudes describe together — a phase is only defined where its
+magnitude is non-zero. See phase_diffs().
+
 Usage: parity_bindings.py <fixtures_dir> <module_dir> [--tolerance]
 """
 
@@ -88,6 +92,37 @@ def field_matches(field: str, expected: object, actual: object) -> bool:
     return actual == expected  # ints, lists of ints, nulls — exact, always
 
 
+def phase_diffs(expected: dict, actual: dict) -> list[int]:
+    """Indices where the two rows describe genuinely different DFT components.
+
+    Phase is one polar coordinate of a vector, and comparing it directly asserts
+    an invariant that does not hold off the fixture-generating platform: where a
+    component's MAGNITUDE vanishes, its phase is the atan2 of two rounding-noise
+    terms and carries no information. CI run 30413344944 measured exactly that —
+    93 Linux phases differing from the macOS fixture by up to 0.53 rad, every one
+    of them at a magnitude of ~1e-16.
+
+    So compare the complex coefficient the pair (magnitude, phase) describes,
+    which is the quantity the port actually has to reproduce. That keeps full
+    sensitivity where a component is significant (a real phase error there moves
+    the coefficient by magnitude x the error), is automatically correct at the
+    +/-pi branch cut, and treats a vanishing component as the zero it is: the
+    worst reported divergence is 2.3e-16, four orders inside the 1e-12 abs
+    tolerance, while a 1e-9 phase error on a unit-magnitude component still fails.
+    """
+    exp_mag, act_mag = expected["dft_magnitudes"], actual["dft_magnitudes"]
+    exp_ph, act_ph = expected["dft_phases"], actual["dft_phases"]
+    if len(act_ph) != len(exp_ph) or len(act_mag) != len(exp_mag):
+        return list(range(max(len(exp_ph), len(act_ph))))
+    bad = []
+    for i, (pe, pa) in enumerate(zip(exp_ph, act_ph)):
+        re_ok = close(exp_mag[i] * math.cos(pe), act_mag[i] * math.cos(pa))
+        im_ok = close(exp_mag[i] * math.sin(pe), act_mag[i] * math.sin(pa))
+        if not (re_ok and im_ok):
+            bad.append(i)
+    return bad
+
+
 table_text = (FIXTURES / "set_class_table.json").read_text(encoding="utf-8")
 rows = json.loads(table_text)
 
@@ -116,11 +151,16 @@ else:
             diffs.append(f"mask {mask}: field set differs "
                          f"{sorted(set(actual) ^ set(expected))}")
             continue
-        diffs.extend(
-            f"mask {mask}.{field}: {expected[field]!r} vs {actual[field]!r}"
-            for field in expected
-            if not field_matches(field, expected[field], actual[field])
-        )
+        for field in expected:
+            if field == "dft_phases":
+                bad = phase_diffs(expected, actual)
+                diffs.extend(
+                    f"mask {mask}.dft_phases[{i}]: {expected[field][i]!r} vs "
+                    f"{actual[field][i]!r} (magnitude {expected['dft_magnitudes'][i]!r})"
+                    for i in bad)
+            elif not field_matches(field, expected[field], actual[field]):
+                diffs.append(
+                    f"mask {mask}.{field}: {expected[field]!r} vs {actual[field]!r}")
     elapsed = time.perf_counter() - start
     check(not diffs, f"{len(diffs)} field mismatch(es) beyond tolerance; "
                      f"first 10:\n  " + "\n  ".join(diffs[:10]))
@@ -132,8 +172,14 @@ row = tc.set_class_row(mask)
 check(set(case["result"]) == CASE_FIELDS,
       f"conformance case fields drifted: {sorted(set(case['result']) ^ CASE_FIELDS)}")
 for field in sorted(CASE_FIELDS & set(case["result"])):
-    check(field_matches(field, case["result"][field], row[field]),
-          f"golden {field}: {case['result'][field]} vs {row[field]}")
+    if field == "dft_phases":
+        # same coefficient rule as the table sweep — see phase_diffs()
+        bad = phase_diffs(case["result"], row)
+        check(not bad, f"golden dft_phases at {bad}: "
+                       f"{case['result'][field]} vs {row[field]}")
+    else:
+        check(field_matches(field, case["result"][field], row[field]),
+              f"golden {field}: {case['result'][field]} vs {row[field]}")
 
 if failures:
     print(f"{failures} check(s) failed", file=sys.stderr)
