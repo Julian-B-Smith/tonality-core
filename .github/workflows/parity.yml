@@ -15,12 +15,20 @@ name: parity
 #     platform invariant: glibc vs Apple libm differ by ~1 ulp on transcendental
 #     DFT terms (PR #6 saw dft_magnitude 1.0 vs 0.9999999999999999), and shortest-
 #     repr JSON turns that ulp into different bytes. So Linux BUILDS from source
-#     (proves the headers compile under GCC + the algorithm ports) and runs the
-#     tolerance-based parity_conformance (rel 1e-9 / abs 1e-12 — passes on Linux),
-#     which is the same tolerancing the engine's own test_port_pin.py uses for
-#     float fields. A portable all-rows tolerance mode (strengthening Linux to all
-#     4096 rows) is proposed on-channel as a ratifiable follow-up.
+#     (proves the headers compile under GCC + the algorithm ports) and checks
+#     values within tolerance (rel 1e-9 / abs 1e-12) instead of bytes — the same
+#     tolerancing the engine's own test_port_pin.py uses for float fields.
+#     Since the ratification (integrations/tonality-core/ratify-ci-required.md,
+#     2026-07-13) that probe covers ALL 4096 rows, not one golden case:
+#     parity_bindings_tolerance. Integer fields stay exact on both legs.
 # fail-fast is off so each OS reports independently.
+#
+# The macOS runner is pinned to macos-14 (arm64) ON PURPOSE. The contract makes
+# macOS canonical, so the byte-exact leg is hostage to the image's libm: a
+# rolling macos-latest could roll to a new Xcode/libm, flip a ulp, and red the
+# canonical leg on a non-bug — exactly what the split exists to prevent. arm64
+# also matches the Apple-Silicon arch the fixtures were generated on. ubuntu
+# stays rolling: a portability probe wants toolchain drift.
 
 on:
   push:
@@ -39,13 +47,16 @@ jobs:
       fail-fast: false
       matrix:
         include:
-          # Canonical platform: full byte-exact harness.
-          - os: macos-latest
+          # Canonical platform: full byte-exact harness. Pinned image, not
+          # macos-latest — see header note.
+          - os: macos-14
             ctest_filter: ""
-          # Portability probe: build + tolerance-based conformance (byte-exact
+          # Portability probe: build + all 4096 rows within tolerance (byte-exact
           # float parity is platform-specific — see header note).
           - os: ubuntu-latest
-            ctest_filter: "-R parity_conformance"
+            # Quoted: this value is substituted into a shell command, where a
+            # bare `|` would be a pipe, not a ctest regex alternation.
+            ctest_filter: "-R 'parity_conformance|parity_bindings_tolerance'"
     steps:
       - uses: actions/checkout@v4
 
@@ -74,7 +85,8 @@ jobs:
 
       # macOS: parity_table (4096 rows byte-for-byte) + parity_conformance
       # (set_class_info, all fields) + parity_bindings (byte-identical emit +
-      # 4096 dict-equal). ubuntu: parity_conformance only (tolerance, portable).
+      # 4096 dict-equal) + parity_bindings_tolerance. ubuntu: parity_conformance
+      # + parity_bindings_tolerance (4096 rows, floats toleranced, ints exact).
       - name: Parity harness (ctest)
         run: >
           ctest --test-dir build-release --build-config Release --output-on-failure
