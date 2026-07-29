@@ -56,4 +56,17 @@ if(TONALITY_BUILD_PYTHON)
                 ${CMAKE_CURRENT_SOURCE_DIR}/tests/parity_bindings.py
                 ${TONALITY_FIXTURES_DIR}
                 $<TARGET_FILE_DIR:tonality_core>)
+
+    # Same 4096 rows, floats compared within the goldens' tolerances instead of
+    # by bit pattern (ints stay exact). This is the leg that is meaningful OFF
+    # the fixture-generating platform, where libm's last ulp — not the port —
+    # decides the bytes; the CI ubuntu job runs this one. Redundant on macOS,
+    # where byte-exact parity_bindings already subsumes it, but kept in the
+    # default test set so a local run exercises exactly what CI does.
+    add_test(NAME parity_bindings_tolerance
+        COMMAND ${Python_EXECUTABLE}
+                ${CMAKE_CURRENT_SOURCE_DIR}/tests/parity_bindings.py
+                ${TONALITY_FIXTURES_DIR}
+                $<TARGET_FILE_DIR:tonality_core>
+                --tolerance)
 endif()
