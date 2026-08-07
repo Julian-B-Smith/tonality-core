@@ -3,6 +3,11 @@
   "chord_qualities.json": {
    "versions": null
   },
+  "gm_percussion.json": {
+   "versions": [
+    "gm-percussion.1"
+   ]
+  },
   "intervals.json": {
    "versions": null
   },

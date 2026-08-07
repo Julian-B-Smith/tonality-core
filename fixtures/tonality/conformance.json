@@ -1865,12 +1865,12 @@
      "z_partner_prime_form": null
     },
     "step_pattern": [
+     1,
+     2,
      2,
      1,
      2,
      2,
-     2,
-     1,
      2
     ],
     "symmetry": {
@@ -11406,7 +11406,7 @@
    },
    "result": {
     "errors": [
-     "rule 'r'.family: must be one of ['harmony', 'melody', 'rhythm', 'voice_motion'], got 'nope'"
+     "rule 'r'.family: must be one of ['harmony', 'melody', 'rhythm', 'texture', 'voice_motion'], got 'nope'"
     ],
     "valid": false
    },
@@ -11505,6 +11505,7 @@
     }
    },
    "result": {
+    "budgets_hold": null,
     "hard_rules_hold": false,
     "hard_violation_count": 1,
     "results": [
@@ -11632,6 +11633,7 @@
     }
    },
    "result": {
+    "budgets_hold": null,
     "hard_rules_hold": null,
     "hard_violation_count": 0,
     "results": [
@@ -11865,6 +11867,90 @@
        }
       }
      },
+     "texture": {
+      "fields": {
+       "chord_tone_support_a_vs_b": {
+        "harmony_dependent": false,
+        "kind": "float",
+        "values": null
+       },
+       "chord_tone_support_b_vs_a": {
+        "harmony_dependent": false,
+        "kind": "float",
+        "values": null
+       },
+       "co_sounding_moments": {
+        "harmony_dependent": false,
+        "kind": "int",
+        "values": null
+       },
+       "combined_onsets": {
+        "harmony_dependent": false,
+        "kind": "int",
+        "values": null
+       },
+       "density_ratio": {
+        "harmony_dependent": false,
+        "kind": "float",
+        "values": null
+       },
+       "groove_congruence": {
+        "harmony_dependent": false,
+        "kind": "float",
+        "values": null
+       },
+       "interlock": {
+        "harmony_dependent": false,
+        "kind": "float",
+        "values": null
+       },
+       "motion_transitions": {
+        "harmony_dependent": false,
+        "kind": "int",
+        "values": null
+       },
+       "n_onsets_a": {
+        "harmony_dependent": false,
+        "kind": "int",
+        "values": null
+       },
+       "n_onsets_b": {
+        "harmony_dependent": false,
+        "kind": "int",
+        "values": null
+       },
+       "onset_synchrony": {
+        "harmony_dependent": false,
+        "kind": "float",
+        "values": null
+       },
+       "overlap": {
+        "harmony_dependent": false,
+        "kind": "float",
+        "values": null
+       },
+       "register_crossing_rate": {
+        "harmony_dependent": false,
+        "kind": "float",
+        "values": null
+       },
+       "register_gap_mean": {
+        "harmony_dependent": false,
+        "kind": "float",
+        "values": null
+       },
+       "voice_a": {
+        "harmony_dependent": false,
+        "kind": "str",
+        "values": null
+       },
+       "voice_b": {
+        "harmony_dependent": false,
+        "kind": "str",
+        "values": null
+       }
+      }
+     },
      "voice_motion": {
       "fields": {
        "a_from_midi": {
@@ -11943,7 +12029,8 @@
     "manifest_version": "ruleset-fields.2",
     "polarities": [
      "hard",
-     "soft"
+     "soft",
+     "budget"
     ]
    },
    "tool": "ruleset_field_manifest"
@@ -11952,7 +12039,8 @@
    "kwargs": {},
    "result": [
     "edm-minor-loop",
-    "first-species-counterpoint"
+    "first-species-counterpoint",
+    "layered-arrangement-texture"
    ],
    "tool": "list_named_rulesets"
   },
@@ -12101,6 +12189,7 @@
     }
    },
    "result": {
+    "budgets_hold": null,
     "hard_rules_hold": true,
     "hard_violation_count": 0,
     "results": [
@@ -20098,6 +20187,2647 @@
     "spec_level": "registered_time"
    },
    "tool": "piano_roll_view"
+  },
+  {
+   "kwargs": {
+    "events": [
+     [
+      0.0,
+      4.0,
+      60
+     ],
+     [
+      0.0,
+      4.0,
+      64
+     ],
+     [
+      0.0,
+      4.0,
+      67
+     ],
+     [
+      4.0,
+      4.0,
+      65
+     ],
+     [
+      4.0,
+      4.0,
+      69
+     ],
+     [
+      4.0,
+      4.0,
+      72
+     ],
+     [
+      8.0,
+      4.0,
+      67
+     ],
+     [
+      8.0,
+      4.0,
+      71
+     ],
+     [
+      8.0,
+      4.0,
+      74
+     ],
+     [
+      12.0,
+      4.0,
+      60
+     ],
+     [
+      12.0,
+      4.0,
+      64
+     ],
+     [
+      12.0,
+      4.0,
+      67
+     ],
+     [
+      1.0,
+      0.25,
+      62
+     ]
+    ]
+   },
+   "result": {
+    "chords": [
+     [
+      0,
+      "maj"
+     ],
+     [
+      5,
+      "maj"
+     ],
+     [
+      7,
+      "maj"
+     ],
+     [
+      0,
+      "maj"
+     ]
+    ],
+    "key_inferred": true,
+    "key_margin": 0.3426042302673059,
+    "mode": "major",
+    "spans": [
+     {
+      "bar": 0,
+      "end_beat": 4.0,
+      "is_ambiguous": false,
+      "quality": "maj",
+      "reason": null,
+      "root_pc": 0,
+      "salient_pcs": [
+       0,
+       4,
+       7
+      ],
+      "start_beat": 0.0
+     },
+     {
+      "bar": 1,
+      "end_beat": 8.0,
+      "is_ambiguous": false,
+      "quality": "maj",
+      "reason": null,
+      "root_pc": 5,
+      "salient_pcs": [
+       0,
+       5,
+       9
+      ],
+      "start_beat": 4.0
+     },
+     {
+      "bar": 2,
+      "end_beat": 12.0,
+      "is_ambiguous": false,
+      "quality": "maj",
+      "reason": null,
+      "root_pc": 7,
+      "salient_pcs": [
+       2,
+       7,
+       11
+      ],
+      "start_beat": 8.0
+     },
+     {
+      "bar": 3,
+      "end_beat": 16.0,
+      "is_ambiguous": false,
+      "quality": "maj",
+      "reason": null,
+      "root_pc": 0,
+      "salient_pcs": [
+       0,
+       4,
+       7
+      ],
+      "start_beat": 12.0
+     }
+    ],
+    "tonic_pc": 0
+   },
+   "tool": "segment_chords"
+  },
+  {
+   "kwargs": {
+    "events": [
+     [
+      0.0,
+      4.0,
+      60
+     ],
+     [
+      0.0,
+      4.0,
+      64
+     ],
+     [
+      0.0,
+      4.0,
+      67
+     ],
+     [
+      4.0,
+      4.0,
+      65
+     ],
+     [
+      4.0,
+      4.0,
+      69
+     ],
+     [
+      4.0,
+      4.0,
+      72
+     ],
+     [
+      8.0,
+      4.0,
+      67
+     ],
+     [
+      8.0,
+      4.0,
+      71
+     ],
+     [
+      8.0,
+      4.0,
+      74
+     ],
+     [
+      12.0,
+      4.0,
+      60
+     ],
+     [
+      12.0,
+      4.0,
+      64
+     ],
+     [
+      12.0,
+      4.0,
+      67
+     ],
+     [
+      1.0,
+      0.25,
+      62
+     ]
+    ],
+    "key": [
+     "C",
+     "major"
+    ],
+    "subdivisions": 2
+   },
+   "result": {
+    "chords": [
+     [
+      0,
+      "maj"
+     ],
+     [
+      5,
+      "maj"
+     ],
+     [
+      7,
+      "maj"
+     ],
+     [
+      0,
+      "maj"
+     ]
+    ],
+    "key_inferred": false,
+    "key_margin": 0.0,
+    "mode": "major",
+    "spans": [
+     {
+      "bar": 0,
+      "end_beat": 2.0,
+      "is_ambiguous": false,
+      "quality": "maj",
+      "reason": null,
+      "root_pc": 0,
+      "salient_pcs": [
+       0,
+       4,
+       7
+      ],
+      "start_beat": 0.0
+     },
+     {
+      "bar": 0,
+      "end_beat": 4.0,
+      "is_ambiguous": false,
+      "quality": "maj",
+      "reason": null,
+      "root_pc": 0,
+      "salient_pcs": [
+       0,
+       4,
+       7
+      ],
+      "start_beat": 2.0
+     },
+     {
+      "bar": 1,
+      "end_beat": 6.0,
+      "is_ambiguous": false,
+      "quality": "maj",
+      "reason": null,
+      "root_pc": 5,
+      "salient_pcs": [
+       0,
+       5,
+       9
+      ],
+      "start_beat": 4.0
+     },
+     {
+      "bar": 1,
+      "end_beat": 8.0,
+      "is_ambiguous": false,
+      "quality": "maj",
+      "reason": null,
+      "root_pc": 5,
+      "salient_pcs": [
+       0,
+       5,
+       9
+      ],
+      "start_beat": 6.0
+     },
+     {
+      "bar": 2,
+      "end_beat": 10.0,
+      "is_ambiguous": false,
+      "quality": "maj",
+      "reason": null,
+      "root_pc": 7,
+      "salient_pcs": [
+       2,
+       7,
+       11
+      ],
+      "start_beat": 8.0
+     },
+     {
+      "bar": 2,
+      "end_beat": 12.0,
+      "is_ambiguous": false,
+      "quality": "maj",
+      "reason": null,
+      "root_pc": 7,
+      "salient_pcs": [
+       2,
+       7,
+       11
+      ],
+      "start_beat": 10.0
+     },
+     {
+      "bar": 3,
+      "end_beat": 14.0,
+      "is_ambiguous": false,
+      "quality": "maj",
+      "reason": null,
+      "root_pc": 0,
+      "salient_pcs": [
+       0,
+       4,
+       7
+      ],
+      "start_beat": 12.0
+     },
+     {
+      "bar": 3,
+      "end_beat": 16.0,
+      "is_ambiguous": false,
+      "quality": "maj",
+      "reason": null,
+      "root_pc": 0,
+      "salient_pcs": [
+       0,
+       4,
+       7
+      ],
+      "start_beat": 14.0
+     }
+    ],
+    "tonic_pc": 0
+   },
+   "tool": "segment_chords"
+  },
+  {
+   "kwargs": {
+    "chord_corpus": [
+     [
+      [
+       [
+        0,
+        "maj"
+       ],
+       [
+        5,
+        "maj"
+       ],
+       [
+        7,
+        "maj"
+       ],
+       [
+        0,
+        "maj"
+       ]
+      ],
+      [
+       0,
+       "major"
+      ]
+     ],
+     [
+      [
+       [
+        0,
+        "maj"
+       ],
+       [
+        2,
+        "min"
+       ],
+       [
+        7,
+        "maj"
+       ],
+       [
+        0,
+        "maj"
+       ]
+      ],
+      [
+       0,
+       "major"
+      ]
+     ],
+     [
+      [
+       [
+        0,
+        "maj"
+       ],
+       [
+        9,
+        "min"
+       ],
+       [
+        7,
+        "maj"
+       ],
+       [
+        0,
+        "maj"
+       ]
+      ],
+      [
+       0,
+       "major"
+      ]
+     ]
+    ]
+   },
+   "result": {
+    "alpha": 0.5,
+    "counts": {
+     "1": {
+      "2": 1,
+      "4": 1,
+      "6": 1
+     },
+     "2": {
+      "5": 1
+     },
+     "4": {
+      "5": 1
+     },
+     "5": {
+      "1": 3
+     },
+     "6": {
+      "5": 1
+     }
+    },
+    "n_pieces": 3,
+    "n_transitions": 9,
+    "prior_version": "distribution.1",
+    "probabilities": {
+     "1": {
+      "1": 0.09090909090909091,
+      "2": 0.2727272727272727,
+      "4": 0.2727272727272727,
+      "5": 0.09090909090909091,
+      "6": 0.2727272727272727
+     },
+     "2": {
+      "1": 0.14285714285714285,
+      "2": 0.14285714285714285,
+      "4": 0.14285714285714285,
+      "5": 0.42857142857142855,
+      "6": 0.14285714285714285
+     },
+     "4": {
+      "1": 0.14285714285714285,
+      "2": 0.14285714285714285,
+      "4": 0.14285714285714285,
+      "5": 0.42857142857142855,
+      "6": 0.14285714285714285
+     },
+     "5": {
+      "1": 0.6363636363636364,
+      "2": 0.09090909090909091,
+      "4": 0.09090909090909091,
+      "5": 0.09090909090909091,
+      "6": 0.09090909090909091
+     },
+     "6": {
+      "1": 0.14285714285714285,
+      "2": 0.14285714285714285,
+      "4": 0.14285714285714285,
+      "5": 0.42857142857142855,
+      "6": 0.14285714285714285
+     }
+    },
+    "smoothing": "laplace",
+    "source": null,
+    "state": "degree",
+    "states": [
+     "1",
+     "2",
+     "4",
+     "5",
+     "6"
+    ]
+   },
+   "tool": "transition_matrix"
+  },
+  {
+   "kwargs": {
+    "chord_corpus": [
+     [
+      [
+       [
+        0,
+        "maj"
+       ],
+       [
+        5,
+        "maj"
+       ],
+       [
+        7,
+        "maj"
+       ],
+       [
+        0,
+        "maj"
+       ]
+      ],
+      [
+       0,
+       "major"
+      ]
+     ],
+     [
+      [
+       [
+        0,
+        "maj"
+       ],
+       [
+        2,
+        "min"
+       ],
+       [
+        7,
+        "maj"
+       ],
+       [
+        0,
+        "maj"
+       ]
+      ],
+      [
+       0,
+       "major"
+      ]
+     ],
+     [
+      [
+       [
+        0,
+        "maj"
+       ],
+       [
+        9,
+        "min"
+       ],
+       [
+        7,
+        "maj"
+       ],
+       [
+        0,
+        "maj"
+       ]
+      ],
+      [
+       0,
+       "major"
+      ]
+     ]
+    ],
+    "smoothing": "none",
+    "state": "role"
+   },
+   "result": {
+    "alpha": 0.0,
+    "counts": {
+     "dominant": {
+      "tonic": 3
+     },
+     "predominant": {
+      "dominant": 2
+     },
+     "tonic": {
+      "dominant": 1,
+      "predominant": 2,
+      "tonic": 1
+     }
+    },
+    "n_pieces": 3,
+    "n_transitions": 9,
+    "prior_version": "distribution.1",
+    "probabilities": {
+     "dominant": {
+      "dominant": 0.0,
+      "predominant": 0.0,
+      "tonic": 1.0
+     },
+     "predominant": {
+      "dominant": 1.0,
+      "predominant": 0.0,
+      "tonic": 0.0
+     },
+     "tonic": {
+      "dominant": 0.25,
+      "predominant": 0.5,
+      "tonic": 0.25
+     }
+    },
+    "smoothing": "none",
+    "source": null,
+    "state": "role",
+    "states": [
+     "dominant",
+     "predominant",
+     "tonic"
+    ]
+   },
+   "tool": "transition_matrix"
+  },
+  {
+   "kwargs": {
+    "held_out_corpus": [
+     [
+      [
+       [
+        0,
+        "maj"
+       ],
+       [
+        7,
+        "maj"
+       ],
+       [
+        0,
+        "maj"
+       ]
+      ],
+      [
+       0,
+       "major"
+      ]
+     ]
+    ],
+    "matrix": {
+     "alpha": 0.5,
+     "counts": {
+      "1": {
+       "2": 1,
+       "4": 1,
+       "6": 1
+      },
+      "2": {
+       "5": 1
+      },
+      "4": {
+       "5": 1
+      },
+      "5": {
+       "1": 3
+      },
+      "6": {
+       "5": 1
+      }
+     },
+     "n_pieces": 3,
+     "n_transitions": 9,
+     "prior_version": "distribution.1",
+     "probabilities": {
+      "1": {
+       "1": 0.09090909090909091,
+       "2": 0.2727272727272727,
+       "4": 0.2727272727272727,
+       "5": 0.09090909090909091,
+       "6": 0.2727272727272727
+      },
+      "2": {
+       "1": 0.14285714285714285,
+       "2": 0.14285714285714285,
+       "4": 0.14285714285714285,
+       "5": 0.42857142857142855,
+       "6": 0.14285714285714285
+      },
+      "4": {
+       "1": 0.14285714285714285,
+       "2": 0.14285714285714285,
+       "4": 0.14285714285714285,
+       "5": 0.42857142857142855,
+       "6": 0.14285714285714285
+      },
+      "5": {
+       "1": 0.6363636363636364,
+       "2": 0.09090909090909091,
+       "4": 0.09090909090909091,
+       "5": 0.09090909090909091,
+       "6": 0.09090909090909091
+      },
+      "6": {
+       "1": 0.14285714285714285,
+       "2": 0.14285714285714285,
+       "4": 0.14285714285714285,
+       "5": 0.42857142857142855,
+       "6": 0.14285714285714285
+      }
+     },
+     "smoothing": "laplace",
+     "source": null,
+     "state": "degree",
+     "states": [
+      "1",
+      "2",
+      "4",
+      "5",
+      "6"
+     ]
+    }
+   },
+   "result": {
+    "cross_entropy_bits": 2.0557541576084954,
+    "has_zero_probability": false,
+    "n_pieces": 1,
+    "oov_transitions": 0,
+    "perplexity": 4.1576092031015,
+    "scored_transitions": 2
+   },
+   "tool": "transition_cross_entropy"
+  },
+  {
+   "kwargs": {
+    "name": "cmaj-style",
+    "provenance": {
+     "method": "hand-authored",
+     "source": "synthetic"
+    },
+    "ruleset": {
+     "name": "cmaj",
+     "rules": [
+      {
+       "family": "harmony",
+       "id": "v-i",
+       "polarity": "soft",
+       "require": {
+        "next_role": "tonic"
+       },
+       "weight": 2.0,
+       "where": {
+        "role": "dominant"
+       }
+      }
+     ],
+     "version": "1"
+    },
+    "version": "1"
+   },
+   "result": {
+    "description": "",
+    "distributions": [],
+    "name": "cmaj-style",
+    "provenance": {
+     "method": "hand-authored",
+     "source": "synthetic"
+    },
+    "ruleset": {
+     "description": "",
+     "name": "cmaj",
+     "rules": [
+      {
+       "family": "harmony",
+       "id": "v-i",
+       "polarity": "soft",
+       "require": {
+        "next_role": "tonic"
+       },
+       "weight": 2.0,
+       "where": {
+        "role": "dominant"
+       }
+      }
+     ],
+     "version": "1"
+    },
+    "schema_version": "style-profile.1",
+    "version": "1"
+   },
+   "tool": "build_style_profile"
+  },
+  {
+   "kwargs": {
+    "pcs": [
+     0,
+     2,
+     4,
+     5,
+     7,
+     9,
+     11
+    ]
+   },
+   "result": {
+    "cardinality": 7,
+    "forte_number": null,
+    "interval_vector": [
+     2,
+     5,
+     4,
+     3,
+     6,
+     1
+    ],
+    "is_scale": true,
+    "mask": 2741,
+    "names": [
+     {
+      "aliases": [
+       "Major"
+      ],
+      "name": "Ionian",
+      "root_pc": 0,
+      "source": null,
+      "tradition": null
+     },
+     {
+      "aliases": [],
+      "name": "Dorian",
+      "root_pc": 2,
+      "source": null,
+      "tradition": null
+     },
+     {
+      "aliases": [],
+      "name": "Phrygian",
+      "root_pc": 4,
+      "source": null,
+      "tradition": null
+     },
+     {
+      "aliases": [],
+      "name": "Lydian",
+      "root_pc": 5,
+      "source": null,
+      "tradition": null
+     },
+     {
+      "aliases": [],
+      "name": "Mixolydian",
+      "root_pc": 7,
+      "source": null,
+      "tradition": null
+     },
+     {
+      "aliases": [
+       "Natural Minor"
+      ],
+      "name": "Aeolian",
+      "root_pc": 9,
+      "source": null,
+      "tradition": null
+     },
+     {
+      "aliases": [],
+      "name": "Locrian",
+      "root_pc": 11,
+      "source": null,
+      "tradition": null
+     }
+    ],
+    "pcs": [
+     0,
+     2,
+     4,
+     5,
+     7,
+     9,
+     11
+    ],
+    "prime_form": [
+     0,
+     1,
+     3,
+     5,
+     6,
+     8,
+     10
+    ],
+    "prime_form_mask": 1387,
+    "rotational_period": 12
+   },
+   "tool": "scale_names"
+  },
+  {
+   "kwargs": {
+    "allowed_pcs": [
+     0,
+     2,
+     4,
+     5,
+     7,
+     9,
+     11
+    ],
+    "events": [
+     [
+      0,
+      1,
+      72,
+      "upper"
+     ],
+     [
+      1,
+      1,
+      74,
+      "upper"
+     ],
+     [
+      0,
+      1,
+      65,
+      "lower"
+     ],
+     [
+      1,
+      1,
+      67,
+      "lower"
+     ]
+    ],
+    "max_repairs": 3,
+    "ruleset": {
+     "name": "no-parallels",
+     "rules": [
+      {
+       "family": "voice_motion",
+       "forbid": {
+        "interval_class_to": {
+         "in": [
+          0,
+          7
+         ]
+        }
+       },
+       "id": "no-parallel-perfects",
+       "polarity": "hard",
+       "where": {
+        "motion": "parallel"
+       }
+      }
+     ],
+     "version": "1"
+    }
+   },
+   "result": {
+    "already_conformant": false,
+    "before_hard_violations": 1,
+    "budget_exhausted": false,
+    "evaluations": 33,
+    "reason": null,
+    "repairs": [
+     {
+      "edits": [
+       {
+        "fixes_rules": [
+         "no-parallel-perfects"
+        ],
+        "midi_from": 65,
+        "midi_to": 64,
+        "onset_beats": 0.0,
+        "voice": "lower"
+       }
+      ],
+      "events": [
+       [
+        0.0,
+        1.0,
+        64,
+        "lower"
+       ],
+       [
+        0.0,
+        1.0,
+        72,
+        "upper"
+       ],
+       [
+        1.0,
+        1.0,
+        67,
+        "lower"
+       ],
+       [
+        1.0,
+        1.0,
+        74,
+        "upper"
+       ]
+      ],
+      "soft_score_after": null,
+      "total_displacement": 1
+     },
+     {
+      "edits": [
+       {
+        "fixes_rules": [
+         "no-parallel-perfects"
+        ],
+        "midi_from": 72,
+        "midi_to": 71,
+        "onset_beats": 0.0,
+        "voice": "upper"
+       }
+      ],
+      "events": [
+       [
+        0.0,
+        1.0,
+        65,
+        "lower"
+       ],
+       [
+        0.0,
+        1.0,
+        71,
+        "upper"
+       ],
+       [
+        1.0,
+        1.0,
+        67,
+        "lower"
+       ],
+       [
+        1.0,
+        1.0,
+        74,
+        "upper"
+       ]
+      ],
+      "soft_score_after": null,
+      "total_displacement": 1
+     },
+     {
+      "edits": [
+       {
+        "fixes_rules": [
+         "no-parallel-perfects"
+        ],
+        "midi_from": 65,
+        "midi_to": 67,
+        "onset_beats": 0.0,
+        "voice": "lower"
+       }
+      ],
+      "events": [
+       [
+        0.0,
+        1.0,
+        67,
+        "lower"
+       ],
+       [
+        0.0,
+        1.0,
+        72,
+        "upper"
+       ],
+       [
+        1.0,
+        1.0,
+        67,
+        "lower"
+       ],
+       [
+        1.0,
+        1.0,
+        74,
+        "upper"
+       ]
+      ],
+      "soft_score_after": null,
+      "total_displacement": 2
+     }
+    ],
+    "ruleset_name": "no-parallels"
+   },
+   "tool": "repair_ruleset"
+  },
+  {
+   "kwargs": {},
+   "result": [
+    "arch-contour",
+    "prinner-descent"
+   ],
+   "tool": "list_named_patterns"
+  },
+  {
+   "kwargs": {
+    "name": "prinner-descent"
+   },
+   "result": {
+    "abstraction": {
+     "pitch": "degree",
+     "time": "free"
+    },
+    "description": "The melodic skeleton of the Prinner riposte's upper voice (Gjerdingen): scale degrees 6-5-4-3, stepwise descent. Degree-relative and rhythm-free, so it matches in any key at any pacing. HONEST SCOPE: the full galant Prinner is a two-voice schema (this descent over a 4-3-2-1 bass); the two-voice pairing needs the cross-voice pattern scope - a recorded gap-C follow-on, not expressible in the melody domain.",
+    "domain": "melody",
+    "elements": [
+     6,
+     5,
+     4,
+     3
+    ],
+    "name": "prinner-descent",
+    "schema_version": "pattern.1",
+    "version": "1"
+   },
+   "tool": "load_named_pattern"
+  },
+  {
+   "kwargs": {
+    "events": [
+     [
+      0,
+      1,
+      81,
+      "v"
+     ],
+     [
+      1,
+      1,
+      79,
+      "v"
+     ],
+     [
+      2,
+      1,
+      77,
+      "v"
+     ],
+     [
+      3,
+      1,
+      76,
+      "v"
+     ],
+     [
+      4,
+      0.5,
+      69,
+      "v"
+     ],
+     [
+      4.5,
+      0.5,
+      67,
+      "v"
+     ],
+     [
+      5,
+      1,
+      65,
+      "v"
+     ],
+     [
+      6,
+      2,
+      64,
+      "v"
+     ]
+    ],
+    "key": [
+     "C",
+     "major"
+    ],
+    "pattern": {
+     "abstraction": {
+      "pitch": "degree",
+      "time": "free"
+     },
+     "domain": "melody",
+     "elements": [
+      6,
+      5,
+      4,
+      3
+     ],
+     "name": "prinner-descent",
+     "schema_version": "pattern.1",
+     "version": "1"
+    }
+   },
+   "result": {
+    "count": 2,
+    "key": [
+     0,
+     "major"
+    ],
+    "occurrences": [
+     {
+      "degrees": [
+       6,
+       5,
+       4,
+       3
+      ],
+      "end_beat": 4.0,
+      "iois": [
+       1.0,
+       1.0,
+       1.0
+      ],
+      "midis": [
+       81,
+       79,
+       77,
+       76
+      ],
+      "moves": null,
+      "onsets": [
+       0.0,
+       1.0,
+       2.0,
+       3.0
+      ],
+      "start_beat": 0.0,
+      "voice": "v"
+     },
+     {
+      "degrees": [
+       6,
+       5,
+       4,
+       3
+      ],
+      "end_beat": 8.0,
+      "iois": [
+       0.5,
+       0.5,
+       1.0
+      ],
+      "midis": [
+       69,
+       67,
+       65,
+       64
+      ],
+      "moves": null,
+      "onsets": [
+       4.0,
+       4.5,
+       5.0,
+       6.0
+      ],
+      "start_beat": 4.0,
+      "voice": "v"
+     }
+    ],
+    "pattern_name": "prinner-descent",
+    "pattern_version": "1",
+    "pitch_level": "degree",
+    "time_level": "free",
+    "voices_skipped": []
+   },
+   "tool": "find_pattern"
+  },
+  {
+   "kwargs": {
+    "events": [
+     [
+      0,
+      0.5,
+      72,
+      "topline"
+     ],
+     [
+      0.5,
+      0.5,
+      74,
+      "topline"
+     ],
+     [
+      1,
+      0.5,
+      76,
+      "topline"
+     ],
+     [
+      1.5,
+      0.5,
+      77,
+      "topline"
+     ],
+     [
+      0,
+      2,
+      48,
+      "pad"
+     ],
+     [
+      0,
+      2,
+      52,
+      "pad"
+     ],
+     [
+      0,
+      2,
+      55,
+      "pad"
+     ],
+     [
+      0,
+      0.1,
+      36,
+      "kick"
+     ],
+     [
+      0.5,
+      0.1,
+      36,
+      "kick"
+     ],
+     [
+      1,
+      0.1,
+      36,
+      "kick"
+     ],
+     [
+      1.5,
+      0.1,
+      36,
+      "kick"
+     ]
+    ]
+   },
+   "result": {
+    "profiles": [
+     {
+      "distinct_pcs": 1,
+      "n_events": 4,
+      "n_onsets": 4,
+      "onset_density": 2.5,
+      "pc_entropy_norm": 0.0,
+      "pitch_mobility": 0.0,
+      "register_hi": 36,
+      "register_lo": 36,
+      "register_mean": 36.0,
+      "simultaneity": 1.0,
+      "span_beats": 1.6,
+      "sustain_ratio": 0.25,
+      "voice": "kick"
+     },
+     {
+      "distinct_pcs": 3,
+      "n_events": 3,
+      "n_onsets": 1,
+      "onset_density": 0.5,
+      "pc_entropy_norm": 0.442114109,
+      "pitch_mobility": 0.0,
+      "register_hi": 55,
+      "register_lo": 48,
+      "register_mean": 51.666666667,
+      "simultaneity": 3.0,
+      "span_beats": 2.0,
+      "sustain_ratio": 3.0,
+      "voice": "pad"
+     },
+     {
+      "distinct_pcs": 4,
+      "n_events": 4,
+      "n_onsets": 4,
+      "onset_density": 2.0,
+      "pc_entropy_norm": 0.557885891,
+      "pitch_mobility": 1.666666667,
+      "register_hi": 77,
+      "register_lo": 72,
+      "register_mean": 74.75,
+      "simultaneity": 1.0,
+      "span_beats": 2.0,
+      "sustain_ratio": 1.0,
+      "voice": "topline"
+     }
+    ]
+   },
+   "tool": "part_profiles"
+  },
+  {
+   "kwargs": {
+    "events": [
+     [
+      0,
+      0.5,
+      72,
+      "topline"
+     ],
+     [
+      1,
+      0.5,
+      76,
+      "topline"
+     ],
+     [
+      2,
+      0.5,
+      77,
+      "topline"
+     ],
+     [
+      3,
+      0.5,
+      79,
+      "topline"
+     ],
+     [
+      0,
+      4,
+      48,
+      "pad"
+     ],
+     [
+      0,
+      4,
+      52,
+      "pad"
+     ],
+     [
+      0,
+      4,
+      55,
+      "pad"
+     ],
+     [
+      0,
+      0.1,
+      36,
+      "bass"
+     ],
+     [
+      1,
+      0.1,
+      36,
+      "bass"
+     ],
+     [
+      2,
+      0.1,
+      43,
+      "bass"
+     ],
+     [
+      3,
+      0.1,
+      43,
+      "bass"
+     ]
+    ]
+   },
+   "result": {
+    "relations": [
+     {
+      "chord_tone_support_a_vs_b": 1.0,
+      "chord_tone_support_b_vs_a": 0.333333333,
+      "co_sounding_moments": 4,
+      "combined_onsets": 4,
+      "density_ratio": 0.25,
+      "groove_congruence": 1.0,
+      "interlock": 0.0,
+      "motion_mix": {},
+      "motion_transitions": 0,
+      "n_onsets_a": 4,
+      "n_onsets_b": 1,
+      "onset_synchrony": 0.25,
+      "overlap": 0.75,
+      "register_crossing_rate": 0.0,
+      "register_gap_mean": 12.166666667,
+      "voice_a": "bass",
+      "voice_b": "pad"
+     },
+     {
+      "chord_tone_support_a_vs_b": 0.5,
+      "chord_tone_support_b_vs_a": 0.5,
+      "co_sounding_moments": 4,
+      "combined_onsets": 4,
+      "density_ratio": 1.0,
+      "groove_congruence": 1.0,
+      "interlock": 0.0,
+      "motion_mix": {
+       "oblique": 2,
+       "similar": 1
+      },
+      "motion_transitions": 3,
+      "n_onsets_a": 4,
+      "n_onsets_b": 4,
+      "onset_synchrony": 1.0,
+      "overlap": 0.0,
+      "register_crossing_rate": 0.0,
+      "register_gap_mean": 36.5,
+      "voice_a": "bass",
+      "voice_b": "topline"
+     },
+     {
+      "chord_tone_support_a_vs_b": 0.333333333,
+      "chord_tone_support_b_vs_a": 0.75,
+      "co_sounding_moments": 4,
+      "combined_onsets": 4,
+      "density_ratio": 4.0,
+      "groove_congruence": 1.0,
+      "interlock": 0.0,
+      "motion_mix": {},
+      "motion_transitions": 0,
+      "n_onsets_a": 1,
+      "n_onsets_b": 4,
+      "onset_synchrony": 0.25,
+      "overlap": 0.75,
+      "register_crossing_rate": 0.0,
+      "register_gap_mean": 24.333333333,
+      "voice_a": "pad",
+      "voice_b": "topline"
+     }
+    ]
+   },
+   "tool": "part_relations"
+  },
+  {
+   "kwargs": {
+    "events": [
+     [
+      0,
+      0.1,
+      36,
+      "kick"
+     ],
+     [
+      1,
+      0.1,
+      36,
+      "kick"
+     ],
+     [
+      0,
+      0.5,
+      48,
+      "bass"
+     ],
+     [
+      1,
+      0.5,
+      48,
+      "bass"
+     ],
+     [
+      0,
+      2,
+      60,
+      "pad"
+     ],
+     [
+      0,
+      2,
+      64,
+      "pad"
+     ],
+     [
+      0,
+      2,
+      67,
+      "pad"
+     ],
+     [
+      0,
+      0.5,
+      60,
+      "topline"
+     ],
+     [
+      1,
+      0.5,
+      64,
+      "topline"
+     ]
+    ],
+    "ruleset": {
+     "name": "texture-smoke",
+     "rules": [
+      {
+       "family": "texture",
+       "id": "bass-locks-kick",
+       "polarity": "hard",
+       "require": {
+        "onset_synchrony": {
+         "gte": 0.8
+        }
+       },
+       "where": {
+        "voice_a": "bass",
+        "voice_b": "kick"
+       }
+      },
+      {
+       "family": "texture",
+       "id": "topline-chord-tone-over-pad",
+       "polarity": "soft",
+       "require": {
+        "chord_tone_support_b_vs_a": {
+         "gte": 0.6
+        }
+       },
+       "weight": 2.0,
+       "where": {
+        "voice_a": "pad",
+        "voice_b": "topline"
+       }
+      }
+     ],
+     "version": "t.1"
+    }
+   },
+   "result": {
+    "budgets_hold": null,
+    "hard_rules_hold": true,
+    "hard_violation_count": 0,
+    "results": [
+     {
+      "applicable": true,
+      "conformance": 1.0,
+      "holds": true,
+      "items_considered": 1,
+      "polarity": "hard",
+      "reason": null,
+      "rule_id": "bass-locks-kick",
+      "skipped_voices": [],
+      "violations": [],
+      "weight": 1.0
+     },
+     {
+      "applicable": true,
+      "conformance": 1.0,
+      "holds": null,
+      "items_considered": 1,
+      "polarity": "soft",
+      "reason": null,
+      "rule_id": "topline-chord-tone-over-pad",
+      "skipped_voices": [],
+      "violations": [],
+      "weight": 2.0
+     }
+    ],
+    "ruleset_name": "texture-smoke",
+    "ruleset_version": "t.1",
+    "soft_score": 1.0
+   },
+   "tool": "evaluate_ruleset"
+  },
+  {
+   "kwargs": {
+    "events": [
+     [
+      0,
+      1,
+      69,
+      "S"
+     ],
+     [
+      0,
+      1,
+      65,
+      "B"
+     ],
+     [
+      1,
+      1,
+      67,
+      "S"
+     ],
+     [
+      1,
+      1,
+      64,
+      "B"
+     ],
+     [
+      2,
+      1,
+      65,
+      "S"
+     ],
+     [
+      2,
+      1,
+      62,
+      "B"
+     ],
+     [
+      3,
+      1,
+      64,
+      "S"
+     ],
+     [
+      3,
+      1,
+      60,
+      "B"
+     ]
+    ],
+    "key": [
+     0,
+     "major"
+    ],
+    "pattern": {
+     "abstraction": {
+      "alignment": "homorhythmic",
+      "pitch": "degree"
+     },
+     "domain": "schema",
+     "lines": [
+      [
+       6,
+       5,
+       4,
+       3
+      ],
+      [
+       4,
+       3,
+       2,
+       1
+      ]
+     ],
+     "name": "prinner",
+     "schema_version": "cross_part.1",
+     "version": "1"
+    }
+   },
+   "result": {
+    "alignment": "homorhythmic",
+    "count": 1,
+    "key": [
+     0,
+     "major"
+    ],
+    "occurrences": [
+     {
+      "end_beat": 3.0,
+      "lines": [
+       {
+        "degrees": [
+         6,
+         5,
+         4,
+         3
+        ],
+        "midis": [
+         69,
+         67,
+         65,
+         64
+        ],
+        "moves": null
+       },
+       {
+        "degrees": [
+         4,
+         3,
+         2,
+         1
+        ],
+        "midis": [
+         65,
+         64,
+         62,
+         60
+        ],
+        "moves": null
+       }
+      ],
+      "onsets": [
+       0.0,
+       1.0,
+       2.0,
+       3.0
+      ],
+      "start_beat": 0.0,
+      "voices": [
+       "B",
+       "S"
+      ]
+     }
+    ],
+    "pattern_name": "prinner",
+    "pattern_version": "1",
+    "pitch_level": "degree",
+    "voices_skipped": []
+   },
+   "tool": "find_cross_part_pattern"
+  },
+  {
+   "kwargs": {},
+   "result": [
+    "prinner-two-voice"
+   ],
+   "tool": "list_named_cross_part_patterns"
+  },
+  {
+   "kwargs": {
+    "name": "prinner-two-voice"
+   },
+   "result": {
+    "abstraction": {
+     "alignment": "homorhythmic",
+     "pitch": "degree"
+    },
+    "description": "The two-voice galant Prinner (Gjerdingen): the upper voice descends scale degrees 6-5-4-3 over a 4-3-2-1 bass, the two voices moving together (homorhythmic). Degree-relative, so it matches in any key; lines are register-ordered high\u2192low and the matcher pairs any two co-onset single-pitch voices by register (not by label). This is the full schema that data/patterns/prinner-descent.json (melody domain) could only half-express \u2014 its own docstring flagged the two-voice pairing as needing exactly this cross-voice scope.",
+    "domain": "schema",
+    "lines": [
+     [
+      6,
+      5,
+      4,
+      3
+     ],
+     [
+      4,
+      3,
+      2,
+      1
+     ]
+    ],
+    "name": "prinner-two-voice",
+    "schema_version": "cross_part.1",
+    "version": "1"
+   },
+   "tool": "load_named_cross_part_pattern"
+  },
+  {
+   "kwargs": {
+    "events": [
+     [
+      0.0,
+      0.1,
+      36,
+      110,
+      "t1c9"
+     ],
+     [
+      1.0,
+      0.1,
+      36,
+      110,
+      "t1c9"
+     ],
+     [
+      2.0,
+      0.1,
+      36,
+      110,
+      "t1c9"
+     ],
+     [
+      3.0,
+      0.1,
+      36,
+      110,
+      "t1c9"
+     ],
+     [
+      0.5,
+      0.1,
+      42,
+      70,
+      "t1c9"
+     ],
+     [
+      1.5,
+      0.1,
+      42,
+      70,
+      "t1c9"
+     ],
+     [
+      2.5,
+      0.1,
+      42,
+      70,
+      "t1c9"
+     ],
+     [
+      3.5,
+      0.1,
+      42,
+      70,
+      "t1c9"
+     ],
+     [
+      1.0,
+      0.1,
+      38,
+      100,
+      "t1c9"
+     ],
+     [
+      3.0,
+      0.1,
+      38,
+      100,
+      "t1c9"
+     ]
+    ]
+   },
+   "result": {
+    "bars_considered": 1,
+    "channel_10_detected": true,
+    "map_version": "gm-percussion.1",
+    "matches": [
+     {
+      "bars_considered": 1,
+      "bars_matched": 1,
+      "coverage": 1.0,
+      "matched_bars": [
+       0
+      ],
+      "name": "backbeat",
+      "required_beats": [
+       1.0,
+       3.0
+      ],
+      "role": "snare",
+      "version": "1"
+     },
+     {
+      "bars_considered": 1,
+      "bars_matched": 1,
+      "coverage": 1.0,
+      "matched_bars": [
+       0
+      ],
+      "name": "four-on-the-floor",
+      "required_beats": [
+       0.0,
+       1.0,
+       2.0,
+       3.0
+      ],
+      "role": "kick",
+      "version": "1"
+     },
+     {
+      "bars_considered": 1,
+      "bars_matched": 1,
+      "coverage": 1.0,
+      "matched_bars": [
+       0
+      ],
+      "name": "offbeat-hats",
+      "required_beats": [
+       0.5,
+       1.5,
+       2.5,
+       3.5
+      ],
+      "role": "hihat_closed",
+      "version": "1"
+     },
+     {
+      "bars_considered": 1,
+      "bars_matched": 0,
+      "coverage": 0.0,
+      "matched_bars": [],
+      "name": "eighth-note-hats",
+      "required_beats": [
+       0.0,
+       0.5,
+       1.0,
+       1.5,
+       2.0,
+       2.5,
+       3.0,
+       3.5
+      ],
+      "role": "hihat_closed",
+      "version": "1"
+     },
+     {
+      "bars_considered": 1,
+      "bars_matched": 0,
+      "coverage": 0.0,
+      "matched_bars": [],
+      "name": "half-time-backbeat",
+      "required_beats": [
+       2.0
+      ],
+      "role": "snare",
+      "version": "1"
+     },
+     {
+      "bars_considered": 1,
+      "bars_matched": 0,
+      "coverage": 0.0,
+      "matched_bars": [],
+      "name": "tresillo-kick",
+      "required_beats": [
+       0.0,
+       1.5,
+       3.0
+      ],
+      "role": "kick",
+      "version": "1"
+     }
+    ],
+    "roles": [
+     {
+      "beats_in_bar": [
+       0.5,
+       1.5,
+       2.5,
+       3.5
+      ],
+      "count": 4,
+      "onsets": [
+       0.5,
+       1.5,
+       2.5,
+       3.5
+      ],
+      "pitches": [
+       42
+      ],
+      "role": "hihat_closed"
+     },
+     {
+      "beats_in_bar": [
+       0.0,
+       1.0,
+       2.0,
+       3.0
+      ],
+      "count": 4,
+      "onsets": [
+       0.0,
+       1.0,
+       2.0,
+       3.0
+      ],
+      "pitches": [
+       36
+      ],
+      "role": "kick"
+     },
+     {
+      "beats_in_bar": [
+       1.0,
+       3.0
+      ],
+      "count": 2,
+      "onsets": [
+       1.0,
+       3.0
+      ],
+      "pitches": [
+       38
+      ],
+      "role": "snare"
+     }
+    ],
+    "unmapped_pitches": [],
+    "voices_analyzed": [
+     "t1c9"
+    ]
+   },
+   "tool": "drum_pattern_analysis"
+  },
+  {
+   "kwargs": {
+    "events": [
+     [
+      0,
+      2,
+      60
+     ],
+     [
+      0,
+      2,
+      64
+     ],
+     [
+      0,
+      2,
+      67
+     ],
+     [
+      2,
+      2,
+      65
+     ],
+     [
+      2,
+      2,
+      69
+     ],
+     [
+      2,
+      2,
+      72
+     ],
+     [
+      4,
+      2,
+      67
+     ],
+     [
+      4,
+      2,
+      71
+     ],
+     [
+      4,
+      2,
+      74
+     ],
+     [
+      6,
+      2,
+      60
+     ],
+     [
+      6,
+      2,
+      64
+     ],
+     [
+      6,
+      2,
+      67
+     ],
+     [
+      8,
+      2,
+      60
+     ],
+     [
+      8,
+      2,
+      64
+     ],
+     [
+      8,
+      2,
+      67
+     ],
+     [
+      10,
+      2,
+      65
+     ],
+     [
+      10,
+      2,
+      69
+     ],
+     [
+      10,
+      2,
+      72
+     ],
+     [
+      12,
+      2,
+      67
+     ],
+     [
+      12,
+      2,
+      71
+     ],
+     [
+      12,
+      2,
+      74
+     ],
+     [
+      14,
+      2,
+      60
+     ],
+     [
+      14,
+      2,
+      64
+     ],
+     [
+      14,
+      2,
+      67
+     ]
+    ],
+    "subdivisions": 2
+   },
+   "result": {
+    "areas": [
+     {
+      "cadence_types": [
+       "authentic",
+       "authentic"
+      ],
+      "chords_considered": 8,
+      "claim_possible": true,
+      "confirmed": true,
+      "duration_beats": 16.0,
+      "end_beats": 16.0,
+      "has_authentic": true,
+      "has_final_authentic": true,
+      "mode": "major",
+      "reason": null,
+      "start_beats": 0.0,
+      "tonic_pc": 0
+     }
+    ],
+    "confirmed_areas": 1,
+    "home_mode": "major",
+    "home_tonic_pc": 0,
+    "no_claim_areas": 0,
+    "unconfirmed_areas": 0
+   },
+   "tool": "confirm_key_areas"
+  },
+  {
+   "kwargs": {
+    "events": [
+     [
+      0,
+      2,
+      60
+     ],
+     [
+      0,
+      2,
+      64
+     ],
+     [
+      0,
+      2,
+      67
+     ],
+     [
+      2,
+      2,
+      65
+     ],
+     [
+      2,
+      2,
+      69
+     ],
+     [
+      2,
+      2,
+      72
+     ],
+     [
+      4,
+      2,
+      67
+     ],
+     [
+      4,
+      2,
+      71
+     ],
+     [
+      4,
+      2,
+      74
+     ],
+     [
+      6,
+      2,
+      60
+     ],
+     [
+      6,
+      2,
+      64
+     ],
+     [
+      6,
+      2,
+      67
+     ],
+     [
+      8,
+      2,
+      65
+     ],
+     [
+      8,
+      2,
+      68
+     ],
+     [
+      8,
+      2,
+      72
+     ],
+     [
+      10,
+      2,
+      60
+     ],
+     [
+      10,
+      2,
+      64
+     ],
+     [
+      10,
+      2,
+      67
+     ],
+     [
+      12,
+      2,
+      62
+     ],
+     [
+      12,
+      2,
+      66
+     ],
+     [
+      12,
+      2,
+      69
+     ],
+     [
+      12,
+      2,
+      72
+     ],
+     [
+      14,
+      2,
+      67
+     ],
+     [
+      14,
+      2,
+      71
+     ],
+     [
+      14,
+      2,
+      74
+     ],
+     [
+      16,
+      2,
+      60
+     ],
+     [
+      16,
+      2,
+      64
+     ],
+     [
+      16,
+      2,
+      67
+     ]
+    ],
+    "subdivisions": 2
+   },
+   "result": {
+    "chords_examined": 10,
+    "confident_events": 2,
+    "contested_events": 0,
+    "diatonic_chords": 8,
+    "events": [
+     {
+      "area_mode": "major",
+      "area_tonic_pc": 0,
+      "bar": 2,
+      "beats_to_boundary": null,
+      "contested_reasons": [],
+      "end_beat": 10.0,
+      "foreign_pcs": [
+       8
+      ],
+      "function_category": null,
+      "no_label_reason": null,
+      "position": "interior",
+      "quality": "min",
+      "readings": [
+       {
+        "label": "borrowed_mixture",
+        "signals": [
+         "every foreign pc [8] belongs to the parallel minor collection on the same tonic"
+        ]
+       }
+      ],
+      "root_pc": 5,
+      "single_label": "borrowed_mixture",
+      "start_beat": 8.0,
+      "zone": "confident",
+      "zone_coordinates": {
+       "area_duration_beats": 18.0,
+       "beats_to_boundary": null,
+       "boundary_threshold_beats": 2.0,
+       "floor_tolerance_beats": 2.0,
+       "min_modulation_beats": 8.0,
+       "prior_version": "structural-key.2",
+       "readings": 1
+      }
+     },
+     {
+      "area_mode": "major",
+      "area_tonic_pc": 0,
+      "bar": 3,
+      "beats_to_boundary": null,
+      "contested_reasons": [],
+      "end_beat": 14.0,
+      "foreign_pcs": [
+       6
+      ],
+      "function_category": "secondary_dominant",
+      "no_label_reason": null,
+      "position": "interior",
+      "quality": "7",
+      "readings": [
+       {
+        "label": "secondary_dominant",
+        "signals": [
+         "name_chord's special-function seam reads this chord as secondary_dominant in the area's own key",
+         "the next chord realizes the predicted resolution: root pc 7, down a fifth \u2014 a sequential test single-chord naming cannot make"
+        ]
+       }
+      ],
+      "root_pc": 2,
+      "single_label": "secondary_dominant",
+      "start_beat": 12.0,
+      "zone": "confident",
+      "zone_coordinates": {
+       "area_duration_beats": 18.0,
+       "beats_to_boundary": null,
+       "boundary_threshold_beats": 2.0,
+       "floor_tolerance_beats": 2.0,
+       "min_modulation_beats": 8.0,
+       "prior_version": "structural-key.2",
+       "readings": 1
+      }
+     }
+    ],
+    "home_mode": "major",
+    "home_tonic_pc": 0,
+    "prior_version": "structural-key.2"
+   },
+   "tool": "classify_chromatic_events"
+  },
+  {
+   "kwargs": {},
+   "result": [
+    "backbeat",
+    "eighth-note-hats",
+    "four-on-the-floor",
+    "half-time-backbeat",
+    "offbeat-hats",
+    "tresillo-kick"
+   ],
+   "tool": "list_named_drum_patterns"
+  },
+  {
+   "kwargs": {
+    "name": "four-on-the-floor"
+   },
+   "result": {
+    "description": "Kick on every beat of a 4/4 bar. The defining pulse of disco, house, techno and much four-to-the-floor pop/EDM. REQUIRED-ONLY: extra kicks (offbeat pickups, 16th doubles) do not disqualify a bar \u2014 the claim is that all four beats are struck, not that nothing else is.",
+    "meter": [
+     4,
+     4
+    ],
+    "name": "four-on-the-floor",
+    "required_beats": [
+     0.0,
+     1.0,
+     2.0,
+     3.0
+    ],
+    "role": "kick",
+    "schema_version": "drum_pattern.1",
+    "version": "1"
+   },
+   "tool": "load_named_drum_pattern"
+  },
+  {
+   "kwargs": {
+    "events": [
+     [
+      0,
+      1,
+      72,
+      "u"
+     ],
+     [
+      0,
+      1,
+      65,
+      "l"
+     ],
+     [
+      1,
+      1,
+      74,
+      "u"
+     ],
+     [
+      1,
+      1,
+      67,
+      "l"
+     ],
+     [
+      2,
+      1,
+      72,
+      "u"
+     ],
+     [
+      2,
+      1,
+      69,
+      "l"
+     ],
+     [
+      3,
+      1,
+      74,
+      "u"
+     ],
+     [
+      3,
+      1,
+      67,
+      "l"
+     ],
+     [
+      4,
+      1,
+      76,
+      "u"
+     ],
+     [
+      4,
+      1,
+      71,
+      "l"
+     ]
+    ],
+    "ruleset": {
+     "name": "quota-smoke",
+     "rules": [
+      {
+       "family": "voice_motion",
+       "forbid": {
+        "interval_class_to": {
+         "in": [
+          0,
+          7
+         ]
+        },
+        "motion": "parallel"
+       },
+       "id": "parallel-perfects-budget",
+       "max_rate": 0.05,
+       "polarity": "budget"
+      }
+     ],
+     "version": "t.1"
+    }
+   },
+   "result": {
+    "budgets_hold": false,
+    "hard_rules_hold": null,
+    "hard_violation_count": 0,
+    "results": [
+     {
+      "applicable": true,
+      "conformance": 0.75,
+      "holds": false,
+      "items_considered": 4,
+      "polarity": "budget",
+      "reason": null,
+      "rule_id": "parallel-perfects-budget",
+      "skipped_voices": [],
+      "violations": [
+       {
+        "evidence": {
+         "interval_class_to": 7,
+         "motion": "parallel"
+        },
+        "location": {
+         "from_beat": 0.0,
+         "to_beat": 1.0,
+         "voices": [
+          "l",
+          "u"
+         ]
+        }
+       }
+      ],
+      "weight": 1.0
+     }
+    ],
+    "ruleset_name": "quota-smoke",
+    "ruleset_version": "t.1",
+    "soft_score": null
+   },
+   "tool": "evaluate_ruleset"
   }
  ],
  "description": "Golden conformance outputs for the MCP tool surface (Decision 10). Language-neutral spec: any engine reproducing these (floats within rel 1e-9 / abs 1e-12) is conformant. Regenerate ONLY for intended output changes, in the same PR, so diffs are reviewable.",
