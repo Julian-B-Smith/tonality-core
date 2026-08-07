@@ -627,6 +627,239 @@
    "sha256": "4a9e0a584fe5565ecc3c10fcc43cda98850efab0854aa7c88ce1cc125c6cff48",
    "versions": null
   },
+  "gm_percussion.json": {
+   "content": [
+    {
+     "license": "GM1 is a published interoperability specification; the note-name table is factual and not copyrightable as data.",
+     "note_range": [
+      35,
+      81
+     ],
+     "notes": {
+      "35": {
+       "name": "Acoustic Bass Drum",
+       "role": "kick"
+      },
+      "36": {
+       "name": "Bass Drum 1",
+       "role": "kick"
+      },
+      "37": {
+       "name": "Side Stick",
+       "role": "rim"
+      },
+      "38": {
+       "name": "Acoustic Snare",
+       "role": "snare"
+      },
+      "39": {
+       "name": "Hand Clap",
+       "role": "clap"
+      },
+      "40": {
+       "name": "Electric Snare",
+       "role": "snare"
+      },
+      "41": {
+       "name": "Low Floor Tom",
+       "role": "tom"
+      },
+      "42": {
+       "name": "Closed Hi Hat",
+       "role": "hihat_closed"
+      },
+      "43": {
+       "name": "High Floor Tom",
+       "role": "tom"
+      },
+      "44": {
+       "name": "Pedal Hi-Hat",
+       "role": "hihat_pedal"
+      },
+      "45": {
+       "name": "Low Tom",
+       "role": "tom"
+      },
+      "46": {
+       "name": "Open Hi-Hat",
+       "role": "hihat_open"
+      },
+      "47": {
+       "name": "Low-Mid Tom",
+       "role": "tom"
+      },
+      "48": {
+       "name": "Hi-Mid Tom",
+       "role": "tom"
+      },
+      "49": {
+       "name": "Crash Cymbal 1",
+       "role": "crash"
+      },
+      "50": {
+       "name": "High Tom",
+       "role": "tom"
+      },
+      "51": {
+       "name": "Ride Cymbal 1",
+       "role": "ride"
+      },
+      "52": {
+       "name": "Chinese Cymbal",
+       "role": "crash"
+      },
+      "53": {
+       "name": "Ride Bell",
+       "role": "ride"
+      },
+      "54": {
+       "name": "Tambourine",
+       "role": "tambourine"
+      },
+      "55": {
+       "name": "Splash Cymbal",
+       "role": "crash"
+      },
+      "56": {
+       "name": "Cowbell",
+       "role": "cowbell"
+      },
+      "57": {
+       "name": "Crash Cymbal 2",
+       "role": "crash"
+      },
+      "58": {
+       "name": "Vibraslap",
+       "role": "misc"
+      },
+      "59": {
+       "name": "Ride Cymbal 2",
+       "role": "ride"
+      },
+      "60": {
+       "name": "Hi Bongo",
+       "role": "bongo"
+      },
+      "61": {
+       "name": "Low Bongo",
+       "role": "bongo"
+      },
+      "62": {
+       "name": "Mute Hi Conga",
+       "role": "conga"
+      },
+      "63": {
+       "name": "Open Hi Conga",
+       "role": "conga"
+      },
+      "64": {
+       "name": "Low Conga",
+       "role": "conga"
+      },
+      "65": {
+       "name": "High Timbale",
+       "role": "timbale"
+      },
+      "66": {
+       "name": "Low Timbale",
+       "role": "timbale"
+      },
+      "67": {
+       "name": "High Agogo",
+       "role": "agogo"
+      },
+      "68": {
+       "name": "Low Agogo",
+       "role": "agogo"
+      },
+      "69": {
+       "name": "Cabasa",
+       "role": "shaker"
+      },
+      "70": {
+       "name": "Maracas",
+       "role": "shaker"
+      },
+      "71": {
+       "name": "Short Whistle",
+       "role": "whistle"
+      },
+      "72": {
+       "name": "Long Whistle",
+       "role": "whistle"
+      },
+      "73": {
+       "name": "Short Guiro",
+       "role": "guiro"
+      },
+      "74": {
+       "name": "Long Guiro",
+       "role": "guiro"
+      },
+      "75": {
+       "name": "Claves",
+       "role": "claves"
+      },
+      "76": {
+       "name": "Hi Wood Block",
+       "role": "woodblock"
+      },
+      "77": {
+       "name": "Low Wood Block",
+       "role": "woodblock"
+      },
+      "78": {
+       "name": "Mute Cuica",
+       "role": "cuica"
+      },
+      "79": {
+       "name": "Open Cuica",
+       "role": "cuica"
+      },
+      "80": {
+       "name": "Mute Triangle",
+       "role": "triangle"
+      },
+      "81": {
+       "name": "Open Triangle",
+       "role": "triangle"
+      }
+     },
+     "roles": [
+      "kick",
+      "snare",
+      "rim",
+      "clap",
+      "hihat_closed",
+      "hihat_open",
+      "hihat_pedal",
+      "tom",
+      "crash",
+      "ride",
+      "tambourine",
+      "cowbell",
+      "bongo",
+      "conga",
+      "timbale",
+      "agogo",
+      "shaker",
+      "whistle",
+      "guiro",
+      "claves",
+      "woodblock",
+      "cuica",
+      "triangle",
+      "misc"
+     ],
+     "source": "General MIDI Level 1 Percussion Key Map (MIDI Manufacturers Association, GM1 spec) \u2014 the standard channel-10 note assignments, notes 35-81. Verbatim from the published map; the ROLE grouping is Tonality's own coarse vocabulary (several GM notes share a role: three snares-ish, six toms, five crash-class cymbals), chosen so a rhythmic pattern can be stated as 'kick on every beat' rather than as a specific note number. Notes outside 35-81 have no GM percussion meaning and are reported unmapped rather than guessed.",
+     "version": "gm-percussion.1"
+    }
+   ],
+   "sha256": "1fe2dbd1fa615aeec0e1a0247ac632878012f162107ceab986e495e0d3e908b4",
+   "versions": [
+    "gm-percussion.1"
+   ]
+  },
   "intervals.json": {
    "content": [
     {
