@@ -56,6 +56,47 @@ CPython's Neumaier-compensated `sum()`, and `pow` is forced through libm
 (LLVM's folded `pow(x,2)→x*x` is 1 ulp *better* than Apple's libm in places —
 parity means matching libm, not the mathematically nicer answer).
 
+## The real-time surface
+
+Separate from parity, and asked for by name: which of this core may be called
+from an audio thread. *Measured 2026-08-09 against engine PIN `0c62809`; full
+evidence and method in `integrations/tonality-core/response-foundations-rt-questions.md`
+(Tonality repo), exchange `foundations-001`.*
+
+**The boundary is between transports, not between fields.** The input domain is
+a 12-bit mask — 4096 possible inputs — so every field here is available two
+ways, and they land on opposite sides of the line: computing `chirality(mask)`
+costs up to 17.25 µs, reading it from a frozen 4096-row table costs 1.46 ns.
+Freezing the table (416 KiB at float32, 672 KiB at double, ~77 ms to build off
+the RT thread) makes the **entire** surface real-time — and it is not a cache,
+because with 4096 total inputs the miss case does not exist.
+
+For live computation:
+
+| tier | what | status |
+|---|---|---|
+| **A** | the integer identity layer — `cardinality`, `is_subset`, `rotate_mask`, `invert_mask`, `complement_mask`, `pcs_from_mask`, `interval_vector`, `rotational_period`, `normal_order`, `prime_form[_mask]`, `trichord_chirality`, and `ZTableHandle::partner` | **RT.** No external calls beyond the stack canary, zero allocations, loop counts fixed by the 12-pc universe. 0.3–140 ns. |
+| **B** | `z_partner_mask` (free function) | Guarded static: first call builds the Z-table (~0.6 ms). Use `ZTableHandle` from RT code; this stays for the table generator and the bindings. |
+| **C** | `dft_components`, `dft_magnitudes`, `dft_phases`, `chirality_sign` | Allocation-free and lock-free, but they call libm. RT only if *your* libm is — we do not ship it, so we do not certify it. |
+| **D** | `py_round_10`, `general_chirality`, `reflection_residual`, `chirality`, `compute_row`, `emit_table_json` | **Not RT.** `snprintf`/`strtod` (locale), a 420-iteration minimizer, and a 421× data-dependent spread in `chirality`. Freeze these. |
+
+Two constraints that are load-bearing here and easy to break by accident:
+
+- **`py_round_10`'s `snprintf`/`strtod` round-trip is parity, not sloppiness** —
+  it reproduces CPython's `round(x, 10)`. It keeps Tier D in Tier D, and it
+  does not get "optimized away".
+- **An RT-certified DFT and a byte-parity DFT are not necessarily the same
+  code.** Tier C is only libm-bound, so vendoring a polynomial `sin`/`cos`
+  would make it portable-RT — and would break the parity contract this repo
+  exists to hold. The frozen table is the way out: generated on the parity
+  platform, parity-exact everywhere.
+
+`chirality_slices()` is a `constexpr std::array` and `ZTableHandle` exists
+*because* of this analysis — the first cost `chirality_sign` an allocation, a
+guard and an exception path; the second turns "warm up before the audio thread
+starts" from a comment into a precondition the type system holds. Neither
+changed a single byte of the export.
+
 ## Layout
 
 ```
