@@ -13,12 +13,12 @@
 #pragma once
 
 #include <algorithm>
+#include <array>
 #include <cmath>
 #include <cstdio>
 #include <cstdlib>
 #include <optional>
 #include <utility>
-#include <vector>
 
 #include "bitmask.hpp"
 #include "dft.hpp"
@@ -114,26 +114,61 @@ inline double general_chirality(Mask mask) {
 // The canonical inversion-odd slice family, generated exactly as the engine
 // generates it: one representative per ±mirror pair, (1, 2) first so the sign
 // agrees with general_chirality, then lexicographic.
-inline const std::vector<std::pair<int, int>>& chirality_slices() {
-    static const std::vector<std::pair<int, int>> slices = [] {
-        std::vector<std::pair<int, int>> pairs;
-        for (int a = 1; a < 12; ++a) {
-            for (int b = a; b < 12; ++b) {
-                const int ma = (12 - a) % 12, mb = (12 - b) % 12;
-                const std::pair<int, int> mirror{std::min(ma, mb), std::max(ma, mb)};
-                if (std::pair<int, int>{a, b} <= mirror) pairs.emplace_back(a, b);
+//
+// Built at COMPILE time into a fixed array rather than lazily into a static
+// std::vector. The family is a closed 12-TET fact — same 36 pairs every run —
+// so the vector bought nothing and cost `chirality_sign` an allocation, a
+// thread-safe-static guard, and an exception path, which together disqualified
+// it from any real-time claim (FOUNDATIONS exchange foundations-001).
+// The selection predicate and the comparator are byte-identical to the runtime
+// versions they replace, and the comparator is a strict TOTAL order over
+// distinct pairs — no ties — so `sort` cannot reorder anything here even
+// though it is unstable. Parity is not being trusted to that argument: the
+// byte-for-byte table gate arbitrates.
+constexpr bool is_chirality_slice_representative(int a, int b) {
+    const int ma = (12 - a) % 12, mb = (12 - b) % 12;
+    const std::pair<int, int> mirror{std::min(ma, mb), std::max(ma, mb)};
+    return std::pair<int, int>{a, b} <= mirror;
+}
+
+// Counted by the same predicate that fills the array, so the two can never
+// drift apart into a silent truncation or a tail of default-constructed pairs.
+constexpr int count_chirality_slices() {
+    int n = 0;
+    for (int a = 1; a < 12; ++a) {
+        for (int b = a; b < 12; ++b) {
+            if (is_chirality_slice_representative(a, b)) ++n;
+        }
+    }
+    return n;
+}
+
+inline constexpr int kChiralitySliceCount = count_chirality_slices();
+
+using ChiralitySlices = std::array<std::pair<int, int>, kChiralitySliceCount>;
+
+constexpr ChiralitySlices make_chirality_slices() {
+    ChiralitySlices out{};
+    int n = 0;
+    for (int a = 1; a < 12; ++a) {
+        for (int b = a; b < 12; ++b) {
+            if (is_chirality_slice_representative(a, b)) {
+                out[static_cast<std::size_t>(n++)] = {a, b};
             }
         }
-        std::sort(pairs.begin(), pairs.end(),
-                  [](const std::pair<int, int>& x, const std::pair<int, int>& y) {
-                      const bool xk = x != std::pair<int, int>{1, 2};
-                      const bool yk = y != std::pair<int, int>{1, 2};
-                      return std::tie(xk, x) < std::tie(yk, y);
-                  });
-        return pairs;
-    }();
-    return slices;
+    }
+    std::sort(out.begin(), out.end(),
+              [](const std::pair<int, int>& x, const std::pair<int, int>& y) {
+                  const bool xk = x != std::pair<int, int>{1, 2};
+                  const bool yk = y != std::pair<int, int>{1, 2};
+                  return std::tie(xk, x) < std::tie(yk, y);
+              });
+    return out;
 }
+
+inline constexpr ChiralitySlices kChiralitySlices = make_chirality_slices();
+
+inline constexpr const ChiralitySlices& chirality_slices() { return kChiralitySlices; }
 
 inline constexpr double kChiralityEps = 1e-7;
 

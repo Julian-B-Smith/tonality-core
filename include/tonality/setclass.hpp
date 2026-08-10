@@ -123,4 +123,31 @@ inline const ZTable& z_table() {
 
 inline std::optional<Mask> z_partner_mask(Mask mask) { return z_table().partner(mask); }
 
+// Real-time access to the Z-partner map.
+//
+// z_partner_mask() reaches the table through a function-local static, so its
+// FIRST call pays a thread-safe-static guard plus an ~0.8 ms construction
+// sweep over all 4096 masks. Offline that is invisible; on an audio thread it
+// is a dropped buffer, and no amount of documentation prevents someone's first
+// call from landing there.
+//
+// Holding this handle IS the proof that cost was already paid. Constructing
+// one builds the table (so construct it on a non-RT thread at startup, then
+// pass it in); partner() afterwards is a pointer dereference with no guard, no
+// allocation, and no branch on initialization state. The precondition lives in
+// the type rather than in a comment someone has to obey — which is what the
+// FOUNDATIONS blackboard needs in order to tag the field RT-guaranteed.
+class ZTableHandle {
+public:
+    // NOT real-time safe: this is the warm-up, and it is the whole point.
+    ZTableHandle() : table_(&z_table()) {}
+
+    // Real-time safe: bounded (prime_form_mask over a 12-bit mask), lock-free,
+    // allocation-free.
+    std::optional<Mask> partner(Mask mask) const { return table_->partner(mask); }
+
+private:
+    const ZTable* table_;
+};
+
 }  // namespace tonality
