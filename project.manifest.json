@@ -1,0 +1,47 @@
+{
+  "schema": "project-manifest.0 (draft — kit v2 will formalize)",
+  "kit_version": "2.4.1",
+  "status": "see ROADMAP.md (retrofit ratified 2026-08-18)",
+  "survey": {
+    "what_is_it": "library/engine — header-only C++20 identity substrate; the native half of Tonality's dual implementation, plus an optional pybind11 fast path",
+    "architecture_rung": {
+      "choice": 1,
+      "menu": [
+        "1: single thread",
+        "2: thread + subagents/verifier",
+        "3: organ fleet"
+      ],
+      "earned_by": "Chosen, not defaulted (kit forbids defaulting this). 766 lines of header behind ONE byte-exact oracle over a 4096-input domain: verification is instant and total, the search space is tiny, and there are no parallelizable seams to hand a verifier. Rung 2 becomes arguable only if the Phase 6 fence moves and new slices need independent verification."
+    },
+    "domain_core_llm_must_not_own": "All of it. The set-class arithmetic (Rahn normal order / prime form, interval vector, DFT, chirality family, Z-relation) AND the byte-exact reproduction of CPython's floating point (compiled-in FMA fusion, Neumaier-compensated sum(), libm pow through an optimization barrier). Fixtures and PIN are engine-owned; this repo reproduces, never re-derives.",
+    "oracle_shape": {
+      "goldens": "strict pinned goldens — 4096 rows x 16 fields byte-for-byte, plus every field of the set_class_info conformance case within rel 1e-9 / abs 1e-12. An unrecognized case field fails the harness so engine growth is loud.",
+      "ci": "matrix — macos-15 canonical (byte-exact, pinned to the fixture-generating image) + ubuntu-latest portability probe (all 4096 rows within tolerance, ints exact, phases compared as coefficients)"
+    },
+    "second_implementation": {
+      "value": true,
+      "note": "This repo IS the second implementation. The pure-Python engine is the spec's source of truth; the port pin lives in fixtures/PIN.json (engine 0c62809, export.2)."
+    },
+    "consumers_and_providers": {
+      "consumes": [
+        "Tonality (provider; spec, fixtures, goldens, PIN — mailbox is ~/Documents/Tonality/integrations/tonality-core/)"
+      ],
+      "consumed_by": [
+        "Python consumers via the optional pybind11 module (an addition, never a replacement for the engine)",
+        "synthetic-worlds/FOUNDATIONS — prospective, reached by relay through Tonality today, not a direct exchange"
+      ]
+    },
+    "parallel_audit_thread": false,
+    "knowledge_loop_tags": [
+      "float-parity",
+      "rt-safety",
+      "port-discipline",
+      "ci-platform",
+      "measurement"
+    ],
+    "lifespan_autonomy": {
+      "lifespan": "long-lived — the port half of a dual implementation, under Tonality's two-thread accountability protocol (port/PORT.md)",
+      "autonomy_tier": "Autonomous work is permitted within the Phase 6 fence: reproduce fixtures, keep the PIN green, answer exchanges. Fixture and golden regeneration happen ONLY on the Tonality side. Watcher refresh PRs land only on green CI. Pushes are the human's."
+    }
+  }
+}

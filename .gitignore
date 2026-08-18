@@ -1,2 +1,16 @@
 build*/
 .DS_Store
+
+# Harness scratch — ./verify writes last-verify.json / dirty here.
+.harness/
+
+# Machine-local Claude Code permissions. Ignored HERE, not just in the human's
+# global gitignore: the kit leak_gate scans untracked-but-unignored files, and
+# this one holds absolute home paths. Relying on ~/.config/git/ignore makes the
+# gate's result depend on which machine ran it.
+.claude/settings.local.json
+
+# NOTE: do NOT add .kit-currency-plant-* here. `git grep --untracked` skips
+# IGNORED files, so ignoring the pattern blinds the currency probe that OWNS
+# the run and silently turns the whole gate-fires check into a no-op (kit
+# 2.3.0). Tracked plants are caught by `plant_not_tracked` in ./verify instead.
