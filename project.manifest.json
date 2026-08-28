@@ -1,6 +1,6 @@
 {
   "schema": "project-manifest.0 (draft — kit v2 will formalize)",
-  "kit_version": "2.4.1",
+  "kit_version": "2.5.0",
   "status": "see ROADMAP.md (retrofit ratified 2026-08-18)",
   "survey": {
     "what_is_it": "library/engine — header-only C++20 identity substrate; the native half of Tonality's dual implementation, plus an optional pybind11 fast path",
