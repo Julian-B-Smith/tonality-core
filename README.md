@@ -12,6 +12,27 @@ Contract documents (in the Tonality repo — read them first):
 - `port/PORT.md` — the two-thread accountability protocol this repo lives under.
 - `ROADMAP.md` Phase 8 — direction of record.
 
+## Harness
+
+Retrofit to harness kit **2.4.1** on 2026-08-18. The files a fresh session
+should read first:
+
+- [CLAUDE.md](CLAUDE.md) — agent charter; §Domain carries the invariants that
+  are never renegotiated in conversation (and the mailbox, which lives in the
+  *provider's* tree, not here).
+- [ROADMAP.md](ROADMAP.md) — direction of record for this repo, phase-gated.
+  Defers to Tonality's `CPP_PORT.md` / `ROADMAP.md` Phase 8 on port ordering.
+- [DECISIONS.md](DECISIONS.md) — append-only; why each ratified choice was made.
+- [INDEX.md](INDEX.md) → [LIBRARY.md](LIBRARY.md) — hard-won lessons, retrieved
+  by trigger rather than read end-to-end.
+- `./verify fast` — gates + fixture hashes against `fixtures/PIN.json` + ctest
+  when a build tree exists. `./verify full` is the parity definition of done
+  (configure + Release build + the whole harness). Kit-owned gate code is
+  vendored and sha256-pinned in `.kit/`; do not edit it, re-sync it.
+
+*Last verified 2026-08-18: `./verify full` green, parity 4/4 against engine
+PIN `0c62809`.*
+
 ## Scope — deliberately the frozen kernel, not the whole engine
 
 This repo ports **only the identity substrate**: the 4096-row set-class table

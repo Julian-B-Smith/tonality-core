@@ -1,0 +1,129 @@
+#!/usr/bin/env bash
+# verify — oracle dispatcher. The harness's only interface to project QC.
+# Usage: ./verify fast | full | report
+# Contract: exit 0 = green, nonzero = red. Writes .harness/last-verify.json.
+#
+# THIS FILE IS PROJECT-OWNED: edit `fast` and `full` freely, add project gates,
+# wire your test commands. The kit-owned gates live in `.kit/kit-gates.sh`,
+# which is vendored and checksummed — do not edit that one, and do not copy its
+# contents here. Update it with:  python3 <kit>/kit_sync.py .
+#
+# Project shape: this repo's definition of done is PARITY — reproducing the
+# Tonality engine's exported fixtures byte-for-byte. `full` is that gate. It
+# needs a CMake configure + Release build, which is minutes, so `fast` carries
+# the checks that cost milliseconds and still catch real breakage: the fixture
+# hashes against fixtures/PIN.json (fixture corruption or an unrecorded refresh
+# is caught without compiling anything), and ctest IF a build tree already
+# exists (the common local case, where it is the whole parity harness for free).
+set -uo pipefail
+
+TARGET="${1:-fast}"
+HARNESS_DIR=".harness"
+mkdir -p "$HARNESS_DIR"
+
+# Kit-owned gates: record, leak_gate, kit_integrity. A repo missing this file
+# is not a lesser repo, it is an UNGATED one, so failing loudly beats degrading
+# quietly — a silently skipped privacy gate is exactly the shape of bug the
+# gate exists to prevent.
+if [ -r .kit/kit-gates.sh ]; then
+  . .kit/kit-gates.sh
+else
+  echo "verify: .kit/kit-gates.sh missing — run kit_sync.py (gates cannot be skipped)" >&2
+  exit 1
+fi
+
+BUILD_DIR="build-release"
+
+# A tracked `.kit-currency-plant-*` can never hide: leak_gate ignores those
+# names by design (kit 2.3.0) so a foreign probe cannot red us, which means a
+# committed one would be invisible to the privacy gate forever. Deliberately
+# OUTSIDE leak_gate so that function stays byte-identical across the fleet's
+# three detectors. Do NOT close this by gitignoring the pattern — that blinds
+# the probe that owns the run and silently no-ops the whole gate-fires check.
+plant_not_tracked() {
+  local tracked
+  tracked=$(git ls-files -- '.kit-currency-plant-*' 2>/dev/null)
+  [ -z "$tracked" ] && return 0
+  echo "verify: a currency probe plant is TRACKED — it must never be committed:" >&2
+  echo "$tracked" | sed 's/^/    /' >&2
+  return 1
+}
+
+# The vendored fixtures are the engine's exported artifacts and every parity
+# claim in this repo is parity WITH them. PIN.json records a sha256 per file,
+# so a corrupted or silently-refreshed fixture is caught here in milliseconds
+# rather than as a confusing byte-diff inside the parity harness.
+fixture_pin() {
+  python3 - <<'PY'
+import hashlib, json, os, sys
+try:
+    pin = json.load(open("fixtures/PIN.json"))
+except Exception as exc:
+    print(f"verify: fixtures/PIN.json unreadable: {exc}", file=sys.stderr); sys.exit(1)
+bad = 0
+for name, want in pin.get("files", {}).items():
+    path = os.path.join("fixtures/tonality", name)
+    try:
+        got = hashlib.sha256(open(path, "rb").read()).hexdigest()
+    except OSError as exc:
+        print(f"verify: fixture missing: {exc}", file=sys.stderr); bad = 1; continue
+    if got != want:
+        print(f"verify: fixture {name} does not match PIN.json "
+              f"(engine {pin.get('tonality_commit','?')[:7]})", file=sys.stderr)
+        bad = 1
+sys.exit(bad)
+PY
+}
+
+fast() {
+  # ---- Layer-0: seconds, not minutes. CI-blocking. -------------------------
+  local ok=0
+  kit_integrity     || ok=1   # kit-owned files must match .kit/MANIFEST
+  leak_gate         || ok=1   # privacy gate: kit-core, keep it first
+  plant_not_tracked || ok=1
+  for f in README.md CLAUDE.md ROADMAP.md DECISIONS.md INDEX.md LIBRARY.md project.manifest.json; do
+    [ -f "$f" ] || { echo "verify[fast]: missing $f" >&2; ok=1; }
+  done
+  [ -d traces ] || { echo "verify[fast]: missing traces/" >&2; ok=1; }
+  python3 -c "import json;json.load(open('project.manifest.json'))" 2>/dev/null \
+    || { echo "verify[fast]: project.manifest.json is not valid JSON" >&2; ok=1; }
+  fixture_pin || ok=1
+  # Port fence (README + Tonality port/PORT.md): this repo ports the identity
+  # substrate only. A stray engine import here would mean the fence moved
+  # without a decision.
+  if git grep -nI --untracked -E '#include .(mts|tonality/analysis)' -- include tools bindings 2>/dev/null | grep -q .; then
+    echo "verify[fast]: an engine-layer include appeared under the Phase 6 fence" >&2; ok=1
+  fi
+  # Free parity when a build tree already exists; `full` builds it from scratch.
+  if [ -d "$BUILD_DIR" ]; then
+    ctest --test-dir "$BUILD_DIR" --output-on-failure >/dev/null 2>&1 \
+      || { echo "verify[fast]: ctest failed in $BUILD_DIR (run ./verify full for detail)" >&2; ok=1; }
+  else
+    echo "verify[fast]: no $BUILD_DIR — parity not exercised here; run ./verify full" >&2
+  fi
+  return $ok
+}
+
+full() {
+  fast || return $?
+  # ---- Layer-E: the whole gate. THE definition of done for this repo -------
+  # Release only: -ffp-contract=off and -O3 are what the parity contract is
+  # written against, and Debug perf/codegen claims are meaningless here.
+  # Absolute build path: agent shells reset cwd between calls, and a relative
+  # build silently builds nothing while exiting 0.
+  local root; root="$(cd "$(dirname "$0")" && pwd)"
+  cmake -S "$root" -B "$root/$BUILD_DIR" -G "Unix Makefiles" -DCMAKE_BUILD_TYPE=Release >/dev/null \
+    || { echo "verify[full]: cmake configure failed" >&2; return 1; }
+  cmake --build "$root/$BUILD_DIR" -j"$(getconf _NPROCESSORS_ONLN 2>/dev/null || echo 4)" >/dev/null \
+    || { echo "verify[full]: build failed" >&2; return 1; }
+  ctest --test-dir "$root/$BUILD_DIR" --output-on-failure \
+    || { echo "verify[full]: parity harness failed" >&2; return 1; }
+  return 0
+}
+
+case "$TARGET" in
+  fast)   fast;  record fast  $? ;;
+  full)   full;  record full  $? ;;
+  report) cat "$HARNESS_DIR/last-verify.json" 2>/dev/null || { echo '{"target":null,"exit":null}'; exit 1; } ;;
+  *)      echo "usage: ./verify fast|full|report" >&2; exit 64 ;;
+esac

@@ -101,3 +101,17 @@ jobs:
         run: >
           ctest --test-dir build-release --build-config Release --output-on-failure
           ${{ matrix.ctest_filter }}
+
+  # CI mirrors the Stop hook (kit 2.0.0): the same ./verify fast a local session
+  # is gated on. Cheap and Linux-only on purpose — it runs the privacy gate, the
+  # kit-integrity checksum and the fixture PIN hashes, none of which need a
+  # compiler. It does NOT duplicate the parity matrix above: with no build tree
+  # in a fresh checkout, ./verify fast reports that parity was not exercised
+  # here and leaves it to the `parity` job, which is the real oracle.
+  harness:
+    name: harness (./verify fast)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: verify fast
+        run: ./verify fast
