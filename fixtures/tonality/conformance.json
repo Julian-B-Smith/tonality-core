@@ -1955,6 +1955,270 @@
   {
    "kwargs": {
     "pcs": [
+     5,
+     0,
+     8,
+     11
+    ]
+   },
+   "result": {
+    "alternatives": [],
+    "chosen": null,
+    "context": null,
+    "is_ambiguous": false,
+    "unmatched": {
+     "containing_scale_count": 45,
+     "containing_scales": [
+      {
+       "cardinality": 6,
+       "is_exact": false,
+       "name": "Minor Blues",
+       "root_pc": 5
+      },
+      {
+       "cardinality": 7,
+       "is_exact": false,
+       "name": "Bhairav",
+       "root_pc": 0
+      },
+      {
+       "cardinality": 7,
+       "is_exact": false,
+       "name": "Bhairav",
+       "root_pc": 4
+      },
+      {
+       "cardinality": 7,
+       "is_exact": false,
+       "name": "Dorian #4",
+       "root_pc": 2
+      },
+      {
+       "cardinality": 7,
+       "is_exact": false,
+       "name": "Dorian #4",
+       "root_pc": 5
+      },
+      {
+       "cardinality": 7,
+       "is_exact": false,
+       "name": "Harmonic Minor",
+       "root_pc": 0
+      },
+      {
+       "cardinality": 7,
+       "is_exact": false,
+       "name": "Harmonic Minor",
+       "root_pc": 9
+      },
+      {
+       "cardinality": 7,
+       "is_exact": false,
+       "name": "Hungarian Minor",
+       "root_pc": 5
+      }
+     ],
+     "interval_vector": [
+      1,
+      0,
+      2,
+      1,
+      1,
+      1
+     ],
+     "near_qualities": [
+      {
+       "pcs": [
+        0,
+        4,
+        8,
+        11
+       ],
+       "quality": "maj7#5",
+       "root_pc": 0,
+       "swap_from_pc": 5,
+       "swap_to_pc": 4
+      },
+      {
+       "pcs": [
+        2,
+        5,
+        8,
+        11
+       ],
+       "quality": "dim7",
+       "root_pc": 5,
+       "swap_from_pc": 0,
+       "swap_to_pc": 2
+      },
+      {
+       "pcs": [
+        0,
+        2,
+        5,
+        8
+       ],
+       "quality": "min6",
+       "root_pc": 5,
+       "swap_from_pc": 11,
+       "swap_to_pc": 2
+      },
+      {
+       "pcs": [
+        0,
+        3,
+        5,
+        8
+       ],
+       "quality": "min7",
+       "root_pc": 5,
+       "swap_from_pc": 11,
+       "swap_to_pc": 3
+      },
+      {
+       "pcs": [
+        3,
+        5,
+        8,
+        11
+       ],
+       "quality": "min7b5",
+       "root_pc": 5,
+       "swap_from_pc": 0,
+       "swap_to_pc": 3
+      },
+      {
+       "pcs": [
+        0,
+        5,
+        7,
+        8
+       ],
+       "quality": "minadd9",
+       "root_pc": 5,
+       "swap_from_pc": 11,
+       "swap_to_pc": 7
+      },
+      {
+       "pcs": [
+        0,
+        4,
+        5,
+        8
+       ],
+       "quality": "minmaj7",
+       "root_pc": 5,
+       "swap_from_pc": 11,
+       "swap_to_pc": 4
+      },
+      {
+       "pcs": [
+        2,
+        5,
+        8,
+        11
+       ],
+       "quality": "dim7",
+       "root_pc": 8,
+       "swap_from_pc": 0,
+       "swap_to_pc": 2
+      },
+      {
+       "pcs": [
+        0,
+        3,
+        5,
+        8
+       ],
+       "quality": "maj6",
+       "root_pc": 8,
+       "swap_from_pc": 11,
+       "swap_to_pc": 3
+      },
+      {
+       "pcs": [
+        3,
+        5,
+        8,
+        11
+       ],
+       "quality": "min6",
+       "root_pc": 8,
+       "swap_from_pc": 0,
+       "swap_to_pc": 3
+      },
+      {
+       "pcs": [
+        2,
+        5,
+        8,
+        11
+       ],
+       "quality": "dim7",
+       "root_pc": 11,
+       "swap_from_pc": 0,
+       "swap_to_pc": 2
+      },
+      {
+       "pcs": [
+        1,
+        5,
+        8,
+        11
+       ],
+       "quality": "7",
+       "root_pc": 1,
+       "swap_from_pc": 0,
+       "swap_to_pc": 1
+      }
+     ],
+     "near_quality_count": 15,
+     "normal_order": [
+      5,
+      8,
+      11,
+      0
+     ],
+     "prime_form": [
+      0,
+      1,
+      4,
+      7
+     ],
+     "quality_subsets": [
+      {
+       "added_pcs": [
+        0
+       ],
+       "pcs": [
+        5,
+        8,
+        11
+       ],
+       "quality": "dim",
+       "root_pc": 5
+      },
+      {
+       "added_pcs": [
+        11
+       ],
+       "pcs": [
+        0,
+        5,
+        8
+       ],
+       "quality": "min",
+       "root_pc": 5
+      }
+     ]
+    },
+    "weights_version": "naming-rules.1"
+   },
+   "tool": "name_pcs"
+  },
+  {
+   "kwargs": {
+    "pcs": [
      0,
      4,
      7,
@@ -3412,6 +3676,7 @@
      "tonic_pc": 9
     },
     "is_ambiguous": false,
+    "unmatched": null,
     "weights_version": "naming-rules.1"
    },
    "tool": "name_pcs"
@@ -4838,6 +5103,7 @@
         "tonic_pc": 0
        },
        "is_ambiguous": true,
+       "unmatched": null,
        "weights_version": "naming-rules.1"
       }
      },
@@ -4933,6 +5199,7 @@
         "tonic_pc": 5
        },
        "is_ambiguous": false,
+       "unmatched": null,
        "weights_version": "naming-rules.1"
       }
      },
@@ -5033,6 +5300,7 @@
         "tonic_pc": 7
        },
        "is_ambiguous": true,
+       "unmatched": null,
        "weights_version": "naming-rules.1"
       }
      }
@@ -16612,6 +16880,7 @@
           "tonic_pc": 0
          },
          "is_ambiguous": false,
+         "unmatched": null,
          "weights_version": "naming-rules.1"
         },
         "scale": null
@@ -16775,6 +17044,7 @@
           "tonic_pc": 0
          },
          "is_ambiguous": false,
+         "unmatched": null,
          "weights_version": "naming-rules.1"
         },
         "scale": null
@@ -16938,6 +17208,7 @@
           "tonic_pc": 0
          },
          "is_ambiguous": false,
+         "unmatched": null,
          "weights_version": "naming-rules.1"
         },
         "scale": null
@@ -17101,6 +17372,7 @@
           "tonic_pc": 0
          },
          "is_ambiguous": false,
+         "unmatched": null,
          "weights_version": "naming-rules.1"
         },
         "scale": null
@@ -17264,6 +17536,7 @@
           "tonic_pc": 0
          },
          "is_ambiguous": false,
+         "unmatched": null,
          "weights_version": "naming-rules.1"
         },
         "scale": null
@@ -17427,6 +17700,7 @@
           "tonic_pc": 0
          },
          "is_ambiguous": false,
+         "unmatched": null,
          "weights_version": "naming-rules.1"
         },
         "scale": null
@@ -17590,6 +17864,7 @@
           "tonic_pc": 7
          },
          "is_ambiguous": false,
+         "unmatched": null,
          "weights_version": "naming-rules.1"
         },
         "scale": null
@@ -17753,6 +18028,7 @@
           "tonic_pc": 7
          },
          "is_ambiguous": false,
+         "unmatched": null,
          "weights_version": "naming-rules.1"
         },
         "scale": null
@@ -17916,6 +18192,7 @@
           "tonic_pc": 7
          },
          "is_ambiguous": false,
+         "unmatched": null,
          "weights_version": "naming-rules.1"
         },
         "scale": null
@@ -18079,6 +18356,7 @@
           "tonic_pc": 7
          },
          "is_ambiguous": false,
+         "unmatched": null,
          "weights_version": "naming-rules.1"
         },
         "scale": null
@@ -18242,6 +18520,7 @@
           "tonic_pc": 7
          },
          "is_ambiguous": false,
+         "unmatched": null,
          "weights_version": "naming-rules.1"
         },
         "scale": null
@@ -18405,6 +18684,7 @@
           "tonic_pc": 7
          },
          "is_ambiguous": false,
+         "unmatched": null,
          "weights_version": "naming-rules.1"
         },
         "scale": null
@@ -18568,6 +18848,7 @@
           "tonic_pc": 7
          },
          "is_ambiguous": false,
+         "unmatched": null,
          "weights_version": "naming-rules.1"
         },
         "scale": null
@@ -18731,6 +19012,7 @@
           "tonic_pc": 7
          },
          "is_ambiguous": false,
+         "unmatched": null,
          "weights_version": "naming-rules.1"
         },
         "scale": null
@@ -18894,6 +19176,7 @@
           "tonic_pc": 7
          },
          "is_ambiguous": false,
+         "unmatched": null,
          "weights_version": "naming-rules.1"
         },
         "scale": null
@@ -22668,6 +22951,2175 @@
     "prior_version": "structural-key.2"
    },
    "tool": "classify_chromatic_events"
+  },
+  {
+   "kwargs": {
+    "events": [
+     [
+      0,
+      1,
+      62,
+      90,
+      "m"
+     ],
+     [
+      1,
+      1,
+      61,
+      90,
+      "m"
+     ],
+     [
+      2,
+      1,
+      60,
+      90,
+      "m"
+     ],
+     [
+      2,
+      1,
+      61,
+      70,
+      "m"
+     ]
+    ],
+    "root_pc": 0,
+    "scale": "Ionian"
+   },
+   "result": {
+    "collisions": [
+     {
+      "count": 2,
+      "duration": 1.0,
+      "midi": 60,
+      "onset": 2.0,
+      "source_midis": [
+       60,
+       61
+      ],
+      "voice": "m"
+     }
+    ],
+    "degrees": [
+     0,
+     2,
+     4,
+     5,
+     7,
+     9,
+     11
+    ],
+    "edits": [
+     {
+      "delta": 1,
+      "from_midi": 61,
+      "index": 1,
+      "onset": 1.0,
+      "tie_resolution": "previous",
+      "tied": true,
+      "to_midi": 62,
+      "voice": "m"
+     },
+     {
+      "delta": -1,
+      "from_midi": 61,
+      "index": 3,
+      "onset": 2.0,
+      "tie_resolution": "previous",
+      "tied": true,
+      "to_midi": 60,
+      "voice": "m"
+     }
+    ],
+    "events": [
+     [
+      0.0,
+      1.0,
+      62,
+      90,
+      "m"
+     ],
+     [
+      1.0,
+      1.0,
+      62,
+      90,
+      "m"
+     ],
+     [
+      2.0,
+      1.0,
+      60,
+      90,
+      "m"
+     ],
+     [
+      2.0,
+      1.0,
+      60,
+      70,
+      "m"
+     ]
+    ],
+    "notes_snapped": 2,
+    "notes_total": 4,
+    "root_pc": 0,
+    "scale_name": "Ionian",
+    "tie_break": "previous",
+    "ties_resolved": 2
+   },
+   "tool": "conform_to_scale"
+  },
+  {
+   "kwargs": {
+    "events": [
+     [
+      0,
+      1,
+      61,
+      90,
+      "m"
+     ],
+     [
+      1,
+      1,
+      63,
+      90,
+      "m"
+     ]
+    ],
+    "mode": "major",
+    "tonic_pc": 0
+   },
+   "result": {
+    "collisions": [],
+    "degrees": [
+     0,
+     2,
+     4,
+     5,
+     7,
+     9,
+     11
+    ],
+    "edits": [
+     {
+      "delta": -1,
+      "from_midi": 61,
+      "index": 0,
+      "onset": 0.0,
+      "tie_resolution": "down",
+      "tied": true,
+      "to_midi": 60,
+      "voice": "m"
+     },
+     {
+      "delta": -1,
+      "from_midi": 63,
+      "index": 1,
+      "onset": 1.0,
+      "tie_resolution": "previous",
+      "tied": true,
+      "to_midi": 62,
+      "voice": "m"
+     }
+    ],
+    "events": [
+     [
+      0.0,
+      1.0,
+      60,
+      90,
+      "m"
+     ],
+     [
+      1.0,
+      1.0,
+      62,
+      90,
+      "m"
+     ]
+    ],
+    "notes_snapped": 2,
+    "notes_total": 2,
+    "root_pc": 0,
+    "scale_name": "Ionian",
+    "tie_break": "previous",
+    "ties_resolved": 2
+   },
+   "tool": "fit_to_key"
+  },
+  {
+   "kwargs": {
+    "events": [
+     [
+      0,
+      1,
+      60,
+      90,
+      "m"
+     ],
+     [
+      1,
+      1,
+      61,
+      90,
+      "m"
+     ],
+     [
+      2,
+      1,
+      63,
+      90,
+      "m"
+     ],
+     [
+      3,
+      1,
+      64,
+      90,
+      "m"
+     ],
+     [
+      4,
+      1,
+      69,
+      90,
+      "m"
+     ],
+     [
+      5,
+      1,
+      71,
+      90,
+      "m"
+     ]
+    ],
+    "source_root": 0,
+    "source_scale": "Ionian",
+    "target_root": 0,
+    "target_scale": "Natural Minor"
+   },
+   "result": {
+    "absorbed_alterations": [
+     {
+      "alteration": 1,
+      "degree": 1,
+      "from_midi": 63,
+      "index": 2,
+      "onset": 2.0,
+      "to_midi": 63
+     }
+    ],
+    "edits": [
+     {
+      "alteration": 1,
+      "attachment_note": "equidistant between two degrees; attached to the lower (reads as a raised degree) \u2014 override by re-attaching with better context",
+      "degree": 0,
+      "delta": 0,
+      "from_midi": 61,
+      "index": 1,
+      "onset": 1.0,
+      "range_corrected": false,
+      "tied_attachment": true,
+      "to_midi": 61,
+      "voice": "m"
+     },
+     {
+      "alteration": 1,
+      "attachment_note": "equidistant between two degrees; attached to the lower (reads as a raised degree) \u2014 override by re-attaching with better context",
+      "degree": 1,
+      "delta": 0,
+      "from_midi": 63,
+      "index": 2,
+      "onset": 2.0,
+      "range_corrected": false,
+      "tied_attachment": true,
+      "to_midi": 63,
+      "voice": "m"
+     },
+     {
+      "alteration": 0,
+      "attachment_note": null,
+      "degree": 2,
+      "delta": -1,
+      "from_midi": 64,
+      "index": 3,
+      "onset": 3.0,
+      "range_corrected": false,
+      "tied_attachment": false,
+      "to_midi": 63,
+      "voice": "m"
+     },
+     {
+      "alteration": 0,
+      "attachment_note": null,
+      "degree": 5,
+      "delta": -1,
+      "from_midi": 69,
+      "index": 4,
+      "onset": 4.0,
+      "range_corrected": false,
+      "tied_attachment": false,
+      "to_midi": 68,
+      "voice": "m"
+     },
+     {
+      "alteration": 0,
+      "attachment_note": null,
+      "degree": 6,
+      "delta": -1,
+      "from_midi": 71,
+      "index": 5,
+      "onset": 5.0,
+      "range_corrected": false,
+      "tied_attachment": false,
+      "to_midi": 70,
+      "voice": "m"
+     }
+    ],
+    "events": [
+     [
+      0.0,
+      1.0,
+      60,
+      90,
+      "m"
+     ],
+     [
+      1.0,
+      1.0,
+      61,
+      90,
+      "m"
+     ],
+     [
+      2.0,
+      1.0,
+      63,
+      90,
+      "m"
+     ],
+     [
+      3.0,
+      1.0,
+      63,
+      90,
+      "m"
+     ],
+     [
+      4.0,
+      1.0,
+      68,
+      90,
+      "m"
+     ],
+     [
+      5.0,
+      1.0,
+      70,
+      90,
+      "m"
+     ]
+    ],
+    "map": {
+     "degree_table": [
+      {
+       "degree": 0,
+       "source_pc": 0,
+       "target_pc": 0
+      },
+      {
+       "degree": 1,
+       "source_pc": 2,
+       "target_pc": 2
+      },
+      {
+       "degree": 2,
+       "source_pc": 4,
+       "target_pc": 3
+      },
+      {
+       "degree": 3,
+       "source_pc": 5,
+       "target_pc": 5
+      },
+      {
+       "degree": 4,
+       "source_pc": 7,
+       "target_pc": 7
+      },
+      {
+       "degree": 5,
+       "source_pc": 9,
+       "target_pc": 8
+      },
+      {
+       "degree": 6,
+       "source_pc": 11,
+       "target_pc": 10
+      }
+     ],
+     "source_degrees": [
+      0,
+      2,
+      4,
+      5,
+      7,
+      9,
+      11
+     ],
+     "source_name": "Ionian",
+     "source_root": 0,
+     "target_degrees": [
+      0,
+      2,
+      3,
+      5,
+      7,
+      8,
+      10
+     ],
+     "target_name": "Natural Minor",
+     "target_root": 0
+    },
+    "notes_chromatic": 2,
+    "notes_diatonic": 4,
+    "notes_total": 6,
+    "tied_attachments": 2
+   },
+   "tool": "remap_by_degree"
+  },
+  {
+   "kwargs": {
+    "new_tonic_pc": 9,
+    "root_pc": 0,
+    "scale": "Ionian"
+   },
+   "result": {
+    "collection_pcs": [
+     0,
+     2,
+     4,
+     5,
+     7,
+     9,
+     11
+    ],
+    "new_degrees": [
+     0,
+     2,
+     3,
+     5,
+     7,
+     8,
+     10
+    ],
+    "new_names": [
+     "Aeolian",
+     "Natural Minor"
+    ],
+    "new_root": 9,
+    "notes_changed": 0,
+    "old_name": "Ionian",
+    "old_root": 0
+   },
+   "tool": "retonicize"
+  },
+  {
+   "kwargs": {
+    "events": [
+     [
+      0,
+      2,
+      60,
+      90,
+      "m"
+     ],
+     [
+      0,
+      2,
+      64,
+      90,
+      "m"
+     ],
+     [
+      0,
+      2,
+      67,
+      90,
+      "m"
+     ],
+     [
+      2,
+      2,
+      65,
+      90,
+      "m"
+     ],
+     [
+      2,
+      2,
+      69,
+      90,
+      "m"
+     ],
+     [
+      2,
+      2,
+      72,
+      90,
+      "m"
+     ],
+     [
+      4,
+      2,
+      67,
+      90,
+      "m"
+     ],
+     [
+      4,
+      2,
+      71,
+      90,
+      "m"
+     ],
+     [
+      4,
+      2,
+      74,
+      90,
+      "m"
+     ],
+     [
+      6,
+      2,
+      60,
+      90,
+      "m"
+     ],
+     [
+      6,
+      2,
+      64,
+      90,
+      "m"
+     ],
+     [
+      6,
+      2,
+      67,
+      90,
+      "m"
+     ],
+     [
+      3,
+      1,
+      63,
+      80,
+      "m"
+     ],
+     [
+      0,
+      0.5,
+      36,
+      110,
+      "t2c9"
+     ]
+    ],
+    "target_scale": "Natural Minor"
+   },
+   "result": {
+    "application": {
+     "absorbed_alterations": 1,
+     "events": [
+      [
+       0.0,
+       0.5,
+       36,
+       110,
+       "t2c9"
+      ],
+      [
+       0.0,
+       2.0,
+       60,
+       90,
+       "m"
+      ],
+      [
+       0.0,
+       2.0,
+       63,
+       90,
+       "m"
+      ],
+      [
+       0.0,
+       2.0,
+       67,
+       90,
+       "m"
+      ],
+      [
+       2.0,
+       2.0,
+       65,
+       90,
+       "m"
+      ],
+      [
+       2.0,
+       2.0,
+       68,
+       90,
+       "m"
+      ],
+      [
+       2.0,
+       2.0,
+       72,
+       90,
+       "m"
+      ],
+      [
+       3.0,
+       1.0,
+       63,
+       80,
+       "m"
+      ],
+      [
+       4.0,
+       2.0,
+       67,
+       90,
+       "m"
+      ],
+      [
+       4.0,
+       2.0,
+       70,
+       90,
+       "m"
+      ],
+      [
+       4.0,
+       2.0,
+       74,
+       90,
+       "m"
+      ],
+      [
+       6.0,
+       2.0,
+       60,
+       90,
+       "m"
+      ],
+      [
+       6.0,
+       2.0,
+       63,
+       90,
+       "m"
+      ],
+      [
+       6.0,
+       2.0,
+       67,
+       90,
+       "m"
+      ]
+     ],
+     "notes_changed": 4,
+     "notes_excluded": 1
+    },
+    "plan": {
+     "areas": [
+      {
+       "area_index": 0,
+       "end_beats": 8.0,
+       "map": {
+        "degree_table": [
+         {
+          "degree": 0,
+          "source_pc": 0,
+          "target_pc": 0
+         },
+         {
+          "degree": 1,
+          "source_pc": 2,
+          "target_pc": 2
+         },
+         {
+          "degree": 2,
+          "source_pc": 4,
+          "target_pc": 3
+         },
+         {
+          "degree": 3,
+          "source_pc": 5,
+          "target_pc": 5
+         },
+         {
+          "degree": 4,
+          "source_pc": 7,
+          "target_pc": 7
+         },
+         {
+          "degree": 5,
+          "source_pc": 9,
+          "target_pc": 8
+         },
+         {
+          "degree": 6,
+          "source_pc": 11,
+          "target_pc": 10
+         }
+        ],
+        "source_degrees": [
+         0,
+         2,
+         4,
+         5,
+         7,
+         9,
+         11
+        ],
+        "source_name": "Ionian",
+        "source_root": 0,
+        "target_degrees": [
+         0,
+         2,
+         3,
+         5,
+         7,
+         8,
+         10
+        ],
+        "target_name": "Natural Minor",
+        "target_root": 0
+       },
+       "overridden": false,
+       "source_mode": "major",
+       "source_tonic_pc": 0,
+       "start_beats": 0.0,
+       "target_degrees": [
+        0,
+        2,
+        3,
+        5,
+        7,
+        8,
+        10
+       ],
+       "target_root": 0
+      }
+     ],
+     "chromatic_policy": "rhetoric",
+     "decisions": [
+      {
+       "alteration": 0,
+       "alternatives": [],
+       "area_index": -1,
+       "chromatic_after": null,
+       "chromatic_before": false,
+       "degree": null,
+       "evidence": [],
+       "from_midi": 36,
+       "index": 0,
+       "kind": "excluded",
+       "note": "percussion (MIDI channel 10) is never transformed",
+       "onset": 0.0,
+       "range_corrected": false,
+       "status": "resolved",
+       "tied_attachment": false,
+       "to_midi": 36,
+       "voice": "t2c9",
+       "zone": null
+      },
+      {
+       "alteration": 0,
+       "alternatives": [],
+       "area_index": 0,
+       "chromatic_after": false,
+       "chromatic_before": false,
+       "degree": 0,
+       "evidence": [],
+       "from_midi": 60,
+       "index": 1,
+       "kind": "diatonic",
+       "note": null,
+       "onset": 0.0,
+       "range_corrected": false,
+       "status": "resolved",
+       "tied_attachment": false,
+       "to_midi": 60,
+       "voice": "m",
+       "zone": null
+      },
+      {
+       "alteration": 0,
+       "alternatives": [],
+       "area_index": 0,
+       "chromatic_after": false,
+       "chromatic_before": false,
+       "degree": 2,
+       "evidence": [],
+       "from_midi": 64,
+       "index": 2,
+       "kind": "diatonic",
+       "note": null,
+       "onset": 0.0,
+       "range_corrected": false,
+       "status": "resolved",
+       "tied_attachment": false,
+       "to_midi": 63,
+       "voice": "m",
+       "zone": null
+      },
+      {
+       "alteration": 0,
+       "alternatives": [],
+       "area_index": 0,
+       "chromatic_after": false,
+       "chromatic_before": false,
+       "degree": 4,
+       "evidence": [],
+       "from_midi": 67,
+       "index": 3,
+       "kind": "diatonic",
+       "note": null,
+       "onset": 0.0,
+       "range_corrected": false,
+       "status": "resolved",
+       "tied_attachment": false,
+       "to_midi": 67,
+       "voice": "m",
+       "zone": null
+      },
+      {
+       "alteration": 0,
+       "alternatives": [],
+       "area_index": 0,
+       "chromatic_after": false,
+       "chromatic_before": false,
+       "degree": 3,
+       "evidence": [],
+       "from_midi": 65,
+       "index": 4,
+       "kind": "diatonic",
+       "note": null,
+       "onset": 2.0,
+       "range_corrected": false,
+       "status": "resolved",
+       "tied_attachment": false,
+       "to_midi": 65,
+       "voice": "m",
+       "zone": null
+      },
+      {
+       "alteration": 0,
+       "alternatives": [],
+       "area_index": 0,
+       "chromatic_after": false,
+       "chromatic_before": false,
+       "degree": 5,
+       "evidence": [],
+       "from_midi": 69,
+       "index": 5,
+       "kind": "diatonic",
+       "note": null,
+       "onset": 2.0,
+       "range_corrected": false,
+       "status": "resolved",
+       "tied_attachment": false,
+       "to_midi": 68,
+       "voice": "m",
+       "zone": null
+      },
+      {
+       "alteration": 0,
+       "alternatives": [],
+       "area_index": 0,
+       "chromatic_after": false,
+       "chromatic_before": false,
+       "degree": 0,
+       "evidence": [],
+       "from_midi": 72,
+       "index": 6,
+       "kind": "diatonic",
+       "note": null,
+       "onset": 2.0,
+       "range_corrected": false,
+       "status": "resolved",
+       "tied_attachment": false,
+       "to_midi": 72,
+       "voice": "m",
+       "zone": null
+      },
+      {
+       "alteration": 1,
+       "alternatives": [
+        {
+         "alteration": -1,
+         "degree": 2,
+         "label": "attach above (lowered-degree reading)",
+         "to_midi": 62
+        }
+       ],
+       "area_index": 0,
+       "chromatic_after": false,
+       "chromatic_before": true,
+       "degree": 1,
+       "evidence": [],
+       "from_midi": 63,
+       "index": 7,
+       "kind": "chromatic",
+       "note": null,
+       "onset": 3.0,
+       "range_corrected": false,
+       "status": "resolved",
+       "tied_attachment": true,
+       "to_midi": 63,
+       "voice": "m",
+       "zone": null
+      },
+      {
+       "alteration": 0,
+       "alternatives": [],
+       "area_index": 0,
+       "chromatic_after": false,
+       "chromatic_before": false,
+       "degree": 4,
+       "evidence": [],
+       "from_midi": 67,
+       "index": 8,
+       "kind": "diatonic",
+       "note": null,
+       "onset": 4.0,
+       "range_corrected": false,
+       "status": "resolved",
+       "tied_attachment": false,
+       "to_midi": 67,
+       "voice": "m",
+       "zone": null
+      },
+      {
+       "alteration": 0,
+       "alternatives": [],
+       "area_index": 0,
+       "chromatic_after": false,
+       "chromatic_before": false,
+       "degree": 6,
+       "evidence": [],
+       "from_midi": 71,
+       "index": 9,
+       "kind": "diatonic",
+       "note": null,
+       "onset": 4.0,
+       "range_corrected": false,
+       "status": "resolved",
+       "tied_attachment": false,
+       "to_midi": 70,
+       "voice": "m",
+       "zone": null
+      },
+      {
+       "alteration": 0,
+       "alternatives": [],
+       "area_index": 0,
+       "chromatic_after": false,
+       "chromatic_before": false,
+       "degree": 1,
+       "evidence": [],
+       "from_midi": 74,
+       "index": 10,
+       "kind": "diatonic",
+       "note": null,
+       "onset": 4.0,
+       "range_corrected": false,
+       "status": "resolved",
+       "tied_attachment": false,
+       "to_midi": 74,
+       "voice": "m",
+       "zone": null
+      },
+      {
+       "alteration": 0,
+       "alternatives": [],
+       "area_index": 0,
+       "chromatic_after": false,
+       "chromatic_before": false,
+       "degree": 0,
+       "evidence": [],
+       "from_midi": 60,
+       "index": 11,
+       "kind": "diatonic",
+       "note": null,
+       "onset": 6.0,
+       "range_corrected": false,
+       "status": "resolved",
+       "tied_attachment": false,
+       "to_midi": 60,
+       "voice": "m",
+       "zone": null
+      },
+      {
+       "alteration": 0,
+       "alternatives": [],
+       "area_index": 0,
+       "chromatic_after": false,
+       "chromatic_before": false,
+       "degree": 2,
+       "evidence": [],
+       "from_midi": 64,
+       "index": 12,
+       "kind": "diatonic",
+       "note": null,
+       "onset": 6.0,
+       "range_corrected": false,
+       "status": "resolved",
+       "tied_attachment": false,
+       "to_midi": 63,
+       "voice": "m",
+       "zone": null
+      },
+      {
+       "alteration": 0,
+       "alternatives": [],
+       "area_index": 0,
+       "chromatic_after": false,
+       "chromatic_before": false,
+       "degree": 4,
+       "evidence": [],
+       "from_midi": 67,
+       "index": 13,
+       "kind": "diatonic",
+       "note": null,
+       "onset": 6.0,
+       "range_corrected": false,
+       "status": "resolved",
+       "tied_attachment": false,
+       "to_midi": 67,
+       "voice": "m",
+       "zone": null
+      }
+     ],
+     "home_mode": "major",
+     "home_tonic_pc": 0,
+     "notes_chromatic": 1,
+     "notes_diatonic": 12,
+     "notes_excluded": 1,
+     "notes_total": 14,
+     "subdivisions": 1,
+     "target_degrees": [
+      0,
+      2,
+      3,
+      5,
+      7,
+      8,
+      10
+     ],
+     "target_root": 0,
+     "target_scale_name": "Natural Minor",
+     "unresolved": 0,
+     "version": "modal-transform-plan.1"
+    }
+   },
+   "tool": "modal_transform"
+  },
+  {
+   "kwargs": {
+    "events": [
+     [
+      0,
+      2,
+      60,
+      90,
+      "m"
+     ],
+     [
+      0,
+      2,
+      64,
+      90,
+      "m"
+     ],
+     [
+      0,
+      2,
+      67,
+      90,
+      "m"
+     ],
+     [
+      2,
+      2,
+      65,
+      90,
+      "m"
+     ],
+     [
+      2,
+      2,
+      69,
+      90,
+      "m"
+     ],
+     [
+      2,
+      2,
+      72,
+      90,
+      "m"
+     ],
+     [
+      4,
+      2,
+      67,
+      90,
+      "m"
+     ],
+     [
+      4,
+      2,
+      71,
+      90,
+      "m"
+     ],
+     [
+      4,
+      2,
+      74,
+      90,
+      "m"
+     ],
+     [
+      6,
+      2,
+      60,
+      90,
+      "m"
+     ],
+     [
+      6,
+      2,
+      64,
+      90,
+      "m"
+     ],
+     [
+      6,
+      2,
+      67,
+      90,
+      "m"
+     ]
+    ],
+    "target_root": 2,
+    "target_scale": "Dorian"
+   },
+   "result": {
+    "areas": [
+     {
+      "area_index": 0,
+      "end_beats": 8.0,
+      "map": {
+       "degree_table": [
+        {
+         "degree": 0,
+         "source_pc": 0,
+         "target_pc": 2
+        },
+        {
+         "degree": 1,
+         "source_pc": 2,
+         "target_pc": 4
+        },
+        {
+         "degree": 2,
+         "source_pc": 4,
+         "target_pc": 5
+        },
+        {
+         "degree": 3,
+         "source_pc": 5,
+         "target_pc": 7
+        },
+        {
+         "degree": 4,
+         "source_pc": 7,
+         "target_pc": 9
+        },
+        {
+         "degree": 5,
+         "source_pc": 9,
+         "target_pc": 11
+        },
+        {
+         "degree": 6,
+         "source_pc": 11,
+         "target_pc": 0
+        }
+       ],
+       "source_degrees": [
+        0,
+        2,
+        4,
+        5,
+        7,
+        9,
+        11
+       ],
+       "source_name": "Ionian",
+       "source_root": 0,
+       "target_degrees": [
+        0,
+        2,
+        3,
+        5,
+        7,
+        9,
+        10
+       ],
+       "target_name": "Dorian",
+       "target_root": 2
+      },
+      "overridden": false,
+      "source_mode": "major",
+      "source_tonic_pc": 0,
+      "start_beats": 0.0,
+      "target_degrees": [
+       0,
+       2,
+       3,
+       5,
+       7,
+       9,
+       10
+      ],
+      "target_root": 2
+     }
+    ],
+    "chromatic_policy": "rhetoric",
+    "decisions": [
+     {
+      "alteration": 0,
+      "alternatives": [],
+      "area_index": 0,
+      "chromatic_after": false,
+      "chromatic_before": false,
+      "degree": 0,
+      "evidence": [],
+      "from_midi": 60,
+      "index": 0,
+      "kind": "diatonic",
+      "note": null,
+      "onset": 0.0,
+      "range_corrected": false,
+      "status": "resolved",
+      "tied_attachment": false,
+      "to_midi": 62,
+      "voice": "m",
+      "zone": null
+     },
+     {
+      "alteration": 0,
+      "alternatives": [],
+      "area_index": 0,
+      "chromatic_after": false,
+      "chromatic_before": false,
+      "degree": 2,
+      "evidence": [],
+      "from_midi": 64,
+      "index": 1,
+      "kind": "diatonic",
+      "note": null,
+      "onset": 0.0,
+      "range_corrected": false,
+      "status": "resolved",
+      "tied_attachment": false,
+      "to_midi": 65,
+      "voice": "m",
+      "zone": null
+     },
+     {
+      "alteration": 0,
+      "alternatives": [],
+      "area_index": 0,
+      "chromatic_after": false,
+      "chromatic_before": false,
+      "degree": 4,
+      "evidence": [],
+      "from_midi": 67,
+      "index": 2,
+      "kind": "diatonic",
+      "note": null,
+      "onset": 0.0,
+      "range_corrected": false,
+      "status": "resolved",
+      "tied_attachment": false,
+      "to_midi": 69,
+      "voice": "m",
+      "zone": null
+     },
+     {
+      "alteration": 0,
+      "alternatives": [],
+      "area_index": 0,
+      "chromatic_after": false,
+      "chromatic_before": false,
+      "degree": 3,
+      "evidence": [],
+      "from_midi": 65,
+      "index": 3,
+      "kind": "diatonic",
+      "note": null,
+      "onset": 2.0,
+      "range_corrected": false,
+      "status": "resolved",
+      "tied_attachment": false,
+      "to_midi": 67,
+      "voice": "m",
+      "zone": null
+     },
+     {
+      "alteration": 0,
+      "alternatives": [],
+      "area_index": 0,
+      "chromatic_after": false,
+      "chromatic_before": false,
+      "degree": 5,
+      "evidence": [],
+      "from_midi": 69,
+      "index": 4,
+      "kind": "diatonic",
+      "note": null,
+      "onset": 2.0,
+      "range_corrected": false,
+      "status": "resolved",
+      "tied_attachment": false,
+      "to_midi": 71,
+      "voice": "m",
+      "zone": null
+     },
+     {
+      "alteration": 0,
+      "alternatives": [],
+      "area_index": 0,
+      "chromatic_after": false,
+      "chromatic_before": false,
+      "degree": 0,
+      "evidence": [],
+      "from_midi": 72,
+      "index": 5,
+      "kind": "diatonic",
+      "note": null,
+      "onset": 2.0,
+      "range_corrected": false,
+      "status": "resolved",
+      "tied_attachment": false,
+      "to_midi": 74,
+      "voice": "m",
+      "zone": null
+     },
+     {
+      "alteration": 0,
+      "alternatives": [],
+      "area_index": 0,
+      "chromatic_after": false,
+      "chromatic_before": false,
+      "degree": 4,
+      "evidence": [],
+      "from_midi": 67,
+      "index": 6,
+      "kind": "diatonic",
+      "note": null,
+      "onset": 4.0,
+      "range_corrected": false,
+      "status": "resolved",
+      "tied_attachment": false,
+      "to_midi": 69,
+      "voice": "m",
+      "zone": null
+     },
+     {
+      "alteration": 0,
+      "alternatives": [],
+      "area_index": 0,
+      "chromatic_after": false,
+      "chromatic_before": false,
+      "degree": 6,
+      "evidence": [],
+      "from_midi": 71,
+      "index": 7,
+      "kind": "diatonic",
+      "note": null,
+      "onset": 4.0,
+      "range_corrected": false,
+      "status": "resolved",
+      "tied_attachment": false,
+      "to_midi": 72,
+      "voice": "m",
+      "zone": null
+     },
+     {
+      "alteration": 0,
+      "alternatives": [],
+      "area_index": 0,
+      "chromatic_after": false,
+      "chromatic_before": false,
+      "degree": 1,
+      "evidence": [],
+      "from_midi": 74,
+      "index": 8,
+      "kind": "diatonic",
+      "note": null,
+      "onset": 4.0,
+      "range_corrected": false,
+      "status": "resolved",
+      "tied_attachment": false,
+      "to_midi": 76,
+      "voice": "m",
+      "zone": null
+     },
+     {
+      "alteration": 0,
+      "alternatives": [],
+      "area_index": 0,
+      "chromatic_after": false,
+      "chromatic_before": false,
+      "degree": 0,
+      "evidence": [],
+      "from_midi": 60,
+      "index": 9,
+      "kind": "diatonic",
+      "note": null,
+      "onset": 6.0,
+      "range_corrected": false,
+      "status": "resolved",
+      "tied_attachment": false,
+      "to_midi": 62,
+      "voice": "m",
+      "zone": null
+     },
+     {
+      "alteration": 0,
+      "alternatives": [],
+      "area_index": 0,
+      "chromatic_after": false,
+      "chromatic_before": false,
+      "degree": 2,
+      "evidence": [],
+      "from_midi": 64,
+      "index": 10,
+      "kind": "diatonic",
+      "note": null,
+      "onset": 6.0,
+      "range_corrected": false,
+      "status": "resolved",
+      "tied_attachment": false,
+      "to_midi": 65,
+      "voice": "m",
+      "zone": null
+     },
+     {
+      "alteration": 0,
+      "alternatives": [],
+      "area_index": 0,
+      "chromatic_after": false,
+      "chromatic_before": false,
+      "degree": 4,
+      "evidence": [],
+      "from_midi": 67,
+      "index": 11,
+      "kind": "diatonic",
+      "note": null,
+      "onset": 6.0,
+      "range_corrected": false,
+      "status": "resolved",
+      "tied_attachment": false,
+      "to_midi": 69,
+      "voice": "m",
+      "zone": null
+     }
+    ],
+    "home_mode": "major",
+    "home_tonic_pc": 0,
+    "notes_chromatic": 0,
+    "notes_diatonic": 12,
+    "notes_excluded": 0,
+    "notes_total": 12,
+    "subdivisions": 1,
+    "target_degrees": [
+     0,
+     2,
+     3,
+     5,
+     7,
+     9,
+     10
+    ],
+    "target_root": 2,
+    "target_scale_name": "Dorian",
+    "unresolved": 0,
+    "version": "modal-transform-plan.1"
+   },
+   "tool": "plan_modal_transform"
+  },
+  {
+   "kwargs": {
+    "events": [
+     [
+      0,
+      2,
+      60,
+      90,
+      "m"
+     ],
+     [
+      0,
+      2,
+      64,
+      90,
+      "m"
+     ],
+     [
+      0,
+      2,
+      67,
+      90,
+      "m"
+     ],
+     [
+      2,
+      2,
+      65,
+      90,
+      "m"
+     ],
+     [
+      2,
+      2,
+      69,
+      90,
+      "m"
+     ],
+     [
+      2,
+      2,
+      72,
+      90,
+      "m"
+     ],
+     [
+      4,
+      2,
+      67,
+      90,
+      "m"
+     ],
+     [
+      4,
+      2,
+      71,
+      90,
+      "m"
+     ],
+     [
+      4,
+      2,
+      74,
+      90,
+      "m"
+     ],
+     [
+      6,
+      2,
+      60,
+      90,
+      "m"
+     ],
+     [
+      6,
+      2,
+      64,
+      90,
+      "m"
+     ],
+     [
+      6,
+      2,
+      67,
+      90,
+      "m"
+     ]
+    ],
+    "plan": {
+     "areas": [
+      {
+       "area_index": 0,
+       "end_beats": 8.0,
+       "map": {
+        "degree_table": [
+         {
+          "degree": 0,
+          "source_pc": 0,
+          "target_pc": 0
+         },
+         {
+          "degree": 1,
+          "source_pc": 2,
+          "target_pc": 2
+         },
+         {
+          "degree": 2,
+          "source_pc": 4,
+          "target_pc": 3
+         },
+         {
+          "degree": 3,
+          "source_pc": 5,
+          "target_pc": 5
+         },
+         {
+          "degree": 4,
+          "source_pc": 7,
+          "target_pc": 7
+         },
+         {
+          "degree": 5,
+          "source_pc": 9,
+          "target_pc": 8
+         },
+         {
+          "degree": 6,
+          "source_pc": 11,
+          "target_pc": 10
+         }
+        ],
+        "source_degrees": [
+         0,
+         2,
+         4,
+         5,
+         7,
+         9,
+         11
+        ],
+        "source_name": "Ionian",
+        "source_root": 0,
+        "target_degrees": [
+         0,
+         2,
+         3,
+         5,
+         7,
+         8,
+         10
+        ],
+        "target_name": "Natural Minor",
+        "target_root": 0
+       },
+       "overridden": false,
+       "source_mode": "major",
+       "source_tonic_pc": 0,
+       "start_beats": 0.0,
+       "target_degrees": [
+        0,
+        2,
+        3,
+        5,
+        7,
+        8,
+        10
+       ],
+       "target_root": 0
+      }
+     ],
+     "chromatic_policy": "rhetoric",
+     "decisions": [
+      {
+       "alteration": 0,
+       "alternatives": [],
+       "area_index": 0,
+       "chromatic_after": false,
+       "chromatic_before": false,
+       "degree": 0,
+       "evidence": [],
+       "from_midi": 60,
+       "index": 0,
+       "kind": "diatonic",
+       "note": null,
+       "onset": 0.0,
+       "range_corrected": false,
+       "status": "resolved",
+       "tied_attachment": false,
+       "to_midi": 60,
+       "voice": "m",
+       "zone": null
+      },
+      {
+       "alteration": 0,
+       "alternatives": [],
+       "area_index": 0,
+       "chromatic_after": true,
+       "chromatic_before": false,
+       "degree": 2,
+       "evidence": [],
+       "from_midi": 64,
+       "index": 1,
+       "kind": "diatonic",
+       "note": null,
+       "onset": 0.0,
+       "range_corrected": false,
+       "status": "resolved",
+       "tied_attachment": false,
+       "to_midi": 64,
+       "voice": "m",
+       "zone": null
+      },
+      {
+       "alteration": 0,
+       "alternatives": [],
+       "area_index": 0,
+       "chromatic_after": false,
+       "chromatic_before": false,
+       "degree": 4,
+       "evidence": [],
+       "from_midi": 67,
+       "index": 2,
+       "kind": "diatonic",
+       "note": null,
+       "onset": 0.0,
+       "range_corrected": false,
+       "status": "resolved",
+       "tied_attachment": false,
+       "to_midi": 67,
+       "voice": "m",
+       "zone": null
+      },
+      {
+       "alteration": 0,
+       "alternatives": [],
+       "area_index": 0,
+       "chromatic_after": false,
+       "chromatic_before": false,
+       "degree": 3,
+       "evidence": [],
+       "from_midi": 65,
+       "index": 3,
+       "kind": "diatonic",
+       "note": null,
+       "onset": 2.0,
+       "range_corrected": false,
+       "status": "resolved",
+       "tied_attachment": false,
+       "to_midi": 65,
+       "voice": "m",
+       "zone": null
+      },
+      {
+       "alteration": 0,
+       "alternatives": [],
+       "area_index": 0,
+       "chromatic_after": false,
+       "chromatic_before": false,
+       "degree": 5,
+       "evidence": [],
+       "from_midi": 69,
+       "index": 4,
+       "kind": "diatonic",
+       "note": null,
+       "onset": 2.0,
+       "range_corrected": false,
+       "status": "resolved",
+       "tied_attachment": false,
+       "to_midi": 68,
+       "voice": "m",
+       "zone": null
+      },
+      {
+       "alteration": 0,
+       "alternatives": [],
+       "area_index": 0,
+       "chromatic_after": false,
+       "chromatic_before": false,
+       "degree": 0,
+       "evidence": [],
+       "from_midi": 72,
+       "index": 5,
+       "kind": "diatonic",
+       "note": null,
+       "onset": 2.0,
+       "range_corrected": false,
+       "status": "resolved",
+       "tied_attachment": false,
+       "to_midi": 72,
+       "voice": "m",
+       "zone": null
+      },
+      {
+       "alteration": 0,
+       "alternatives": [],
+       "area_index": 0,
+       "chromatic_after": false,
+       "chromatic_before": false,
+       "degree": 4,
+       "evidence": [],
+       "from_midi": 67,
+       "index": 6,
+       "kind": "diatonic",
+       "note": null,
+       "onset": 4.0,
+       "range_corrected": false,
+       "status": "resolved",
+       "tied_attachment": false,
+       "to_midi": 67,
+       "voice": "m",
+       "zone": null
+      },
+      {
+       "alteration": 0,
+       "alternatives": [],
+       "area_index": 0,
+       "chromatic_after": false,
+       "chromatic_before": false,
+       "degree": 6,
+       "evidence": [],
+       "from_midi": 71,
+       "index": 7,
+       "kind": "diatonic",
+       "note": null,
+       "onset": 4.0,
+       "range_corrected": false,
+       "status": "resolved",
+       "tied_attachment": false,
+       "to_midi": 70,
+       "voice": "m",
+       "zone": null
+      },
+      {
+       "alteration": 0,
+       "alternatives": [],
+       "area_index": 0,
+       "chromatic_after": false,
+       "chromatic_before": false,
+       "degree": 1,
+       "evidence": [],
+       "from_midi": 74,
+       "index": 8,
+       "kind": "diatonic",
+       "note": null,
+       "onset": 4.0,
+       "range_corrected": false,
+       "status": "resolved",
+       "tied_attachment": false,
+       "to_midi": 74,
+       "voice": "m",
+       "zone": null
+      },
+      {
+       "alteration": 0,
+       "alternatives": [],
+       "area_index": 0,
+       "chromatic_after": false,
+       "chromatic_before": false,
+       "degree": 0,
+       "evidence": [],
+       "from_midi": 60,
+       "index": 9,
+       "kind": "diatonic",
+       "note": null,
+       "onset": 6.0,
+       "range_corrected": false,
+       "status": "resolved",
+       "tied_attachment": false,
+       "to_midi": 60,
+       "voice": "m",
+       "zone": null
+      },
+      {
+       "alteration": 0,
+       "alternatives": [],
+       "area_index": 0,
+       "chromatic_after": false,
+       "chromatic_before": false,
+       "degree": 2,
+       "evidence": [],
+       "from_midi": 64,
+       "index": 10,
+       "kind": "diatonic",
+       "note": null,
+       "onset": 6.0,
+       "range_corrected": false,
+       "status": "resolved",
+       "tied_attachment": false,
+       "to_midi": 63,
+       "voice": "m",
+       "zone": null
+      },
+      {
+       "alteration": 0,
+       "alternatives": [],
+       "area_index": 0,
+       "chromatic_after": false,
+       "chromatic_before": false,
+       "degree": 4,
+       "evidence": [],
+       "from_midi": 67,
+       "index": 11,
+       "kind": "diatonic",
+       "note": null,
+       "onset": 6.0,
+       "range_corrected": false,
+       "status": "resolved",
+       "tied_attachment": false,
+       "to_midi": 67,
+       "voice": "m",
+       "zone": null
+      }
+     ],
+     "home_mode": "major",
+     "home_tonic_pc": 0,
+     "notes_chromatic": 0,
+     "notes_diatonic": 12,
+     "notes_excluded": 0,
+     "notes_total": 12,
+     "subdivisions": 1,
+     "target_degrees": [
+      0,
+      2,
+      3,
+      5,
+      7,
+      8,
+      10
+     ],
+     "target_root": 0,
+     "target_scale_name": "Natural Minor",
+     "unresolved": 0,
+     "version": "modal-transform-plan.1"
+    }
+   },
+   "result": {
+    "absorbed_alterations": 0,
+    "events": [
+     [
+      0.0,
+      2.0,
+      60,
+      90,
+      "m"
+     ],
+     [
+      0.0,
+      2.0,
+      64,
+      90,
+      "m"
+     ],
+     [
+      0.0,
+      2.0,
+      67,
+      90,
+      "m"
+     ],
+     [
+      2.0,
+      2.0,
+      65,
+      90,
+      "m"
+     ],
+     [
+      2.0,
+      2.0,
+      68,
+      90,
+      "m"
+     ],
+     [
+      2.0,
+      2.0,
+      72,
+      90,
+      "m"
+     ],
+     [
+      4.0,
+      2.0,
+      67,
+      90,
+      "m"
+     ],
+     [
+      4.0,
+      2.0,
+      70,
+      90,
+      "m"
+     ],
+     [
+      4.0,
+      2.0,
+      74,
+      90,
+      "m"
+     ],
+     [
+      6.0,
+      2.0,
+      60,
+      90,
+      "m"
+     ],
+     [
+      6.0,
+      2.0,
+      63,
+      90,
+      "m"
+     ],
+     [
+      6.0,
+      2.0,
+      67,
+      90,
+      "m"
+     ]
+    ],
+    "notes_changed": 3,
+    "notes_excluded": 0
+   },
+   "tool": "apply_modal_transform_plan"
+  },
+  {
+   "kwargs": {
+    "events": [
+     [
+      0,
+      1,
+      67,
+      90,
+      "m"
+     ],
+     [
+      1,
+      1,
+      65,
+      90,
+      "m"
+     ],
+     [
+      2,
+      1,
+      64,
+      90,
+      "m"
+     ],
+     [
+      3,
+      1,
+      62,
+      90,
+      "m"
+     ],
+     [
+      4,
+      1,
+      60,
+      90,
+      "m"
+     ],
+     [
+      5,
+      1,
+      62,
+      90,
+      "m"
+     ],
+     [
+      6,
+      1,
+      64,
+      90,
+      "m"
+     ]
+    ],
+    "min_notes": 3,
+    "root_pc": 0,
+    "scale": "Ionian"
+   },
+   "result": {
+    "ascents": 1,
+    "degrees": [
+     0,
+     2,
+     4,
+     5,
+     7,
+     9,
+     11
+    ],
+    "descents": 1,
+    "key_inferred": false,
+    "min_notes": 3,
+    "root_pc": 0,
+    "runs": [
+     {
+      "degrees": [
+       5,
+       4,
+       3,
+       2,
+       1
+      ],
+      "direction": "descent",
+      "end_beat": 4.0,
+      "end_index": 4,
+      "midis": [
+       67,
+       65,
+       64,
+       62,
+       60
+      ],
+      "note_count": 5,
+      "start_beat": 0.0,
+      "start_index": 0,
+      "voice": "m"
+     },
+     {
+      "degrees": [
+       1,
+       2,
+       3
+      ],
+      "direction": "ascent",
+      "end_beat": 6.0,
+      "end_index": 6,
+      "midis": [
+       60,
+       62,
+       64
+      ],
+      "note_count": 3,
+      "start_beat": 4.0,
+      "start_index": 4,
+      "voice": "m"
+     }
+    ],
+    "scale_name": "Ionian",
+    "voice": null
+   },
+   "tool": "find_scale_runs"
   },
   {
    "kwargs": {},
